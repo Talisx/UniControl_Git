@@ -87,8 +87,7 @@ void InitCAN0MsgObjects(void)
 	sMsgObjectDataRx.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 2, &sMsgObjectDataRx ,MSG_OBJ_TYPE_RX );
 
-
-
+	//Nachricht zur Kontrolle, kann gelöscht werden
 	return;
 }
 
