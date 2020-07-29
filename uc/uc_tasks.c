@@ -114,6 +114,7 @@ void TaskIdle(void)
 
 	int16_t CurrentModeSettingValue = 500;
 	//User State to enable EPOS
+	/*
 	switch(cUser_State)
 	    {
 	    // EPOS disables
@@ -162,8 +163,9 @@ void TaskIdle(void)
 	        break;
 	    }
 
-
+    */
 	// Check if CAN message object 2 has new data.
+	/*
 	if(ui32CanRxFlags & 0b10)
 	{
 	    sMsgObjectDataRx.pui8MsgData = pui8RxBuffer;
@@ -815,6 +817,7 @@ void TaskIdle(void)
                 i16CurrentActualValue=value;
             }
         }
+        */
           //  System_flush(); // Flush the IO-Buffer to display console content.
 
             return;
@@ -924,10 +927,11 @@ void Task100ms(void)
 
 	switch(ui8State)
 	    {
-
+	    /*
 	        case 0: pack(0x40, 0x60F6 ,0x01 , 0);
 	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	                break;
+	                */
 	        /*
 	        case 0: pack(READING_SEND, NUMBER_OF_ERRORS,ERROR_HISTORY_1, 0);
 	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);

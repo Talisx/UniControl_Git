@@ -8,15 +8,20 @@
 #ifndef UC_UC_CAN_H_
 #define UC_UC_CAN_H_
 
-#define CAN0_BAUDRATE	1000000
+//hier stand vorher 1000000
+#define CAN0_BAUDRATE	250000
 
 //Can data buffers for RX and TX
 uint8_t				pui8TxBuffer[8];
 uint8_t             pui8RxBuffer[8];
 
+uint8_t Data_Encoder;
+
 // Can message object structures for RX and TX
-tCANMsgObject		sMsgObjectDataTx;
-tCANMsgObject       sMsgObjectDataRx;
+tCANMsgObject		sMsgObjectDataTx0;
+tCANMsgObject       sMsgObjectDataRx0;
+tCANMsgObject       sMsgObjectDataRx1;
+tCANMsgObject       sMsgObjectDataRx2;
 
 extern uint32_t ui32SysClock;
 extern uint32_t ui32CanRxFlags;
@@ -27,6 +32,7 @@ extern void InitCAN0(void);
 extern void InitCAN0MsgObjects(void);
 extern void CAN0IntHandler(void);
 
+/*Funktionen für Kimmer Platine, speziell um Can Nachrichten zu sortieren*/
 extern void pack(uint8_t SDO_Byte, uint16_t index, uint8_t sub_index, int32_t value);
 extern uint32_t unpack(uint8_t *SDO_Byte, uint16_t *index, uint8_t *sub_index, int32_t *value);
 

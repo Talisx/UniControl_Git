@@ -36,6 +36,7 @@
 //
 //*****************************************************************************
 
+/*initialize Can 0 Module, hier dran auch nicht mehr rum fummeln*/
 void InitCAN0(void)
 {
     //Test Nachricht, welche gelöscht werden kann
@@ -70,24 +71,53 @@ void InitCAN0(void)
 //
 //*****************************************************************************
 
+
 void InitCAN0MsgObjects(void)
 {
-	/* Initialize data request message object (TX direction) */
+	/* Initialize data request message object (TX direction), der Teil ist für Kimmer Platine */
+    /*
 	sMsgObjectDataTx.ui32MsgID 	= 0x0600 + 0b00000001;
 	sMsgObjectDataTx.ui32Flags 	= MSG_OBJ_TX_INT_ENABLE;
 	sMsgObjectDataTx.ui32MsgIDMask = 0x0000;
 	sMsgObjectDataTx.ui32MsgLen 	= 8;
 	sMsgObjectDataTx.pui8MsgData 	= pui8TxBuffer;
 	CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	*/
 
-	/* Initialize data receive message objects (RX direction ) */
+	/* Initialize data receive message objects (RX direction ), der Teil ist für Kimmer Platine */
+	/*
 	sMsgObjectDataRx.ui32MsgID = 0x0580+0b00000001;
 	sMsgObjectDataRx.ui32MsgIDMask = 0xFFFF;
 	sMsgObjectDataRx.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
 	sMsgObjectDataRx.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 2, &sMsgObjectDataRx ,MSG_OBJ_TYPE_RX );
+	*/
 
-	//Nachricht zur Kontrolle, kann gelöscht werden
+    sMsgObjectDataTx0.ui32MsgID  = 0x0011;
+    sMsgObjectDataTx0.ui32Flags  = MSG_OBJ_TX_INT_ENABLE;
+    sMsgObjectDataTx0.ui32MsgIDMask = 0x0000;
+    sMsgObjectDataTx0.ui32MsgLen     = 8;
+    sMsgObjectDataTx0.pui8MsgData    = pui8TxBuffer;
+    CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx0, MSG_OBJ_TYPE_TX);
+
+	sMsgObjectDataRx0.ui32MsgID = 0x0012;
+	sMsgObjectDataRx0.ui32MsgIDMask = 0xFFFF;
+	sMsgObjectDataRx0.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
+	sMsgObjectDataRx0.ui32MsgLen = 8;
+	CANMessageSet ( CAN0_BASE , 2, &sMsgObjectDataRx0 ,MSG_OBJ_TYPE_RX );
+
+	sMsgObjectDataRx1.ui32MsgID = 0x0013;
+	sMsgObjectDataRx1.ui32MsgIDMask = 0xFFFF;
+	sMsgObjectDataRx1.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
+	sMsgObjectDataRx1.ui32MsgLen = 8;
+	CANMessageSet ( CAN0_BASE , 3, &sMsgObjectDataRx1 ,MSG_OBJ_TYPE_RX );
+
+	sMsgObjectDataRx2.ui32MsgID = 0x0014;
+	sMsgObjectDataRx2.ui32MsgIDMask = 0xFFFF;
+	sMsgObjectDataRx2.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
+	sMsgObjectDataRx2.ui32MsgLen = 8;
+	CANMessageSet ( CAN0_BASE , 4, &sMsgObjectDataRx2 ,MSG_OBJ_TYPE_RX );
+
 	return;
 }
 
@@ -114,8 +144,9 @@ void InitCAN0MsgObjects(void)
 
 void CAN0IntHandler(void)
 {
-	static uint32_t ui32Status 		= 0;
+	static uint32_t ui32Status = 0;
 
+	/*gibt das Message Objekt (0-31) raus, welches eine Nachricht enthält*/
 	ui32Status = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE);
 	/* Switch for message object */
 	switch(ui32Status)
@@ -128,6 +159,13 @@ void CAN0IntHandler(void)
 		case 2:     CANIntClear(CAN0_BASE, 2);
 		            ui32CanRxFlags = (ui32CanRxFlags | 0b10);
 		            break;
+
+		case 3:     CANIntClear(CAN0_BASE, 3);
+		            sMsgObjectDataRx1.pui8MsgData = pui8RxBuffer;
+		            CANMessageGet(CAN0_BASE, 3, &sMsgObjectDataRx1, 0);
+		            Data_Encoder = pui8RxBuffer[0];
+		            break;
+
 		/*pending status error */
 		case 32768: CANIntClear(CAN0_BASE, CAN_INT_INTID_STATUS);
 		          //  printf("Status Error \n");
