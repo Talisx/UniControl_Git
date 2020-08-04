@@ -925,6 +925,11 @@ void Task100ms(void)
 	//CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 
 
+	pui8TxBuffer[0] = 100;
+	// pui8TxBuffer[1] = Position >> 8;
+	CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx0, MSG_OBJ_TYPE_TX);
+
+
 	switch(ui8State)
 	    {
 	    /*
