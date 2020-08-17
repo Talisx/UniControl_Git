@@ -44,9 +44,14 @@
 #include <stdio.h>
 #include <string.h>
 
+//Torstens Variablen
+bool Data_ValidEnco = true;
+bool Data_ValidWinkel = true;
+int Nachricht_prüfer = 0;
+int Nachrichten_prüfer1 = 0;
+
 
 /* Global variables */
-uint8_t ui8CAN_ID = 0b00000001; //CAN_ID on EPOS (DIP-Switch)
 static char cUser_State = 0; //User state machine
 static char ui8State = 0;    //User state machine
 uint8_t SDO_Byte;
@@ -114,20 +119,20 @@ void TaskIdle(void)
 
 	int16_t CurrentModeSettingValue = 500;
 	//User State to enable EPOS
-	/*
 	switch(cUser_State)
 	    {
 	    // EPOS disables
 	        case 0:
 	            //Fault reset
 	            pack(WRITING_SEND, CONTROL_WORD, 0,FAULT_RESET);
-	            CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	            cUser_State = 1;
 	            break;
 	        case 1:
 	            //Shut down
 	            pack(WRITING_SEND, CONTROL_WORD, 0,SHUTDOWN);
-	            CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	            //damit es keinen Pointer Fehler gibt
 	            char ch[2];
 	            printf("EPOS disabled\nPress 1 to enable\n");
 	           // fgets(&cUser_State, 2, stdin);
@@ -138,43 +143,42 @@ void TaskIdle(void)
 	        case '1':
 	            //Switch on
 	            pack(WRITING_SEND, CONTROL_WORD, 0,SWITCH_ON);
-	            CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	            cUser_State = 2;
 	            break;
 	        case 2:
 	            //Enable operation
 	            pack(WRITING_SEND, CONTROL_WORD, 0,ENABLE_OPERATION);
-	            CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	            printf("EPOS enabled\n");
 	            cUser_State++;
 	        break;
 	        case 3:
 	            //Current Mode
 	            pack(WRITING_SEND, MODES_OF_OPERATION, 0,DIGITAL_CURRENT);
-	            CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	            cUser_State++;
 	            break;
 	        case 4:
 	            //Send CurrentModeSettingValue
 	            pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,CurrentModeSettingValue);
-	            CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	            printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
 	            cUser_State++;
 	        break;
 	    }
 
-    */
 	// Check if CAN message object 2 has new data.
 	/*
 	if(ui32CanRxFlags & 0b10)
 	{
 	    sMsgObjectDataRx.pui8MsgData = pui8RxBuffer;
 	    // Set a pointer to the message object's data storage buffer.
-	    CANMessageGet(CAN0_BASE, 2, &sMsgObjectDataRx, 0);
+	    CANMessageGet(CAN0_BASE, 6, &sMsgObjectDataRx, 0);
 	    // Get the data content of message object 32.
 	    ui32CanRxFlags &= ~0b10;
 	    // Reset message object 32 in the flag register.
-	    // System_printf("CAN message received in message object 2.\n");
+	    // System_printf("CAN message received in message object.\n");
 	    // Print receive event in the console.
 	    display=unpack(&SDO_Byte, &index, &sub_index, &value);
 	    //Error history 1
@@ -818,7 +822,7 @@ void TaskIdle(void)
             }
         }
         */
-          //  System_flush(); // Flush the IO-Buffer to display console content.
+           // System_flush(); // Flush the IO-Buffer to display console content.
 
             return;
 }
@@ -859,10 +863,15 @@ void Task10ms(void)
 	}
 
 	/* Copy values to the model input vector */
+
+	/*
 	for(i=0; i<6; i++)
 	{
 		ModelInput[i] = dAdcValue[i];
 	}
+    */
+
+	ModelInput[4] = Data_WinkelEncoder;
 
 	/* Step the Simulink model */
 	UniControlSystem_Step(	ModelInput[0],  ModelInput[1],  ModelInput[2],  ModelInput[3],
@@ -875,10 +884,13 @@ void Task10ms(void)
 							&ModelOutput[12], &ModelOutput[13], &ModelOutput[14], &ModelOutput[15]);
 
 	/* Copy values from model output vector to DAC values using the respective dynamic range */
+
+	/* Raus weil keine Ausgänge benötigt
 	for(i=0; i<4; i++)
 	{
 		ui16DacValue[i] = (uint16_t) ((ModelOutput[i]-dDacVcal[i]) / 10.0 * 32768 + 32768);
 	}
+	*/
 
 	/* Update the DAC registers*/
 	AD5755_Channel_Put(ui16DacValue[0], ui16DacValue[1], ui16DacValue[2], ui16DacValue[3]);
@@ -901,6 +913,43 @@ void Task100ms(void)
 	/* Clear the interrupt flag */
 	TimerIntClear(TIMER3_BASE, TIMER_TIMA_TIMEOUT);
 
+	//--------------------------------------------------------------------------------------------------------------------------
+	/*Request for all Data*/
+	//Hier wird geprüft ob die Verbindung überhaupt noch besteht
+    if(Data_ValidEnco == true && Data_ValidWinkel == true)
+    {
+        Data_ValidEnco = false;
+        Data_ValidWinkel = false;
+        pui8TxBuffer[0] = 200;
+        CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx0, MSG_OBJ_TYPE_TX);
+        Nachrichten_prüfer1++;
+        //alle 50 Nachrichten, kann mal eine Fehlerhafte message ignoriert werden
+        if(Nachrichten_prüfer1 == 50)
+        {
+            Nachricht_prüfer = 0;
+            Nachrichten_prüfer1 = 0;
+        }
+    }
+    else
+    {
+        // man könnte eine if schleife hoch zählen, die ab bestimmten wert dann einfach alles ab schaltet
+        // zum vermeiden, das alles abkratzt wenn mal eine Nachricht zwischen drin falsch ist
+        if(Nachricht_prüfer == 0)
+        {
+            Data_ValidEnco = true;
+            Data_ValidWinkel = true;
+            Nachricht_prüfer++;
+        }
+        //Nachricht hier einfügen, das Fehler entstanden ist
+        // kamen mehr als 2 Nachrichten nicht richtig an
+        else
+        {
+
+        }
+    }
+    //--------------------------------------------------------------------------------------------------------------------------
+
+
 	if(i == 7)
 	{
 		i = 0;
@@ -922,147 +971,138 @@ void Task100ms(void)
 		i++;
 	}
 
-	//CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-
-
-	pui8TxBuffer[0] = 100;
-	// pui8TxBuffer[1] = Position >> 8;
-	CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx0, MSG_OBJ_TYPE_TX);
-
-
 	switch(ui8State)
 	    {
 	    /*
 	        case 0: pack(0x40, 0x60F6 ,0x01 , 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	                break;
 	                */
 	        /*
 	        case 0: pack(READING_SEND, NUMBER_OF_ERRORS,ERROR_HISTORY_1, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 1: pack(READING_SEND, NUMBER_OF_ERRORS,ERROR_HISTORY_2, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 2: pack(READING_SEND, NUMBER_OF_ERRORS,ERROR_HISTORY_3, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 3: pack(READING_SEND, NUMBER_OF_ERRORS,ERROR_HISTORY_4, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 4: pack(READING_SEND, NUMBER_OF_ERRORS,ERROR_HISTORY_5, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 5: pack(READING_SEND, CONTROL_WORD, 0, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 6: pack(READING_SEND, STATUS_WORD, 0, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 7: pack(READING_SEND, MODES_OF_OPERATION_DISPLAY, 0,0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 8: pack(READING_SEND, CAN_BITRATE, 0, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 9: pack(READING_SEND, MAX_FOLLOWING_ERROR, 0, 0);
-	                CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
 	                break;
 	        case 10: pack(READING_SEND, CURRENT_REGULATOR, P_GAIN, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 11: pack(READING_SEND, CURRENT_REGULATOR, I_GAIN, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 12: pack(READING_SEND, SPEED_REGULATOR, P_GAIN, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 13: pack(READING_SEND, SPEED_REGULATOR, I_GAIN, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 14: pack(READING_SEND, POSITION_REGULATOR, P_GAIN, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 15: pack(READING_SEND, POSITION_REGULATOR, I_GAIN, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 16: pack(READING_SEND, POSITION_REGULATOR, D_GAIN, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 17: pack(READING_SEND, POSITION_REGULATOR,VELOCITY_FEEDFORWARD_FACTOR, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 18: pack(READING_SEND, POSITION_REGULATOR,ACCELERATION_FEEDFORWARD_FACTOR, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 19: pack(READING_SEND, ENCODER_COUNTER, 0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 20: pack(READING_SEND, ENCODER_COUNTER_INDEX_PULSE, 0,0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 21: pack(READING_SEND, HALLSENSOR_PATTERN, 0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 22: pack(READING_SEND, CURRENT_ACTUAL_VALUE_AVERAGED,0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 23: pack(READING_SEND, VELOCITY_ACTUAL_VALUE_AVERAGED,0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 24: pack(READING_SEND, CURRENT_MODE_SETTING_VALUE, 0,0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 25: pack(READING_SEND, FOLLOWING_ERROR_ACTUAL_VALUE, 0,0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 26: pack(READING_SEND, POSITION_DEMAND_VALUE, 0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 27: pack(READING_SEND, POSITION_ACTUAL_VALUE, 0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 28: pack(READING_SEND, VELOCITY_DEMAND_VALUE, 0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 29: pack(READING_SEND, VELOCITY_ACTUAL_VALUE, 0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State++;
 	                 break;
 	        case 30: pack(READING_SEND, CURRENT_ACTUAL_VALUE, 0, 0);
-	                 CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
+	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State=0;
 	                 break;
-
 	                 */
 	    }
 	return;

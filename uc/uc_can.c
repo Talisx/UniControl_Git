@@ -112,11 +112,28 @@ void InitCAN0MsgObjects(void)
 	sMsgObjectDataRx1.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 3, &sMsgObjectDataRx1 ,MSG_OBJ_TYPE_RX );
 
-	sMsgObjectDataRx2.ui32MsgID = 0x0014;
+	sMsgObjectDataRx2.ui32MsgID = 0x0020;
 	sMsgObjectDataRx2.ui32MsgIDMask = 0xFFFF;
 	sMsgObjectDataRx2.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
 	sMsgObjectDataRx2.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 4, &sMsgObjectDataRx2 ,MSG_OBJ_TYPE_RX );
+
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	//Message objects für Steuergerät
+	sMsgObjectDataTx.ui32MsgID = 0x0600+0b00000001;
+	sMsgObjectDataTx.ui32Flags = 0x0000;
+	sMsgObjectDataTx.ui32MsgIDMask = 0x0000;
+	sMsgObjectDataTx.ui32MsgLen = 8;
+	sMsgObjectDataTx.pui8MsgData = pui8TxBuffer;
+	CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+
+	// Message object 6 is used for RX of message ID '0x581'
+	sMsgObjectDataRx.ui32MsgID = 0x0580+0b00000001;
+	sMsgObjectDataRx.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
+	// All bits of the ID must match.
+	sMsgObjectDataRx.ui32MsgIDMask = 0xFFFF;
+	sMsgObjectDataRx.ui32MsgLen = 8;
+	CANMessageSet(CAN0_BASE, 6, &sMsgObjectDataRx, MSG_OBJ_TYPE_RX);
 
 	return;
 }
@@ -151,19 +168,22 @@ void CAN0IntHandler(void)
 	/* Switch for message object */
 	switch(ui32Status)
 	{
-		/* TX handler */
 		case 1:		CANIntClear(CAN0_BASE, 1);
 		            break;
 
-		/* RX handler */
 		case 2:     CANIntClear(CAN0_BASE, 2);
-		            ui32CanRxFlags = (ui32CanRxFlags | 0b10);
+		            // ui32CanRxFlags = (ui32CanRxFlags | 0b10);    //Kimmer Zeug
+		            sMsgObjectDataRx0.pui8MsgData = pui8RxBuffer;
+		            CANMessageGet(CAN0_BASE, 2, &sMsgObjectDataRx0, 0);
+		            Data_WinkelEncoder = pui8RxBuffer[0];
+		            Data_ValidWinkel = true;
 		            break;
 
 		case 3:     CANIntClear(CAN0_BASE, 3);
 		            sMsgObjectDataRx1.pui8MsgData = pui8RxBuffer;
 		            CANMessageGet(CAN0_BASE, 3, &sMsgObjectDataRx1, 0);
 		            Data_Encoder = pui8RxBuffer[0];
+		            Data_ValidEnco = true;
 		            break;
 
 		/*pending status error */

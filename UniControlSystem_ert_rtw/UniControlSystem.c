@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'UniControlSystem'.
  *
- * Model version                  : 1.59
+ * Model version                  : 1.55
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Mon Sep 30 16:24:27 2019
+ * C/C++ source code generated on : Thu Aug 06 11:54:25 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -16,51 +16,97 @@
 #include "UniControlSystem.h"
 
 /* Exported block parameters */
-real_T PID_D = 0.0;                    /* Variable: PID_D
+real_T Phi_PID_D = 0.0;                /* Variable: Phi_PID_D
                                         * Referenced by: '<S1>/Derivative Gain'
                                         */
-real_T PID_HLIM = 9.0;                 /* Variable: PID_HLIM
-                                        * Referenced by:
-                                        *   '<S1>/Saturate'
-                                        *   '<S2>/DeadZone'
-                                        */
-real_T PID_I = 0.0;                    /* Variable: PID_I
+real_T Phi_PID_I = 0.0;                /* Variable: Phi_PID_I
                                         * Referenced by: '<S1>/Integral Gain'
                                         */
-real_T PID_LLIM = -9.0;                /* Variable: PID_LLIM
-                                        * Referenced by:
-                                        *   '<S1>/Saturate'
-                                        *   '<S2>/DeadZone'
-                                        */
-real_T PID_P = 0.0;                    /* Variable: PID_P
+real_T Phi_PID_P = 0.0;                /* Variable: Phi_PID_P
                                         * Referenced by: '<S1>/Proportional Gain'
                                         */
-real_T Sollwert = 0.0;                 /* Variable: Sollwert
+real_T Position = 0.0;                 /* Variable: Position
                                         * Referenced by: '<Root>/Constant1'
+                                        */
+real_T x_PID_D = 0.0;                  /* Variable: x_PID_D
+                                        * Referenced by: '<S2>/Derivative Gain'
+                                        */
+real_T x_PID_HLIM = 9.0;               /* Variable: x_PID_HLIM
+                                        * Referenced by:
+                                        *   '<S2>/Saturate'
+                                        *   '<S4>/DeadZone'
+                                        */
+real_T x_PID_I = 0.0;                  /* Variable: x_PID_I
+                                        * Referenced by: '<S2>/Integral Gain'
+                                        */
+real_T x_PID_LLIM = -9.0;              /* Variable: x_PID_LLIM
+                                        * Referenced by:
+                                        *   '<S2>/Saturate'
+                                        *   '<S4>/DeadZone'
+                                        */
+real_T x_PID_P = 0.0;                  /* Variable: x_PID_P
+                                        * Referenced by: '<S2>/Proportional Gain'
                                         */
 
 /* Block parameters (auto storage) */
 P rtP = {
-  1.0,                                 /* Mask Parameter: PID1_N
+  -2.0,                                /* Mask Parameter: PID1_LowerSaturationLimit
+                                        * Referenced by:
+                                        *   '<S1>/Saturate'
+                                        *   '<S3>/DeadZone'
+                                        */
+  1.0,                                 /* Mask Parameter: PID2_N
+                                        * Referenced by: '<S2>/Filter Coefficient'
+                                        */
+  10.0,                                /* Mask Parameter: PID1_N
                                         * Referenced by: '<S1>/Filter Coefficient'
                                         */
+  2.0,                                 /* Mask Parameter: PID1_UpperSaturationLimit
+                                        * Referenced by:
+                                        *   '<S1>/Saturate'
+                                        *   '<S3>/DeadZone'
+                                        */
+  -1.0,                                /* Expression: -1
+                                        * Referenced by: '<Root>/Gain1'
+                                        */
+  1.0,                                 /* Expression: 1
+                                        * Referenced by: '<Root>/Gain'
+                                        */
   0.01,                                /* Computed Parameter: Integrator_gainval
+                                        * Referenced by: '<S2>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S2>/Integrator'
+                                        */
+  0.01,                                /* Computed Parameter: Filter_gainval
+                                        * Referenced by: '<S2>/Filter'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S2>/Filter'
+                                        */
+  0.01,                                /* Computed Parameter: Integrator_gainval_b
                                         * Referenced by: '<S1>/Integrator'
                                         */
   0.0,                                 /* Expression: InitialConditionForIntegrator
                                         * Referenced by: '<S1>/Integrator'
                                         */
-  0.01,                                /* Computed Parameter: Filter_gainval
+  0.01,                                /* Computed Parameter: Filter_gainval_i
                                         * Referenced by: '<S1>/Filter'
                                         */
   0.0,                                 /* Expression: InitialConditionForFilter
                                         * Referenced by: '<S1>/Filter'
                                         */
   0.0,                                 /* Expression: 0
-                                        * Referenced by: '<S2>/ZeroGain'
+                                        * Referenced by: '<S3>/ZeroGain'
                                         */
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S1>/Constant'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S4>/ZeroGain'
+                                        */
+  0.0,                                 /* Expression: 0
+                                        * Referenced by: '<S2>/Constant'
                                         */
   0.0                                  /* Expression: 0
                                         * Referenced by: '<Root>/Constant'
@@ -116,11 +162,14 @@ void UniControlSystem_Step(real_T arg_In1, real_T arg_In2, real_T arg_In3,
 {
   real_T rtb_IntegralGain;
   real_T rtb_SignDeltaU;
+  real_T rtb_IntegralGain_a;
   real_T rtb_FilterCoefficient;
+  real_T rtb_SignDeltaU_o;
+  real_T rtb_FilterCoefficient_n;
   real_T rtb_ZeroGain;
   boolean_T rtb_NotEqual;
-  int8_T rtb_SignDeltaU_0;
-  UNUSED_PARAMETER(arg_In2);
+  boolean_T rtb_NotEqual_f;
+  int8_T rtb_SignDeltaU_1;
   UNUSED_PARAMETER(arg_In3);
   UNUSED_PARAMETER(arg_In4);
   UNUSED_PARAMETER(arg_In5);
@@ -136,59 +185,122 @@ void UniControlSystem_Step(real_T arg_In1, real_T arg_In2, real_T arg_In3,
   UNUSED_PARAMETER(arg_In15);
   UNUSED_PARAMETER(arg_In16);
 
-  /* Sum: '<Root>/Sub1 ' incorporates:
+  /* Sum: '<Root>/Sub2' incorporates:
    *  Constant: '<Root>/Constant1'
-   *  Inport: '<Root>/In1'
+   *  Gain: '<Root>/Gain'
+   *  Gain: '<Root>/Gain1'
+   *  Inport: '<Root>/In2'
    */
-  rtb_IntegralGain = Sollwert - arg_In1;
+  rtb_IntegralGain = rtP.Gain1_Gain * Position - rtP.Gain_Gain * arg_In2;
+
+  /* Gain: '<S2>/Filter Coefficient' incorporates:
+   *  DiscreteIntegrator: '<S2>/Filter'
+   *  Gain: '<S2>/Derivative Gain'
+   *  Sum: '<S2>/SumD'
+   */
+  rtb_FilterCoefficient = (x_PID_D * rtb_IntegralGain - rtDW.Filter_DSTATE) *
+    rtP.PID2_N;
+
+  /* Sum: '<S2>/Sum' incorporates:
+   *  DiscreteIntegrator: '<S2>/Integrator'
+   *  Gain: '<S2>/Proportional Gain'
+   */
+  rtb_SignDeltaU = (x_PID_P * rtb_IntegralGain + rtDW.Integrator_DSTATE) +
+    rtb_FilterCoefficient;
+
+  /* Saturate: '<S2>/Saturate' */
+  if (rtb_SignDeltaU > x_PID_HLIM) {
+    rtb_ZeroGain = x_PID_HLIM;
+  } else if (rtb_SignDeltaU < x_PID_LLIM) {
+    rtb_ZeroGain = x_PID_LLIM;
+  } else {
+    rtb_ZeroGain = rtb_SignDeltaU;
+  }
+
+  /* Sum: '<Root>/Sub1' incorporates:
+   *  Inport: '<Root>/In1'
+   *  Saturate: '<S2>/Saturate'
+   */
+  rtb_IntegralGain_a = rtb_ZeroGain - arg_In1;
 
   /* Gain: '<S1>/Filter Coefficient' incorporates:
    *  DiscreteIntegrator: '<S1>/Filter'
    *  Gain: '<S1>/Derivative Gain'
    *  Sum: '<S1>/SumD'
    */
-  rtb_FilterCoefficient = (PID_D * rtb_IntegralGain - rtDW.Filter_DSTATE) *
-    rtP.PID1_N;
+  rtb_FilterCoefficient_n = (Phi_PID_D * rtb_IntegralGain_a -
+    rtDW.Filter_DSTATE_m) * rtP.PID1_N;
 
   /* Sum: '<S1>/Sum' incorporates:
    *  DiscreteIntegrator: '<S1>/Integrator'
    *  Gain: '<S1>/Proportional Gain'
    */
-  rtb_SignDeltaU = (PID_P * rtb_IntegralGain + rtDW.Integrator_DSTATE) +
-    rtb_FilterCoefficient;
+  rtb_SignDeltaU_o = (Phi_PID_P * rtb_IntegralGain_a + rtDW.Integrator_DSTATE_l)
+    + rtb_FilterCoefficient_n;
 
   /* Saturate: '<S1>/Saturate' */
-  if (rtb_SignDeltaU > PID_HLIM) {
+  if (rtb_SignDeltaU_o > rtP.PID1_UpperSaturationLimit) {
     /* Outport: '<Root>/Out1' */
-    *arg_Out1 = PID_HLIM;
-  } else if (rtb_SignDeltaU < PID_LLIM) {
+    *arg_Out1 = rtP.PID1_UpperSaturationLimit;
+  } else if (rtb_SignDeltaU_o < rtP.PID1_LowerSaturationLimit) {
     /* Outport: '<Root>/Out1' */
-    *arg_Out1 = PID_LLIM;
+    *arg_Out1 = rtP.PID1_LowerSaturationLimit;
   } else {
     /* Outport: '<Root>/Out1' */
-    *arg_Out1 = rtb_SignDeltaU;
+    *arg_Out1 = rtb_SignDeltaU_o;
   }
 
   /* End of Saturate: '<S1>/Saturate' */
 
-  /* Gain: '<S2>/ZeroGain' */
-  rtb_ZeroGain = rtP.ZeroGain_Gain * rtb_SignDeltaU;
+  /* Gain: '<S3>/ZeroGain' */
+  rtb_ZeroGain = rtP.ZeroGain_Gain * rtb_SignDeltaU_o;
 
-  /* DeadZone: '<S2>/DeadZone' */
-  if (rtb_SignDeltaU > PID_HLIM) {
-    rtb_SignDeltaU -= PID_HLIM;
-  } else if (rtb_SignDeltaU >= PID_LLIM) {
-    rtb_SignDeltaU = 0.0;
+  /* DeadZone: '<S3>/DeadZone' */
+  if (rtb_SignDeltaU_o > rtP.PID1_UpperSaturationLimit) {
+    rtb_SignDeltaU_o -= rtP.PID1_UpperSaturationLimit;
+  } else if (rtb_SignDeltaU_o >= rtP.PID1_LowerSaturationLimit) {
+    rtb_SignDeltaU_o = 0.0;
   } else {
-    rtb_SignDeltaU -= PID_LLIM;
+    rtb_SignDeltaU_o -= rtP.PID1_LowerSaturationLimit;
   }
 
-  /* End of DeadZone: '<S2>/DeadZone' */
+  /* End of DeadZone: '<S3>/DeadZone' */
 
-  /* RelationalOperator: '<S2>/NotEqual' */
-  rtb_NotEqual = (rtb_ZeroGain != rtb_SignDeltaU);
+  /* RelationalOperator: '<S3>/NotEqual' */
+  rtb_NotEqual = (rtb_ZeroGain != rtb_SignDeltaU_o);
 
-  /* Signum: '<S2>/SignDeltaU' */
+  /* Signum: '<S3>/SignDeltaU' */
+  if (rtb_SignDeltaU_o < 0.0) {
+    rtb_SignDeltaU_o = -1.0;
+  } else {
+    if (rtb_SignDeltaU_o > 0.0) {
+      rtb_SignDeltaU_o = 1.0;
+    }
+  }
+
+  /* End of Signum: '<S3>/SignDeltaU' */
+
+  /* Gain: '<S1>/Integral Gain' */
+  rtb_IntegralGain_a *= Phi_PID_I;
+
+  /* Gain: '<S4>/ZeroGain' */
+  rtb_ZeroGain = rtP.ZeroGain_Gain_c * rtb_SignDeltaU;
+
+  /* DeadZone: '<S4>/DeadZone' */
+  if (rtb_SignDeltaU > x_PID_HLIM) {
+    rtb_SignDeltaU -= x_PID_HLIM;
+  } else if (rtb_SignDeltaU >= x_PID_LLIM) {
+    rtb_SignDeltaU = 0.0;
+  } else {
+    rtb_SignDeltaU -= x_PID_LLIM;
+  }
+
+  /* End of DeadZone: '<S4>/DeadZone' */
+
+  /* RelationalOperator: '<S4>/NotEqual' */
+  rtb_NotEqual_f = (rtb_ZeroGain != rtb_SignDeltaU);
+
+  /* Signum: '<S4>/SignDeltaU' */
   if (rtb_SignDeltaU < 0.0) {
     rtb_SignDeltaU = -1.0;
   } else {
@@ -197,10 +309,10 @@ void UniControlSystem_Step(real_T arg_In1, real_T arg_In2, real_T arg_In3,
     }
   }
 
-  /* End of Signum: '<S2>/SignDeltaU' */
+  /* End of Signum: '<S4>/SignDeltaU' */
 
-  /* Gain: '<S1>/Integral Gain' */
-  rtb_IntegralGain *= PID_I;
+  /* Gain: '<S2>/Integral Gain' */
+  rtb_IntegralGain *= x_PID_I;
 
   /* Outport: '<Root>/Out2' incorporates:
    *  Constant: '<Root>/Constant'
@@ -277,42 +389,79 @@ void UniControlSystem_Step(real_T arg_In1, real_T arg_In2, real_T arg_In3,
    */
   *arg_Out16 = rtP.Constant_Value_c;
 
-  /* DataTypeConversion: '<S2>/DataTypeConv1' */
+  /* DataTypeConversion: '<S4>/DataTypeConv1' */
   if (rtb_SignDeltaU < 128.0) {
-    rtb_SignDeltaU_0 = (int8_T)rtb_SignDeltaU;
+    rtb_SignDeltaU_1 = (int8_T)rtb_SignDeltaU;
   } else {
-    rtb_SignDeltaU_0 = MAX_int8_T;
+    rtb_SignDeltaU_1 = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S2>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S4>/DataTypeConv1' */
 
-  /* Signum: '<S2>/SignPreIntegrator' */
+  /* Signum: '<S4>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
-    rtb_SignDeltaU = -1.0;
+    rtb_ZeroGain = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
-    rtb_SignDeltaU = 1.0;
+    rtb_ZeroGain = 1.0;
   } else {
-    rtb_SignDeltaU = rtb_IntegralGain;
+    rtb_ZeroGain = rtb_IntegralGain;
+  }
+
+  /* Switch: '<S2>/Switch' incorporates:
+   *  Constant: '<S2>/Constant'
+   *  DataTypeConversion: '<S4>/DataTypeConv2'
+   *  Logic: '<S4>/AND'
+   *  RelationalOperator: '<S4>/Equal'
+   *  Signum: '<S4>/SignPreIntegrator'
+   */
+  if (rtb_NotEqual_f && (rtb_SignDeltaU_1 == (int8_T)rtb_ZeroGain)) {
+    rtb_IntegralGain = rtP.Constant_Value_i;
+  }
+
+  /* End of Switch: '<S2>/Switch' */
+
+  /* Update for DiscreteIntegrator: '<S2>/Integrator' */
+  rtDW.Integrator_DSTATE += rtP.Integrator_gainval * rtb_IntegralGain;
+
+  /* Update for DiscreteIntegrator: '<S2>/Filter' */
+  rtDW.Filter_DSTATE += rtP.Filter_gainval * rtb_FilterCoefficient;
+
+  /* DataTypeConversion: '<S3>/DataTypeConv1' */
+  if (rtb_SignDeltaU_o < 128.0) {
+    rtb_SignDeltaU_1 = (int8_T)rtb_SignDeltaU_o;
+  } else {
+    rtb_SignDeltaU_1 = MAX_int8_T;
+  }
+
+  /* End of DataTypeConversion: '<S3>/DataTypeConv1' */
+
+  /* Signum: '<S3>/SignPreIntegrator' */
+  if (rtb_IntegralGain_a < 0.0) {
+    rtb_ZeroGain = -1.0;
+  } else if (rtb_IntegralGain_a > 0.0) {
+    rtb_ZeroGain = 1.0;
+  } else {
+    rtb_ZeroGain = rtb_IntegralGain_a;
   }
 
   /* Switch: '<S1>/Switch' incorporates:
    *  Constant: '<S1>/Constant'
-   *  DataTypeConversion: '<S2>/DataTypeConv2'
-   *  Logic: '<S2>/AND'
-   *  RelationalOperator: '<S2>/Equal'
-   *  Signum: '<S2>/SignPreIntegrator'
+   *  DataTypeConversion: '<S3>/DataTypeConv2'
+   *  Logic: '<S3>/AND'
+   *  RelationalOperator: '<S3>/Equal'
+   *  Signum: '<S3>/SignPreIntegrator'
    */
-  if (rtb_NotEqual && (rtb_SignDeltaU_0 == (int8_T)rtb_SignDeltaU)) {
-    rtb_IntegralGain = rtP.Constant_Value;
+  if (rtb_NotEqual && (rtb_SignDeltaU_1 == (int8_T)rtb_ZeroGain)) {
+    rtb_IntegralGain_a = rtP.Constant_Value;
   }
 
   /* End of Switch: '<S1>/Switch' */
 
   /* Update for DiscreteIntegrator: '<S1>/Integrator' */
-  rtDW.Integrator_DSTATE += rtP.Integrator_gainval * rtb_IntegralGain;
+  rtDW.Integrator_DSTATE_l += rtP.Integrator_gainval_b * rtb_IntegralGain_a;
 
   /* Update for DiscreteIntegrator: '<S1>/Filter' */
-  rtDW.Filter_DSTATE += rtP.Filter_gainval * rtb_FilterCoefficient;
+  rtDW.Filter_DSTATE_m += rtP.Filter_gainval_i * rtb_FilterCoefficient_n;
 }
 
 /* Model initialize function */
@@ -327,11 +476,17 @@ void UniControlSystem_Init(void)
   (void) memset((void *)&rtDW, 0,
                 sizeof(DW));
 
-  /* InitializeConditions for DiscreteIntegrator: '<S1>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S2>/Integrator' */
   rtDW.Integrator_DSTATE = rtP.Integrator_IC;
 
-  /* InitializeConditions for DiscreteIntegrator: '<S1>/Filter' */
+  /* InitializeConditions for DiscreteIntegrator: '<S2>/Filter' */
   rtDW.Filter_DSTATE = rtP.Filter_IC;
+
+  /* InitializeConditions for DiscreteIntegrator: '<S1>/Integrator' */
+  rtDW.Integrator_DSTATE_l = rtP.Integrator_IC_m;
+
+  /* InitializeConditions for DiscreteIntegrator: '<S1>/Filter' */
+  rtDW.Filter_DSTATE_m = rtP.Filter_IC_k;
 }
 
 /*

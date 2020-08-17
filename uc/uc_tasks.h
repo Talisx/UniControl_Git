@@ -21,7 +21,6 @@ extern real_T				dStimulus[8];
 extern real_T 				ModelInput[16];						// Simulink model input vector
 extern real_T 				ModelOutput[16]; 					// Simulink model output vector
 
-extern tCANMsgObject		sMsgObjectDataTx;
 
 extern void TaskIdle(void);
 extern void Task100us(void);

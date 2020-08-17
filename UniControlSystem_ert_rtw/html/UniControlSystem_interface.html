@@ -1371,7 +1371,37 @@ Dimension
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('UniControlSystem:114')" name="code2model" class="code2model">&lt;Root&gt;/PID1 </a>
+<a href="matlab:coder.internal.code2model('UniControlSystem:90')" name="code2model" class="code2model">&lt;Root&gt;/PID1</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.PID1_LowerSaturationLimit
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:114')" name="code2model" class="code2model">&lt;Root&gt;/PID2</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.PID2_N
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:90')" name="code2model" class="code2model">&lt;Root&gt;/PID1</a>
 </td>
 <td width="26%" align="left" valign="top">
 rtP.PID1_N
@@ -1386,7 +1416,52 @@ real_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('UniControlSystem:114:1669')" name="code2model" class="code2model">&lt;S1&gt;/Integrator</a>
+<a href="matlab:coder.internal.code2model('UniControlSystem:90')" name="code2model" class="code2model">&lt;Root&gt;/PID1</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.PID1_UpperSaturationLimit
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:116')" name="code2model" class="code2model">&lt;Root&gt;/Gain1</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.Gain1_Gain
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:115')" name="code2model" class="code2model">&lt;Root&gt;/Gain</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.Gain_Gain
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:114:1669')" name="code2model" class="code2model">&lt;S2&gt;/Integrator</a>
 </td>
 <td width="26%" align="left" valign="top">
 rtP.Integrator_gainval
@@ -1399,9 +1474,9 @@ real_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('UniControlSystem:114:1669')" name="code2model" class="code2model">&lt;S1&gt;/Integrator</a>
+<a href="matlab:coder.internal.code2model('UniControlSystem:114:1669')" name="code2model" class="code2model">&lt;S2&gt;/Integrator</a>
 </td>
 <td width="26%" align="left" valign="top">
 rtP.Integrator_IC
@@ -1414,9 +1489,9 @@ real_T
 </td>
 
 </tr>
-<tr class="odd">
+<tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('UniControlSystem:114:1670')" name="code2model" class="code2model">&lt;S1&gt;/Filter</a>
+<a href="matlab:coder.internal.code2model('UniControlSystem:114:1670')" name="code2model" class="code2model">&lt;S2&gt;/Filter</a>
 </td>
 <td width="26%" align="left" valign="top">
 rtP.Filter_gainval
@@ -1429,9 +1504,9 @@ real_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('UniControlSystem:114:1670')" name="code2model" class="code2model">&lt;S1&gt;/Filter</a>
+<a href="matlab:coder.internal.code2model('UniControlSystem:114:1670')" name="code2model" class="code2model">&lt;S2&gt;/Filter</a>
 </td>
 <td width="26%" align="left" valign="top">
 rtP.Filter_IC
@@ -1444,9 +1519,69 @@ real_T
 </td>
 
 </tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:90:1669')" name="code2model" class="code2model">&lt;S1&gt;/Integrator</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.Integrator_gainval_b
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('UniControlSystem:114:1680')" name="code2model" class="code2model">&lt;S2&gt;/ZeroGain</a>
+<a href="matlab:coder.internal.code2model('UniControlSystem:90:1669')" name="code2model" class="code2model">&lt;S1&gt;/Integrator</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.Integrator_IC_m
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:90:1670')" name="code2model" class="code2model">&lt;S1&gt;/Filter</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.Filter_gainval_i
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:90:1670')" name="code2model" class="code2model">&lt;S1&gt;/Filter</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.Filter_IC_k
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:90:1680')" name="code2model" class="code2model">&lt;S3&gt;/ZeroGain</a>
 </td>
 <td width="26%" align="left" valign="top">
 rtP.ZeroGain_Gain
@@ -1459,9 +1594,9 @@ real_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('UniControlSystem:114:1688')" name="code2model" class="code2model">&lt;S1&gt;/Constant</a>
+<a href="matlab:coder.internal.code2model('UniControlSystem:90:1688')" name="code2model" class="code2model">&lt;S1&gt;/Constant</a>
 </td>
 <td width="26%" align="left" valign="top">
 rtP.Constant_Value
@@ -1474,7 +1609,37 @@ real_T
 </td>
 
 </tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:114:1680')" name="code2model" class="code2model">&lt;S4&gt;/ZeroGain</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.ZeroGain_Gain_c
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
 <tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('UniControlSystem:114:1688')" name="code2model" class="code2model">&lt;S2&gt;/Constant</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtP.Constant_Value_i
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
 <td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('UniControlSystem:81')" name="code2model" class="code2model">&lt;Root&gt;/Constant</a>
 </td>
@@ -1489,27 +1654,12 @@ real_T
 </td>
 
 </tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
-PID_D
-</td>
-<td width="26%" align="left" valign="top">
-PID_D
-</td>
-<td width="21%" align="left" valign="top">
-real_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-PID_HLIM
+Phi_PID_D
 </td>
 <td width="26%" align="left" valign="top">
-PID_HLIM
+Phi_PID_D
 </td>
 <td width="21%" align="left" valign="top">
 real_T
@@ -1521,10 +1671,10 @@ real_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-PID_I
+Phi_PID_I
 </td>
 <td width="26%" align="left" valign="top">
-PID_I
+Phi_PID_I
 </td>
 <td width="21%" align="left" valign="top">
 real_T
@@ -1536,10 +1686,10 @@ real_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-PID_LLIM
+Phi_PID_P
 </td>
 <td width="26%" align="left" valign="top">
-PID_LLIM
+Phi_PID_P
 </td>
 <td width="21%" align="left" valign="top">
 real_T
@@ -1551,10 +1701,10 @@ real_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-PID_P
+Position
 </td>
 <td width="26%" align="left" valign="top">
-PID_P
+Position
 </td>
 <td width="21%" align="left" valign="top">
 real_T
@@ -1566,10 +1716,70 @@ real_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-Sollwert
+x_PID_D
 </td>
 <td width="26%" align="left" valign="top">
-Sollwert
+x_PID_D
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+x_PID_HLIM
+</td>
+<td width="26%" align="left" valign="top">
+x_PID_HLIM
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+x_PID_I
+</td>
+<td width="26%" align="left" valign="top">
+x_PID_I
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+x_PID_LLIM
+</td>
+<td width="26%" align="left" valign="top">
+x_PID_LLIM
+</td>
+<td width="21%" align="left" valign="top">
+real_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+x_PID_P
+</td>
+<td width="26%" align="left" valign="top">
+x_PID_P
 </td>
 <td width="21%" align="left" valign="top">
 real_T

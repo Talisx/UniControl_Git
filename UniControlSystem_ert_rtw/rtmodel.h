@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'UniControlSystem'.
  *
- * Model version                  : 1.59
+ * Model version                  : 1.55
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Mon Sep 30 16:24:27 2019
+ * C/C++ source code generated on : Thu Aug 06 11:54:25 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex

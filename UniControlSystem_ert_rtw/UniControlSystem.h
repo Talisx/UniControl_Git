@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'UniControlSystem'.
  *
- * Model version                  : 1.59
+ * Model version                  : 1.55
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Mon Sep 30 16:24:27 2019
+ * C/C++ source code generated on : Thu Aug 06 11:54:25 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -39,32 +39,71 @@ typedef struct tag_RTM RT_MODEL;
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
-  real_T Integrator_DSTATE;            /* '<S1>/Integrator' */
-  real_T Filter_DSTATE;                /* '<S1>/Filter' */
+  real_T Integrator_DSTATE;            /* '<S2>/Integrator' */
+  real_T Filter_DSTATE;                /* '<S2>/Filter' */
+  real_T Integrator_DSTATE_l;          /* '<S1>/Integrator' */
+  real_T Filter_DSTATE_m;              /* '<S1>/Filter' */
 } DW;
 
 /* Parameters (auto storage) */
 struct P_ {
+  real_T PID1_LowerSaturationLimit;    /* Mask Parameter: PID1_LowerSaturationLimit
+                                        * Referenced by:
+                                        *   '<S1>/Saturate'
+                                        *   '<S3>/DeadZone'
+                                        */
+  real_T PID2_N;                       /* Mask Parameter: PID2_N
+                                        * Referenced by: '<S2>/Filter Coefficient'
+                                        */
   real_T PID1_N;                       /* Mask Parameter: PID1_N
                                         * Referenced by: '<S1>/Filter Coefficient'
                                         */
+  real_T PID1_UpperSaturationLimit;    /* Mask Parameter: PID1_UpperSaturationLimit
+                                        * Referenced by:
+                                        *   '<S1>/Saturate'
+                                        *   '<S3>/DeadZone'
+                                        */
+  real_T Gain1_Gain;                   /* Expression: -1
+                                        * Referenced by: '<Root>/Gain1'
+                                        */
+  real_T Gain_Gain;                    /* Expression: 1
+                                        * Referenced by: '<Root>/Gain'
+                                        */
   real_T Integrator_gainval;           /* Computed Parameter: Integrator_gainval
-                                        * Referenced by: '<S1>/Integrator'
+                                        * Referenced by: '<S2>/Integrator'
                                         */
   real_T Integrator_IC;                /* Expression: InitialConditionForIntegrator
-                                        * Referenced by: '<S1>/Integrator'
+                                        * Referenced by: '<S2>/Integrator'
                                         */
   real_T Filter_gainval;               /* Computed Parameter: Filter_gainval
-                                        * Referenced by: '<S1>/Filter'
+                                        * Referenced by: '<S2>/Filter'
                                         */
   real_T Filter_IC;                    /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S2>/Filter'
+                                        */
+  real_T Integrator_gainval_b;         /* Computed Parameter: Integrator_gainval_b
+                                        * Referenced by: '<S1>/Integrator'
+                                        */
+  real_T Integrator_IC_m;              /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S1>/Integrator'
+                                        */
+  real_T Filter_gainval_i;             /* Computed Parameter: Filter_gainval_i
+                                        * Referenced by: '<S1>/Filter'
+                                        */
+  real_T Filter_IC_k;                  /* Expression: InitialConditionForFilter
                                         * Referenced by: '<S1>/Filter'
                                         */
   real_T ZeroGain_Gain;                /* Expression: 0
-                                        * Referenced by: '<S2>/ZeroGain'
+                                        * Referenced by: '<S3>/ZeroGain'
                                         */
   real_T Constant_Value;               /* Expression: 0
                                         * Referenced by: '<S1>/Constant'
+                                        */
+  real_T ZeroGain_Gain_c;              /* Expression: 0
+                                        * Referenced by: '<S4>/ZeroGain'
+                                        */
+  real_T Constant_Value_i;             /* Expression: 0
+                                        * Referenced by: '<S2>/Constant'
                                         */
   real_T Constant_Value_c;             /* Expression: 0
                                         * Referenced by: '<Root>/Constant'
@@ -93,27 +132,36 @@ extern DW rtDW;
  * these parameters and exports their symbols.
  *
  */
-extern real_T PID_D;                   /* Variable: PID_D
+extern real_T Phi_PID_D;               /* Variable: Phi_PID_D
                                         * Referenced by: '<S1>/Derivative Gain'
                                         */
-extern real_T PID_HLIM;                /* Variable: PID_HLIM
-                                        * Referenced by:
-                                        *   '<S1>/Saturate'
-                                        *   '<S2>/DeadZone'
-                                        */
-extern real_T PID_I;                   /* Variable: PID_I
+extern real_T Phi_PID_I;               /* Variable: Phi_PID_I
                                         * Referenced by: '<S1>/Integral Gain'
                                         */
-extern real_T PID_LLIM;                /* Variable: PID_LLIM
-                                        * Referenced by:
-                                        *   '<S1>/Saturate'
-                                        *   '<S2>/DeadZone'
-                                        */
-extern real_T PID_P;                   /* Variable: PID_P
+extern real_T Phi_PID_P;               /* Variable: Phi_PID_P
                                         * Referenced by: '<S1>/Proportional Gain'
                                         */
-extern real_T Sollwert;                /* Variable: Sollwert
+extern real_T Position;                /* Variable: Position
                                         * Referenced by: '<Root>/Constant1'
+                                        */
+extern real_T x_PID_D;                 /* Variable: x_PID_D
+                                        * Referenced by: '<S2>/Derivative Gain'
+                                        */
+extern real_T x_PID_HLIM;              /* Variable: x_PID_HLIM
+                                        * Referenced by:
+                                        *   '<S2>/Saturate'
+                                        *   '<S4>/DeadZone'
+                                        */
+extern real_T x_PID_I;                 /* Variable: x_PID_I
+                                        * Referenced by: '<S2>/Integral Gain'
+                                        */
+extern real_T x_PID_LLIM;              /* Variable: x_PID_LLIM
+                                        * Referenced by:
+                                        *   '<S2>/Saturate'
+                                        *   '<S4>/DeadZone'
+                                        */
+extern real_T x_PID_P;                 /* Variable: x_PID_P
+                                        * Referenced by: '<S2>/Proportional Gain'
                                         */
 
 /* Model entry point functions */
@@ -147,8 +195,10 @@ extern RT_MODEL *const rtM;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'UniControlSystem'
- * '<S1>'   : 'UniControlSystem/PID1 '
- * '<S2>'   : 'UniControlSystem/PID1 /Clamping circuit'
+ * '<S1>'   : 'UniControlSystem/PID1'
+ * '<S2>'   : 'UniControlSystem/PID2'
+ * '<S3>'   : 'UniControlSystem/PID1/Clamping circuit'
+ * '<S4>'   : 'UniControlSystem/PID2/Clamping circuit'
  */
 #endif                                 /* RTW_HEADER_UniControlSystem_h_ */
 

@@ -15,13 +15,22 @@
 uint8_t				pui8TxBuffer[8];
 uint8_t             pui8RxBuffer[8];
 
+//variables for ISR Can
 uint8_t Data_Encoder;
+uint8_t Data_WinkelEncoder;
+//uint8_t ui8CAN_ID = 0b00000001; //CAN_ID on EPOS (DIP-Switch)
+extern bool Data_ValidEnco;
+extern bool Data_ValidWinkel;
 
 // Can message object structures for RX and TX
 tCANMsgObject		sMsgObjectDataTx0;
 tCANMsgObject       sMsgObjectDataRx0;
 tCANMsgObject       sMsgObjectDataRx1;
 tCANMsgObject       sMsgObjectDataRx2;
+
+//Message structure for Kimmer
+tCANMsgObject        sMsgObjectDataTx;
+tCANMsgObject        sMsgObjectDataRx;
 
 extern uint32_t ui32SysClock;
 extern uint32_t ui32CanRxFlags;

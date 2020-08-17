@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'UniControlSystem'. 
 ## 
 ## Makefile     : UniControlSystem.mk
-## Generated on : Mon Sep 30 16:24:30 2019
+## Generated on : Thu Aug 06 11:09:47 2020
 ## MATLAB Coder version: 2.8 (R2015a)
 ## 
 ## Build Info:
@@ -33,7 +33,7 @@ MATLAB_ROOT               = C:/PROGRA~1/MATLAB/MATLAB~1/R2015a
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/MATLAB~1/R2015a/bin
 MATLAB_ARCH_BIN           = C:/PROGRA~1/MATLAB/MATLAB~1/R2015a/bin/win64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:/RT-LABOR/Versuch_PT2/UniControl
+START_DIR                 = C:/Users/grewenig/workspace_v9/UniControl
 ARCH                      = win64
 SOLVER                    = 
 SOLVER_OBJ                = 
@@ -160,7 +160,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR)/UniControlSystem_ert_rtw -I$(START_DIR) -IC:/RT-LABOR/Versuch_PT2/Simulink -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR)/UniControlSystem_ert_rtw -I$(START_DIR) -IC:/RT-LABOR/Simulink -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
