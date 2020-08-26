@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.56
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Wed Aug 26 11:51:28 2020
+ * C/C++ source code generated on : Wed Aug 26 13:41:54 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -132,15 +132,6 @@ extern DW rtDW;
  * these parameters and exports their symbols.
  *
  */
-extern real_T Fault;                   /* Variable: Fault
-                                        * Referenced by: '<Root>/Constant5'
-                                        */
-extern real_T Halt;                    /* Variable: Halt
-                                        * Referenced by: '<Root>/Constant4'
-                                        */
-extern real_T On;                      /* Variable: On
-                                        * Referenced by: '<Root>/Constant3'
-                                        */
 extern real_T Phi_PID_D;               /* Variable: Phi_PID_D
                                         * Referenced by: '<S1>/Derivative Gain'
                                         */

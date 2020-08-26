@@ -44,12 +44,13 @@
 #include <stdio.h>
 #include <string.h>
 
-//Torstens Variablen
+//Torstens Variablen(Quintus Teil)
 bool Data_ValidEnco = true;
 bool Data_ValidWinkel = true;
 int Nachricht_prüfer = 0;
 int Nachrichten_prüfer1 = 0;
 
+//Torstens Variablen(Kimmer Teil)
 int32_t vorherigerStrom = 0;
 int32_t aktuellerStrom = 0;
 

@@ -25,7 +25,7 @@
 <tr name="7" id="7">
 <td>7</td><td><span class="ct"> * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015</span></td></tr>
 <tr name="8" id="8">
-<td>8</td><td><span class="ct"> * C/C++ source code generated on : Wed Aug 26 11:51:28 2020</span></td></tr>
+<td>8</td><td><span class="ct"> * C/C++ source code generated on : Wed Aug 26 13:41:54 2020</span></td></tr>
 <tr name="9" id="9">
 <td>9</td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
@@ -47,987 +47,957 @@
 <tr name="18" id="18">
 <td>18</td><td><span class="ct">/* Exported block parameters */</span></td></tr>
 <tr name="19" id="19">
-<td>19</td><td><a id="19c1" class="tk">real_T</a> <a id="19c8" class="tk">Fault</a> = 0.0;                    <span class="ct">/* Variable: Fault</span></td></tr>
+<td>19</td><td><a id="19c1" class="tk">real_T</a> <a id="19c8" class="tk">Phi_PID_D</a> = 0.0;                <span class="ct">/* Variable: Phi_PID_D</span></td></tr>
 <tr name="20" id="20">
-<td>20</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="20">&lt;Root&gt;/Constant5</a>'</span></td></tr>
+<td>20</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="20">&lt;S1&gt;/Derivative Gain</a>'</span></td></tr>
 <tr name="21" id="21">
 <td>21</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="22" id="22">
-<td>22</td><td><a id="22c1" class="tk">real_T</a> <a id="22c8" class="tk">Halt</a> = 0.0;                     <span class="ct">/* Variable: Halt</span></td></tr>
+<td>22</td><td><a id="22c1" class="tk">real_T</a> <a id="22c8" class="tk">Phi_PID_I</a> = 0.0;                <span class="ct">/* Variable: Phi_PID_I</span></td></tr>
 <tr name="23" id="23">
-<td>23</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="23">&lt;Root&gt;/Constant4</a>'</span></td></tr>
+<td>23</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="23">&lt;S1&gt;/Integral Gain</a>'</span></td></tr>
 <tr name="24" id="24">
 <td>24</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="25" id="25">
-<td>25</td><td><a id="25c1" class="tk">real_T</a> <a id="25c8" class="tk">On</a> = 0.0;                       <span class="ct">/* Variable: On</span></td></tr>
+<td>25</td><td><a id="25c1" class="tk">real_T</a> <a id="25c8" class="tk">Phi_PID_P</a> = 0.0;                <span class="ct">/* Variable: Phi_PID_P</span></td></tr>
 <tr name="26" id="26">
-<td>26</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="26">&lt;Root&gt;/Constant3</a>'</span></td></tr>
+<td>26</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="26">&lt;S1&gt;/Proportional Gain</a>'</span></td></tr>
 <tr name="27" id="27">
 <td>27</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="28" id="28">
-<td>28</td><td><a id="28c1" class="tk">real_T</a> <a id="28c8" class="tk">Phi_PID_D</a> = 0.0;                <span class="ct">/* Variable: Phi_PID_D</span></td></tr>
+<td>28</td><td><a id="28c1" class="tk">real_T</a> <a id="28c8" class="tk">Position</a> = 0.0;                 <span class="ct">/* Variable: Position</span></td></tr>
 <tr name="29" id="29">
-<td>29</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="29">&lt;S1&gt;/Derivative Gain</a>'</span></td></tr>
+<td>29</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="29">&lt;Root&gt;/Constant1</a>'</span></td></tr>
 <tr name="30" id="30">
 <td>30</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="31" id="31">
-<td>31</td><td><a id="31c1" class="tk">real_T</a> <a id="31c8" class="tk">Phi_PID_I</a> = 0.0;                <span class="ct">/* Variable: Phi_PID_I</span></td></tr>
+<td>31</td><td><a id="31c1" class="tk">real_T</a> <a id="31c8" class="tk">Strom</a> = 5.0;                    <span class="ct">/* Variable: Strom</span></td></tr>
 <tr name="32" id="32">
-<td>32</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="32">&lt;S1&gt;/Integral Gain</a>'</span></td></tr>
+<td>32</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="32">&lt;Root&gt;/Constant2</a>'</span></td></tr>
 <tr name="33" id="33">
 <td>33</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="34" id="34">
-<td>34</td><td><a id="34c1" class="tk">real_T</a> <a id="34c8" class="tk">Phi_PID_P</a> = 0.0;                <span class="ct">/* Variable: Phi_PID_P</span></td></tr>
+<td>34</td><td><a id="34c1" class="tk">real_T</a> <a id="34c8" class="tk">x_PID_D</a> = 0.0;                  <span class="ct">/* Variable: x_PID_D</span></td></tr>
 <tr name="35" id="35">
-<td>35</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="35">&lt;S1&gt;/Proportional Gain</a>'</span></td></tr>
+<td>35</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="35">&lt;S2&gt;/Derivative Gain</a>'</span></td></tr>
 <tr name="36" id="36">
 <td>36</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="37" id="37">
-<td>37</td><td><a id="37c1" class="tk">real_T</a> <a id="37c8" class="tk">Position</a> = 0.0;                 <span class="ct">/* Variable: Position</span></td></tr>
+<td>37</td><td><a id="37c1" class="tk">real_T</a> <a id="37c8" class="tk">x_PID_HLIM</a> = 9.0;               <span class="ct">/* Variable: x_PID_HLIM</span></td></tr>
 <tr name="38" id="38">
-<td>38</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="38">&lt;Root&gt;/Constant1</a>'</span></td></tr>
+<td>38</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
 <tr name="39" id="39">
-<td>39</td><td><span class="ct">                                        */</span></td></tr>
+<td>39</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="39">&lt;S2&gt;/Saturate</a>'</span></td></tr>
 <tr name="40" id="40">
-<td>40</td><td><a id="40c1" class="tk">real_T</a> <a id="40c8" class="tk">Strom</a> = 5.0;                    <span class="ct">/* Variable: Strom</span></td></tr>
+<td>40</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="40">&lt;S4&gt;/DeadZone</a>'</span></td></tr>
 <tr name="41" id="41">
-<td>41</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="41">&lt;Root&gt;/Constant2</a>'</span></td></tr>
+<td>41</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="42" id="42">
-<td>42</td><td><span class="ct">                                        */</span></td></tr>
+<td>42</td><td><a id="42c1" class="tk">real_T</a> <a id="42c8" class="tk">x_PID_I</a> = 0.0;                  <span class="ct">/* Variable: x_PID_I</span></td></tr>
 <tr name="43" id="43">
-<td>43</td><td><a id="43c1" class="tk">real_T</a> <a id="43c8" class="tk">x_PID_D</a> = 0.0;                  <span class="ct">/* Variable: x_PID_D</span></td></tr>
+<td>43</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="43">&lt;S2&gt;/Integral Gain</a>'</span></td></tr>
 <tr name="44" id="44">
-<td>44</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="44">&lt;S2&gt;/Derivative Gain</a>'</span></td></tr>
+<td>44</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="45" id="45">
-<td>45</td><td><span class="ct">                                        */</span></td></tr>
+<td>45</td><td><a id="45c1" class="tk">real_T</a> <a id="45c8" class="tk">x_PID_LLIM</a> = -9.0;              <span class="ct">/* Variable: x_PID_LLIM</span></td></tr>
 <tr name="46" id="46">
-<td>46</td><td><a id="46c1" class="tk">real_T</a> <a id="46c8" class="tk">x_PID_HLIM</a> = 9.0;               <span class="ct">/* Variable: x_PID_HLIM</span></td></tr>
+<td>46</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
 <tr name="47" id="47">
-<td>47</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
+<td>47</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="47">&lt;S2&gt;/Saturate</a>'</span></td></tr>
 <tr name="48" id="48">
-<td>48</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="48">&lt;S2&gt;/Saturate</a>'</span></td></tr>
+<td>48</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="48">&lt;S4&gt;/DeadZone</a>'</span></td></tr>
 <tr name="49" id="49">
-<td>49</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="49">&lt;S4&gt;/DeadZone</a>'</span></td></tr>
+<td>49</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="50" id="50">
-<td>50</td><td><span class="ct">                                        */</span></td></tr>
+<td>50</td><td><a id="50c1" class="tk">real_T</a> <a id="50c8" class="tk">x_PID_P</a> = 0.0;                  <span class="ct">/* Variable: x_PID_P</span></td></tr>
 <tr name="51" id="51">
-<td>51</td><td><a id="51c1" class="tk">real_T</a> <a id="51c8" class="tk">x_PID_I</a> = 0.0;                  <span class="ct">/* Variable: x_PID_I</span></td></tr>
+<td>51</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="51">&lt;S2&gt;/Proportional Gain</a>'</span></td></tr>
 <tr name="52" id="52">
-<td>52</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="52">&lt;S2&gt;/Integral Gain</a>'</span></td></tr>
+<td>52</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="53" id="53">
-<td>53</td><td><span class="ct">                                        */</span></td></tr>
+<td>53</td><td></td></tr>
 <tr name="54" id="54">
-<td>54</td><td><a id="54c1" class="tk">real_T</a> <a id="54c8" class="tk">x_PID_LLIM</a> = -9.0;              <span class="ct">/* Variable: x_PID_LLIM</span></td></tr>
+<td>54</td><td><span class="ct">/* Block parameters (auto storage) */</span></td></tr>
 <tr name="55" id="55">
-<td>55</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
+<td>55</td><td><a id="55c1" class="tk">P</a> <a id="55c3" class="tk">rtP</a> = <span class="br">{</span></td></tr>
 <tr name="56" id="56">
-<td>56</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="56">&lt;S2&gt;/Saturate</a>'</span></td></tr>
+<td>56</td><td>  -2.0,                                <span class="ct">/* Mask Parameter: PID1_LowerSaturationLimit</span></td></tr>
 <tr name="57" id="57">
-<td>57</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="57">&lt;S4&gt;/DeadZone</a>'</span></td></tr>
+<td>57</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
 <tr name="58" id="58">
-<td>58</td><td><span class="ct">                                        */</span></td></tr>
+<td>58</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="58">&lt;S1&gt;/Saturate</a>'</span></td></tr>
 <tr name="59" id="59">
-<td>59</td><td><a id="59c1" class="tk">real_T</a> <a id="59c8" class="tk">x_PID_P</a> = 0.0;                  <span class="ct">/* Variable: x_PID_P</span></td></tr>
+<td>59</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="59">&lt;S3&gt;/DeadZone</a>'</span></td></tr>
 <tr name="60" id="60">
-<td>60</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="60">&lt;S2&gt;/Proportional Gain</a>'</span></td></tr>
+<td>60</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="61" id="61">
-<td>61</td><td><span class="ct">                                        */</span></td></tr>
+<td>61</td><td>  1.0,                                 <span class="ct">/* Mask Parameter: PID2_N</span></td></tr>
 <tr name="62" id="62">
-<td>62</td><td></td></tr>
+<td>62</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="62">&lt;S2&gt;/Filter Coefficient</a>'</span></td></tr>
 <tr name="63" id="63">
-<td>63</td><td><span class="ct">/* Block parameters (auto storage) */</span></td></tr>
+<td>63</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="64" id="64">
-<td>64</td><td><a id="64c1" class="tk">P</a> <a id="64c3" class="tk">rtP</a> = <span class="br">{</span></td></tr>
+<td>64</td><td>  10.0,                                <span class="ct">/* Mask Parameter: PID1_N</span></td></tr>
 <tr name="65" id="65">
-<td>65</td><td>  -2.0,                                <span class="ct">/* Mask Parameter: PID1_LowerSaturationLimit</span></td></tr>
+<td>65</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="65">&lt;S1&gt;/Filter Coefficient</a>'</span></td></tr>
 <tr name="66" id="66">
-<td>66</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
+<td>66</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="67" id="67">
-<td>67</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="67">&lt;S1&gt;/Saturate</a>'</span></td></tr>
+<td>67</td><td>  2.0,                                 <span class="ct">/* Mask Parameter: PID1_UpperSaturationLimit</span></td></tr>
 <tr name="68" id="68">
-<td>68</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="68">&lt;S3&gt;/DeadZone</a>'</span></td></tr>
+<td>68</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
 <tr name="69" id="69">
-<td>69</td><td><span class="ct">                                        */</span></td></tr>
+<td>69</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="69">&lt;S1&gt;/Saturate</a>'</span></td></tr>
 <tr name="70" id="70">
-<td>70</td><td>  1.0,                                 <span class="ct">/* Mask Parameter: PID2_N</span></td></tr>
+<td>70</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="70">&lt;S3&gt;/DeadZone</a>'</span></td></tr>
 <tr name="71" id="71">
-<td>71</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="71">&lt;S2&gt;/Filter Coefficient</a>'</span></td></tr>
+<td>71</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="72" id="72">
-<td>72</td><td><span class="ct">                                        */</span></td></tr>
+<td>72</td><td>  -1.0,                                <span class="ct">/* Expression: -1</span></td></tr>
 <tr name="73" id="73">
-<td>73</td><td>  10.0,                                <span class="ct">/* Mask Parameter: PID1_N</span></td></tr>
+<td>73</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="73">&lt;Root&gt;/Gain1</a>'</span></td></tr>
 <tr name="74" id="74">
-<td>74</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="74">&lt;S1&gt;/Filter Coefficient</a>'</span></td></tr>
+<td>74</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="75" id="75">
-<td>75</td><td><span class="ct">                                        */</span></td></tr>
+<td>75</td><td>  1.0,                                 <span class="ct">/* Expression: 1</span></td></tr>
 <tr name="76" id="76">
-<td>76</td><td>  2.0,                                 <span class="ct">/* Mask Parameter: PID1_UpperSaturationLimit</span></td></tr>
+<td>76</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="76">&lt;Root&gt;/Gain</a>'</span></td></tr>
 <tr name="77" id="77">
-<td>77</td><td><span class="ct">                                        * Referenced by:</span></td></tr>
+<td>77</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="78" id="78">
-<td>78</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="78">&lt;S1&gt;/Saturate</a>'</span></td></tr>
+<td>78</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Integrator_gainval</span></td></tr>
 <tr name="79" id="79">
-<td>79</td><td><span class="ct">                                        *   '<a class="ct blk" blk_line="79">&lt;S3&gt;/DeadZone</a>'</span></td></tr>
+<td>79</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="79">&lt;S2&gt;/Integrator</a>'</span></td></tr>
 <tr name="80" id="80">
 <td>80</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="81" id="81">
-<td>81</td><td>  -1.0,                                <span class="ct">/* Expression: -1</span></td></tr>
+<td>81</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForIntegrator</span></td></tr>
 <tr name="82" id="82">
-<td>82</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="82">&lt;Root&gt;/Gain1</a>'</span></td></tr>
+<td>82</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="82">&lt;S2&gt;/Integrator</a>'</span></td></tr>
 <tr name="83" id="83">
 <td>83</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="84" id="84">
-<td>84</td><td>  1.0,                                 <span class="ct">/* Expression: 1</span></td></tr>
+<td>84</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Filter_gainval</span></td></tr>
 <tr name="85" id="85">
-<td>85</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="85">&lt;Root&gt;/Gain</a>'</span></td></tr>
+<td>85</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="85">&lt;S2&gt;/Filter</a>'</span></td></tr>
 <tr name="86" id="86">
 <td>86</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="87" id="87">
-<td>87</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Integrator_gainval</span></td></tr>
+<td>87</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForFilter</span></td></tr>
 <tr name="88" id="88">
-<td>88</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="88">&lt;S2&gt;/Integrator</a>'</span></td></tr>
+<td>88</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="88">&lt;S2&gt;/Filter</a>'</span></td></tr>
 <tr name="89" id="89">
 <td>89</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="90" id="90">
-<td>90</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForIntegrator</span></td></tr>
+<td>90</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Integrator_gainval_b</span></td></tr>
 <tr name="91" id="91">
-<td>91</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="91">&lt;S2&gt;/Integrator</a>'</span></td></tr>
+<td>91</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="91">&lt;S1&gt;/Integrator</a>'</span></td></tr>
 <tr name="92" id="92">
 <td>92</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="93" id="93">
-<td>93</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Filter_gainval</span></td></tr>
+<td>93</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForIntegrator</span></td></tr>
 <tr name="94" id="94">
-<td>94</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="94">&lt;S2&gt;/Filter</a>'</span></td></tr>
+<td>94</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="94">&lt;S1&gt;/Integrator</a>'</span></td></tr>
 <tr name="95" id="95">
 <td>95</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="96" id="96">
-<td>96</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForFilter</span></td></tr>
+<td>96</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Filter_gainval_i</span></td></tr>
 <tr name="97" id="97">
-<td>97</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="97">&lt;S2&gt;/Filter</a>'</span></td></tr>
+<td>97</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="97">&lt;S1&gt;/Filter</a>'</span></td></tr>
 <tr name="98" id="98">
 <td>98</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="99" id="99">
-<td>99</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Integrator_gainval_b</span></td></tr>
+<td>99</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForFilter</span></td></tr>
 <tr name="100" id="100">
-<td>100</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="100">&lt;S1&gt;/Integrator</a>'</span></td></tr>
+<td>100</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="100">&lt;S1&gt;/Filter</a>'</span></td></tr>
 <tr name="101" id="101">
 <td>101</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="102" id="102">
-<td>102</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForIntegrator</span></td></tr>
+<td>102</td><td>  0.0,                                 <span class="ct">/* Expression: 0</span></td></tr>
 <tr name="103" id="103">
-<td>103</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="103">&lt;S1&gt;/Integrator</a>'</span></td></tr>
+<td>103</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="103">&lt;S3&gt;/ZeroGain</a>'</span></td></tr>
 <tr name="104" id="104">
 <td>104</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="105" id="105">
-<td>105</td><td>  0.01,                                <span class="ct">/* Computed Parameter: Filter_gainval_i</span></td></tr>
+<td>105</td><td>  0.0,                                 <span class="ct">/* Expression: 0</span></td></tr>
 <tr name="106" id="106">
-<td>106</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="106">&lt;S1&gt;/Filter</a>'</span></td></tr>
+<td>106</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="106">&lt;S1&gt;/Constant</a>'</span></td></tr>
 <tr name="107" id="107">
 <td>107</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="108" id="108">
-<td>108</td><td>  0.0,                                 <span class="ct">/* Expression: InitialConditionForFilter</span></td></tr>
+<td>108</td><td>  0.0,                                 <span class="ct">/* Expression: 0</span></td></tr>
 <tr name="109" id="109">
-<td>109</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="109">&lt;S1&gt;/Filter</a>'</span></td></tr>
+<td>109</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="109">&lt;S4&gt;/ZeroGain</a>'</span></td></tr>
 <tr name="110" id="110">
 <td>110</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="111" id="111">
 <td>111</td><td>  0.0,                                 <span class="ct">/* Expression: 0</span></td></tr>
 <tr name="112" id="112">
-<td>112</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="112">&lt;S3&gt;/ZeroGain</a>'</span></td></tr>
+<td>112</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="112">&lt;S2&gt;/Constant</a>'</span></td></tr>
 <tr name="113" id="113">
 <td>113</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="114" id="114">
-<td>114</td><td>  0.0,                                 <span class="ct">/* Expression: 0</span></td></tr>
+<td>114</td><td>  0.0                                  <span class="ct">/* Expression: 0</span></td></tr>
 <tr name="115" id="115">
-<td>115</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="115">&lt;S1&gt;/Constant</a>'</span></td></tr>
+<td>115</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="115">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="116" id="116">
 <td>116</td><td><span class="ct">                                        */</span></td></tr>
 <tr name="117" id="117">
-<td>117</td><td>  0.0,                                 <span class="ct">/* Expression: 0</span></td></tr>
+<td>117</td><td><span class="br">}</span>;</td></tr>
 <tr name="118" id="118">
-<td>118</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="118">&lt;S4&gt;/ZeroGain</a>'</span></td></tr>
+<td>118</td><td></td></tr>
 <tr name="119" id="119">
-<td>119</td><td><span class="ct">                                        */</span></td></tr>
+<td>119</td><td><span class="ct">/* Block states (auto storage) */</span></td></tr>
 <tr name="120" id="120">
-<td>120</td><td>  0.0,                                 <span class="ct">/* Expression: 0</span></td></tr>
+<td>120</td><td><a id="120c1" class="tk">DW</a> <a id="120c4" class="tk">rtDW</a>;</td></tr>
 <tr name="121" id="121">
-<td>121</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="121">&lt;S2&gt;/Constant</a>'</span></td></tr>
+<td>121</td><td></td></tr>
 <tr name="122" id="122">
-<td>122</td><td><span class="ct">                                        */</span></td></tr>
+<td>122</td><td><span class="ct">/* Real-time model */</span></td></tr>
 <tr name="123" id="123">
-<td>123</td><td>  0.0                                  <span class="ct">/* Expression: 0</span></td></tr>
+<td>123</td><td><a id="123c1" class="tk">RT_MODEL</a> <a id="123c10" class="tk">rtM_</a>;</td></tr>
 <tr name="124" id="124">
-<td>124</td><td><span class="ct">                                        * Referenced by: '<a class="ct blk" blk_line="124">&lt;Root&gt;/Constant</a>'</span></td></tr>
+<td>124</td><td><a id="124c1" class="tk">RT_MODEL</a> *<span class="kw">const</span> <a id="124c17" class="tk">rtM</a> = &amp;<a id="124c24" class="tk">rtM_</a>;</td></tr>
 <tr name="125" id="125">
-<td>125</td><td><span class="ct">                                        */</span></td></tr>
+<td>125</td><td></td></tr>
 <tr name="126" id="126">
-<td>126</td><td><span class="br">}</span>;</td></tr>
+<td>126</td><td><span class="ct">/*===========*</span></td></tr>
 <tr name="127" id="127">
-<td>127</td><td></td></tr>
+<td>127</td><td><span class="ct"> * Constants *</span></td></tr>
 <tr name="128" id="128">
-<td>128</td><td><span class="ct">/* Block states (auto storage) */</span></td></tr>
+<td>128</td><td><span class="ct"> *===========*/</span></td></tr>
 <tr name="129" id="129">
-<td>129</td><td><a id="129c1" class="tk">DW</a> <a id="129c4" class="tk">rtDW</a>;</td></tr>
+<td>129</td><td><span class="pp">#define</span> <a id="129c9" class="tk">RT_PI</a>                          3.14159265358979323846</td></tr>
 <tr name="130" id="130">
-<td>130</td><td></td></tr>
+<td>130</td><td><span class="pp">#define</span> <a id="130c9" class="tk">RT_PIF</a>                         3.1415927F</td></tr>
 <tr name="131" id="131">
-<td>131</td><td><span class="ct">/* Real-time model */</span></td></tr>
+<td>131</td><td><span class="pp">#define</span> <a id="131c9" class="tk">RT_LN_10</a>                       2.30258509299404568402</td></tr>
 <tr name="132" id="132">
-<td>132</td><td><a id="132c1" class="tk">RT_MODEL</a> <a id="132c10" class="tk">rtM_</a>;</td></tr>
+<td>132</td><td><span class="pp">#define</span> <a id="132c9" class="tk">RT_LN_10F</a>                      2.3025851F</td></tr>
 <tr name="133" id="133">
-<td>133</td><td><a id="133c1" class="tk">RT_MODEL</a> *<span class="kw">const</span> <a id="133c17" class="tk">rtM</a> = &amp;<a id="133c24" class="tk">rtM_</a>;</td></tr>
+<td>133</td><td><span class="pp">#define</span> <a id="133c9" class="tk">RT_LOG10E</a>                      0.43429448190325182765</td></tr>
 <tr name="134" id="134">
-<td>134</td><td></td></tr>
+<td>134</td><td><span class="pp">#define</span> <a id="134c9" class="tk">RT_LOG10EF</a>                     0.43429449F</td></tr>
 <tr name="135" id="135">
-<td>135</td><td><span class="ct">/*===========*</span></td></tr>
+<td>135</td><td><span class="pp">#define</span> <a id="135c9" class="tk">RT_E</a>                           2.7182818284590452354</td></tr>
 <tr name="136" id="136">
-<td>136</td><td><span class="ct"> * Constants *</span></td></tr>
+<td>136</td><td><span class="pp">#define</span> <a id="136c9" class="tk">RT_EF</a>                          2.7182817F</td></tr>
 <tr name="137" id="137">
-<td>137</td><td><span class="ct"> *===========*/</span></td></tr>
+<td>137</td><td></td></tr>
 <tr name="138" id="138">
-<td>138</td><td><span class="pp">#define</span> <a id="138c9" class="tk">RT_PI</a>                          3.14159265358979323846</td></tr>
+<td>138</td><td><span class="ct">/*</span></td></tr>
 <tr name="139" id="139">
-<td>139</td><td><span class="pp">#define</span> <a id="139c9" class="tk">RT_PIF</a>                         3.1415927F</td></tr>
+<td>139</td><td><span class="ct"> * UNUSED_PARAMETER(x)</span></td></tr>
 <tr name="140" id="140">
-<td>140</td><td><span class="pp">#define</span> <a id="140c9" class="tk">RT_LN_10</a>                       2.30258509299404568402</td></tr>
+<td>140</td><td><span class="ct"> *   Used to specify that a function parameter (argument) is required but not</span></td></tr>
 <tr name="141" id="141">
-<td>141</td><td><span class="pp">#define</span> <a id="141c9" class="tk">RT_LN_10F</a>                      2.3025851F</td></tr>
+<td>141</td><td><span class="ct"> *   accessed by the function body.</span></td></tr>
 <tr name="142" id="142">
-<td>142</td><td><span class="pp">#define</span> <a id="142c9" class="tk">RT_LOG10E</a>                      0.43429448190325182765</td></tr>
+<td>142</td><td><span class="ct"> */</span></td></tr>
 <tr name="143" id="143">
-<td>143</td><td><span class="pp">#define</span> <a id="143c9" class="tk">RT_LOG10EF</a>                     0.43429449F</td></tr>
+<td>143</td><td><span class="pp">#ifndef</span> <a id="143c9" class="tk">UNUSED_PARAMETER</a></td></tr>
 <tr name="144" id="144">
-<td>144</td><td><span class="pp">#define</span> <a id="144c9" class="tk">RT_E</a>                           2.7182818284590452354</td></tr>
+<td>144</td><td><span class="pp"># if</span> <a id="144c6" class="tk">defined</a>(<a id="144c14" class="tk">__LCC__</a>)</td></tr>
 <tr name="145" id="145">
-<td>145</td><td><span class="pp">#define</span> <a id="145c9" class="tk">RT_EF</a>                          2.7182817F</td></tr>
+<td>145</td><td><span class="pp">#   define</span> <a id="145c12" class="tk">UNUSED_PARAMETER</a>(<a id="145c29" class="tk">x</a>)                                   <span class="ct">/* do nothing */</span></td></tr>
 <tr name="146" id="146">
-<td>146</td><td></td></tr>
+<td>146</td><td><span class="pp"># else</span></td></tr>
 <tr name="147" id="147">
-<td>147</td><td><span class="ct">/*</span></td></tr>
+<td>147</td><td></td></tr>
 <tr name="148" id="148">
-<td>148</td><td><span class="ct"> * UNUSED_PARAMETER(x)</span></td></tr>
+<td>148</td><td><span class="ct">/*</span></td></tr>
 <tr name="149" id="149">
-<td>149</td><td><span class="ct"> *   Used to specify that a function parameter (argument) is required but not</span></td></tr>
+<td>149</td><td><span class="ct"> * This is the semi-ANSI standard way of indicating that an</span></td></tr>
 <tr name="150" id="150">
-<td>150</td><td><span class="ct"> *   accessed by the function body.</span></td></tr>
+<td>150</td><td><span class="ct"> * unused function parameter is required.</span></td></tr>
 <tr name="151" id="151">
 <td>151</td><td><span class="ct"> */</span></td></tr>
 <tr name="152" id="152">
-<td>152</td><td><span class="pp">#ifndef</span> <a id="152c9" class="tk">UNUSED_PARAMETER</a></td></tr>
+<td>152</td><td><span class="pp">#   define</span> <a id="152c12" class="tk">UNUSED_PARAMETER</a>(<a id="152c29" class="tk">x</a>)         (<span class="kw">void</span>) (<a id="152c48" class="tk">x</a>)</td></tr>
 <tr name="153" id="153">
-<td>153</td><td><span class="pp"># if</span> <a id="153c6" class="tk">defined</a>(<a id="153c14" class="tk">__LCC__</a>)</td></tr>
+<td>153</td><td><span class="pp"># endif</span></td></tr>
 <tr name="154" id="154">
-<td>154</td><td><span class="pp">#   define</span> <a id="154c12" class="tk">UNUSED_PARAMETER</a>(<a id="154c29" class="tk">x</a>)                                   <span class="ct">/* do nothing */</span></td></tr>
+<td>154</td><td><span class="pp">#endif</span></td></tr>
 <tr name="155" id="155">
-<td>155</td><td><span class="pp"># else</span></td></tr>
+<td>155</td><td></td></tr>
 <tr name="156" id="156">
-<td>156</td><td></td></tr>
+<td>156</td><td><span class="ct">/* Model step function */</span></td></tr>
 <tr name="157" id="157">
-<td>157</td><td><span class="ct">/*</span></td></tr>
+<td>157</td><td><span class="kw">void</span> <a id="157c6" class="tk">UniControlSystem_Step</a>(<a id="157c28" class="tk">real_T</a> <a id="157c35" class="tk">arg_In1</a>, <a id="157c44" class="tk">real_T</a> <a id="157c51" class="tk">arg_In2</a>, <a id="157c60" class="tk">real_T</a> <a id="157c67" class="tk">arg_In3</a>,</td></tr>
 <tr name="158" id="158">
-<td>158</td><td><span class="ct"> * This is the semi-ANSI standard way of indicating that an</span></td></tr>
+<td>158</td><td>  <a id="158c3" class="tk">real_T</a> <a id="158c10" class="tk">arg_In4</a>, <a id="158c19" class="tk">real_T</a> <a id="158c26" class="tk">arg_In5</a>, <a id="158c35" class="tk">real_T</a> <a id="158c42" class="tk">arg_In6</a>, <a id="158c51" class="tk">real_T</a> <a id="158c58" class="tk">arg_In7</a>, <a id="158c67" class="tk">real_T</a> <a id="158c74" class="tk">arg_In8</a>,</td></tr>
 <tr name="159" id="159">
-<td>159</td><td><span class="ct"> * unused function parameter is required.</span></td></tr>
+<td>159</td><td>  <a id="159c3" class="tk">real_T</a> <a id="159c10" class="tk">arg_In9</a>, <a id="159c19" class="tk">real_T</a> <a id="159c26" class="tk">arg_In10</a>, <a id="159c36" class="tk">real_T</a> <a id="159c43" class="tk">arg_In11</a>, <a id="159c53" class="tk">real_T</a> <a id="159c60" class="tk">arg_In12</a>, <a id="159c70" class="tk">real_T</a></td></tr>
 <tr name="160" id="160">
-<td>160</td><td><span class="ct"> */</span></td></tr>
+<td>160</td><td>  <a id="160c3" class="tk">arg_In13</a>, <a id="160c13" class="tk">real_T</a> <a id="160c20" class="tk">arg_In14</a>, <a id="160c30" class="tk">real_T</a> <a id="160c37" class="tk">arg_In15</a>, <a id="160c47" class="tk">real_T</a> <a id="160c54" class="tk">arg_In16</a>, <a id="160c64" class="tk">real_T</a> *<a id="160c72" class="tk">arg_Out1</a>,</td></tr>
 <tr name="161" id="161">
-<td>161</td><td><span class="pp">#   define</span> <a id="161c12" class="tk">UNUSED_PARAMETER</a>(<a id="161c29" class="tk">x</a>)         (<span class="kw">void</span>) (<a id="161c48" class="tk">x</a>)</td></tr>
+<td>161</td><td>  <a id="161c3" class="tk">real_T</a> *<a id="161c11" class="tk">arg_Out2</a>, <a id="161c21" class="tk">real_T</a> *<a id="161c29" class="tk">arg_Out3</a>, <a id="161c39" class="tk">real_T</a> *<a id="161c47" class="tk">arg_Out4</a>, <a id="161c57" class="tk">real_T</a> *<a id="161c65" class="tk">arg_Out5</a>, <a id="161c75" class="tk">real_T</a></td></tr>
 <tr name="162" id="162">
-<td>162</td><td><span class="pp"># endif</span></td></tr>
+<td>162</td><td>  *<a id="162c4" class="tk">arg_Out6</a>, <a id="162c14" class="tk">real_T</a> *<a id="162c22" class="tk">arg_Out7</a>, <a id="162c32" class="tk">real_T</a> *<a id="162c40" class="tk">arg_Out8</a>, <a id="162c50" class="tk">real_T</a> *<a id="162c58" class="tk">arg_Out9</a>, <a id="162c68" class="tk">real_T</a></td></tr>
 <tr name="163" id="163">
-<td>163</td><td><span class="pp">#endif</span></td></tr>
+<td>163</td><td>  *<a id="163c4" class="tk">arg_Out10</a>, <a id="163c15" class="tk">real_T</a> *<a id="163c23" class="tk">arg_Out11</a>, <a id="163c34" class="tk">real_T</a> *<a id="163c42" class="tk">arg_Out12</a>, <a id="163c53" class="tk">real_T</a> *<a id="163c61" class="tk">arg_Out13</a>, <a id="163c72" class="tk">real_T</a></td></tr>
 <tr name="164" id="164">
-<td>164</td><td></td></tr>
+<td>164</td><td>  *<a id="164c4" class="tk">arg_Out14</a>, <a id="164c15" class="tk">real_T</a> *<a id="164c23" class="tk">arg_Out15</a>, <a id="164c34" class="tk">real_T</a> *<a id="164c42" class="tk">arg_Out16</a>)</td></tr>
 <tr name="165" id="165">
-<td>165</td><td><span class="ct">/* Model step function */</span></td></tr>
+<td>165</td><td><span class="br">{</span></td></tr>
 <tr name="166" id="166">
-<td>166</td><td><span class="kw">void</span> <a id="166c6" class="tk">UniControlSystem_Step</a>(<a id="166c28" class="tk">real_T</a> <a id="166c35" class="tk">arg_In1</a>, <a id="166c44" class="tk">real_T</a> <a id="166c51" class="tk">arg_In2</a>, <a id="166c60" class="tk">real_T</a> <a id="166c67" class="tk">arg_In3</a>,</td></tr>
+<td>166</td><td>  <a id="166c3" class="tk">real_T</a> <a id="166c10" class="tk">rtb_IntegralGain</a>;</td></tr>
 <tr name="167" id="167">
-<td>167</td><td>  <a id="167c3" class="tk">real_T</a> <a id="167c10" class="tk">arg_In4</a>, <a id="167c19" class="tk">real_T</a> <a id="167c26" class="tk">arg_In5</a>, <a id="167c35" class="tk">real_T</a> <a id="167c42" class="tk">arg_In6</a>, <a id="167c51" class="tk">real_T</a> <a id="167c58" class="tk">arg_In7</a>, <a id="167c67" class="tk">real_T</a> <a id="167c74" class="tk">arg_In8</a>,</td></tr>
+<td>167</td><td>  <a id="167c3" class="tk">real_T</a> <a id="167c10" class="tk">rtb_SignDeltaU</a>;</td></tr>
 <tr name="168" id="168">
-<td>168</td><td>  <a id="168c3" class="tk">real_T</a> <a id="168c10" class="tk">arg_In9</a>, <a id="168c19" class="tk">real_T</a> <a id="168c26" class="tk">arg_In10</a>, <a id="168c36" class="tk">real_T</a> <a id="168c43" class="tk">arg_In11</a>, <a id="168c53" class="tk">real_T</a> <a id="168c60" class="tk">arg_In12</a>, <a id="168c70" class="tk">real_T</a></td></tr>
+<td>168</td><td>  <a id="168c3" class="tk">real_T</a> <a id="168c10" class="tk">rtb_IntegralGain_a</a>;</td></tr>
 <tr name="169" id="169">
-<td>169</td><td>  <a id="169c3" class="tk">arg_In13</a>, <a id="169c13" class="tk">real_T</a> <a id="169c20" class="tk">arg_In14</a>, <a id="169c30" class="tk">real_T</a> <a id="169c37" class="tk">arg_In15</a>, <a id="169c47" class="tk">real_T</a> <a id="169c54" class="tk">arg_In16</a>, <a id="169c64" class="tk">real_T</a> *<a id="169c72" class="tk">arg_Out1</a>,</td></tr>
+<td>169</td><td>  <a id="169c3" class="tk">real_T</a> <a id="169c10" class="tk">rtb_FilterCoefficient</a>;</td></tr>
 <tr name="170" id="170">
-<td>170</td><td>  <a id="170c3" class="tk">real_T</a> *<a id="170c11" class="tk">arg_Out2</a>, <a id="170c21" class="tk">real_T</a> *<a id="170c29" class="tk">arg_Out3</a>, <a id="170c39" class="tk">real_T</a> *<a id="170c47" class="tk">arg_Out4</a>, <a id="170c57" class="tk">real_T</a> *<a id="170c65" class="tk">arg_Out5</a>, <a id="170c75" class="tk">real_T</a></td></tr>
+<td>170</td><td>  <a id="170c3" class="tk">real_T</a> <a id="170c10" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
 <tr name="171" id="171">
-<td>171</td><td>  *<a id="171c4" class="tk">arg_Out6</a>, <a id="171c14" class="tk">real_T</a> *<a id="171c22" class="tk">arg_Out7</a>, <a id="171c32" class="tk">real_T</a> *<a id="171c40" class="tk">arg_Out8</a>, <a id="171c50" class="tk">real_T</a> *<a id="171c58" class="tk">arg_Out9</a>, <a id="171c68" class="tk">real_T</a></td></tr>
+<td>171</td><td>  <a id="171c3" class="tk">real_T</a> <a id="171c10" class="tk">rtb_FilterCoefficient_n</a>;</td></tr>
 <tr name="172" id="172">
-<td>172</td><td>  *<a id="172c4" class="tk">arg_Out10</a>, <a id="172c15" class="tk">real_T</a> *<a id="172c23" class="tk">arg_Out11</a>, <a id="172c34" class="tk">real_T</a> *<a id="172c42" class="tk">arg_Out12</a>, <a id="172c53" class="tk">real_T</a> *<a id="172c61" class="tk">arg_Out13</a>, <a id="172c72" class="tk">real_T</a></td></tr>
+<td>172</td><td>  <a id="172c3" class="tk">real_T</a> <a id="172c10" class="tk">rtb_ZeroGain</a>;</td></tr>
 <tr name="173" id="173">
-<td>173</td><td>  *<a id="173c4" class="tk">arg_Out14</a>, <a id="173c15" class="tk">real_T</a> *<a id="173c23" class="tk">arg_Out15</a>, <a id="173c34" class="tk">real_T</a> *<a id="173c42" class="tk">arg_Out16</a>)</td></tr>
+<td>173</td><td>  <a id="173c3" class="tk">boolean_T</a> <a id="173c13" class="tk">rtb_NotEqual</a>;</td></tr>
 <tr name="174" id="174">
-<td>174</td><td><span class="br">{</span></td></tr>
+<td>174</td><td>  <a id="174c3" class="tk">boolean_T</a> <a id="174c13" class="tk">rtb_NotEqual_f</a>;</td></tr>
 <tr name="175" id="175">
-<td>175</td><td>  <a id="175c3" class="tk">real_T</a> <a id="175c10" class="tk">rtb_IntegralGain</a>;</td></tr>
+<td>175</td><td>  <a id="175c3" class="tk">int8_T</a> <a id="175c10" class="tk">rtb_SignDeltaU_1</a>;</td></tr>
 <tr name="176" id="176">
-<td>176</td><td>  <a id="176c3" class="tk">real_T</a> <a id="176c10" class="tk">rtb_SignDeltaU</a>;</td></tr>
+<td>176</td><td>  <a id="176c3" class="tk">UNUSED_PARAMETER</a>(<a id="176c20" class="tk">arg_In3</a>);</td></tr>
 <tr name="177" id="177">
-<td>177</td><td>  <a id="177c3" class="tk">real_T</a> <a id="177c10" class="tk">rtb_IntegralGain_a</a>;</td></tr>
+<td>177</td><td>  <a id="177c3" class="tk">UNUSED_PARAMETER</a>(<a id="177c20" class="tk">arg_In4</a>);</td></tr>
 <tr name="178" id="178">
-<td>178</td><td>  <a id="178c3" class="tk">real_T</a> <a id="178c10" class="tk">rtb_FilterCoefficient</a>;</td></tr>
+<td>178</td><td>  <a id="178c3" class="tk">UNUSED_PARAMETER</a>(<a id="178c20" class="tk">arg_In5</a>);</td></tr>
 <tr name="179" id="179">
-<td>179</td><td>  <a id="179c3" class="tk">real_T</a> <a id="179c10" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
+<td>179</td><td>  <a id="179c3" class="tk">UNUSED_PARAMETER</a>(<a id="179c20" class="tk">arg_In6</a>);</td></tr>
 <tr name="180" id="180">
-<td>180</td><td>  <a id="180c3" class="tk">real_T</a> <a id="180c10" class="tk">rtb_FilterCoefficient_n</a>;</td></tr>
+<td>180</td><td>  <a id="180c3" class="tk">UNUSED_PARAMETER</a>(<a id="180c20" class="tk">arg_In7</a>);</td></tr>
 <tr name="181" id="181">
-<td>181</td><td>  <a id="181c3" class="tk">real_T</a> <a id="181c10" class="tk">rtb_ZeroGain</a>;</td></tr>
+<td>181</td><td>  <a id="181c3" class="tk">UNUSED_PARAMETER</a>(<a id="181c20" class="tk">arg_In8</a>);</td></tr>
 <tr name="182" id="182">
-<td>182</td><td>  <a id="182c3" class="tk">boolean_T</a> <a id="182c13" class="tk">rtb_NotEqual</a>;</td></tr>
+<td>182</td><td>  <a id="182c3" class="tk">UNUSED_PARAMETER</a>(<a id="182c20" class="tk">arg_In9</a>);</td></tr>
 <tr name="183" id="183">
-<td>183</td><td>  <a id="183c3" class="tk">boolean_T</a> <a id="183c13" class="tk">rtb_NotEqual_f</a>;</td></tr>
+<td>183</td><td>  <a id="183c3" class="tk">UNUSED_PARAMETER</a>(<a id="183c20" class="tk">arg_In10</a>);</td></tr>
 <tr name="184" id="184">
-<td>184</td><td>  <a id="184c3" class="tk">int8_T</a> <a id="184c10" class="tk">rtb_SignDeltaU_1</a>;</td></tr>
+<td>184</td><td>  <a id="184c3" class="tk">UNUSED_PARAMETER</a>(<a id="184c20" class="tk">arg_In11</a>);</td></tr>
 <tr name="185" id="185">
-<td>185</td><td>  <a id="185c3" class="tk">UNUSED_PARAMETER</a>(<a id="185c20" class="tk">arg_In3</a>);</td></tr>
+<td>185</td><td>  <a id="185c3" class="tk">UNUSED_PARAMETER</a>(<a id="185c20" class="tk">arg_In12</a>);</td></tr>
 <tr name="186" id="186">
-<td>186</td><td>  <a id="186c3" class="tk">UNUSED_PARAMETER</a>(<a id="186c20" class="tk">arg_In4</a>);</td></tr>
+<td>186</td><td>  <a id="186c3" class="tk">UNUSED_PARAMETER</a>(<a id="186c20" class="tk">arg_In13</a>);</td></tr>
 <tr name="187" id="187">
-<td>187</td><td>  <a id="187c3" class="tk">UNUSED_PARAMETER</a>(<a id="187c20" class="tk">arg_In5</a>);</td></tr>
+<td>187</td><td>  <a id="187c3" class="tk">UNUSED_PARAMETER</a>(<a id="187c20" class="tk">arg_In14</a>);</td></tr>
 <tr name="188" id="188">
-<td>188</td><td>  <a id="188c3" class="tk">UNUSED_PARAMETER</a>(<a id="188c20" class="tk">arg_In6</a>);</td></tr>
+<td>188</td><td>  <a id="188c3" class="tk">UNUSED_PARAMETER</a>(<a id="188c20" class="tk">arg_In15</a>);</td></tr>
 <tr name="189" id="189">
-<td>189</td><td>  <a id="189c3" class="tk">UNUSED_PARAMETER</a>(<a id="189c20" class="tk">arg_In7</a>);</td></tr>
+<td>189</td><td>  <a id="189c3" class="tk">UNUSED_PARAMETER</a>(<a id="189c20" class="tk">arg_In16</a>);</td></tr>
 <tr name="190" id="190">
-<td>190</td><td>  <a id="190c3" class="tk">UNUSED_PARAMETER</a>(<a id="190c20" class="tk">arg_In8</a>);</td></tr>
+<td>190</td><td></td></tr>
 <tr name="191" id="191">
-<td>191</td><td>  <a id="191c3" class="tk">UNUSED_PARAMETER</a>(<a id="191c20" class="tk">arg_In9</a>);</td></tr>
+<td>191</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="191">&lt;Root&gt;/Sub2</a>' incorporates:</span></td></tr>
 <tr name="192" id="192">
-<td>192</td><td>  <a id="192c3" class="tk">UNUSED_PARAMETER</a>(<a id="192c20" class="tk">arg_In10</a>);</td></tr>
+<td>192</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="192">&lt;Root&gt;/Constant1</a>'</span></td></tr>
 <tr name="193" id="193">
-<td>193</td><td>  <a id="193c3" class="tk">UNUSED_PARAMETER</a>(<a id="193c20" class="tk">arg_In11</a>);</td></tr>
+<td>193</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="193">&lt;Root&gt;/Gain</a>'</span></td></tr>
 <tr name="194" id="194">
-<td>194</td><td>  <a id="194c3" class="tk">UNUSED_PARAMETER</a>(<a id="194c20" class="tk">arg_In12</a>);</td></tr>
+<td>194</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="194">&lt;Root&gt;/Gain1</a>'</span></td></tr>
 <tr name="195" id="195">
-<td>195</td><td>  <a id="195c3" class="tk">UNUSED_PARAMETER</a>(<a id="195c20" class="tk">arg_In13</a>);</td></tr>
+<td>195</td><td><span class="ct">   *  Inport: '<a class="ct blk" blk_line="195">&lt;Root&gt;/In2</a>'</span></td></tr>
 <tr name="196" id="196">
-<td>196</td><td>  <a id="196c3" class="tk">UNUSED_PARAMETER</a>(<a id="196c20" class="tk">arg_In14</a>);</td></tr>
+<td>196</td><td><span class="ct">   */</span></td></tr>
 <tr name="197" id="197">
-<td>197</td><td>  <a id="197c3" class="tk">UNUSED_PARAMETER</a>(<a id="197c20" class="tk">arg_In15</a>);</td></tr>
+<td>197</td><td>  <a id="197c3" class="tk">rtb_IntegralGain</a> = <a id="197c22" class="tk">rtP</a>.<a id="197c26" class="tk">Gain1_Gain</a> * <a id="197c39" class="tk">Position</a> - <a id="197c50" class="tk">rtP</a>.<a id="197c54" class="tk">Gain_Gain</a> * <a id="197c66" class="tk">arg_In2</a>;</td></tr>
 <tr name="198" id="198">
-<td>198</td><td>  <a id="198c3" class="tk">UNUSED_PARAMETER</a>(<a id="198c20" class="tk">arg_In16</a>);</td></tr>
+<td>198</td><td></td></tr>
 <tr name="199" id="199">
-<td>199</td><td></td></tr>
+<td>199</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="199">&lt;S2&gt;/Filter Coefficient</a>' incorporates:</span></td></tr>
 <tr name="200" id="200">
-<td>200</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="200">&lt;Root&gt;/Sub2</a>' incorporates:</span></td></tr>
+<td>200</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="200">&lt;S2&gt;/Filter</a>'</span></td></tr>
 <tr name="201" id="201">
-<td>201</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="201">&lt;Root&gt;/Constant1</a>'</span></td></tr>
+<td>201</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="201">&lt;S2&gt;/Derivative Gain</a>'</span></td></tr>
 <tr name="202" id="202">
-<td>202</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="202">&lt;Root&gt;/Gain</a>'</span></td></tr>
+<td>202</td><td><span class="ct">   *  Sum: '<a class="ct blk" blk_line="202">&lt;S2&gt;/SumD</a>'</span></td></tr>
 <tr name="203" id="203">
-<td>203</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="203">&lt;Root&gt;/Gain1</a>'</span></td></tr>
+<td>203</td><td><span class="ct">   */</span></td></tr>
 <tr name="204" id="204">
-<td>204</td><td><span class="ct">   *  Inport: '<a class="ct blk" blk_line="204">&lt;Root&gt;/In2</a>'</span></td></tr>
+<td>204</td><td>  <a id="204c3" class="tk">rtb_FilterCoefficient</a> = (<a id="204c28" class="tk">x_PID_D</a> * <a id="204c38" class="tk">rtb_IntegralGain</a> - <a id="204c57" class="tk">rtDW</a>.<a id="204c62" class="tk">Filter_DSTATE</a>) *</td></tr>
 <tr name="205" id="205">
-<td>205</td><td><span class="ct">   */</span></td></tr>
+<td>205</td><td>    <a id="205c5" class="tk">rtP</a>.<a id="205c9" class="tk">PID2_N</a>;</td></tr>
 <tr name="206" id="206">
-<td>206</td><td>  <a id="206c3" class="tk">rtb_IntegralGain</a> = <a id="206c22" class="tk">rtP</a>.<a id="206c26" class="tk">Gain1_Gain</a> * <a id="206c39" class="tk">Position</a> - <a id="206c50" class="tk">rtP</a>.<a id="206c54" class="tk">Gain_Gain</a> * <a id="206c66" class="tk">arg_In2</a>;</td></tr>
+<td>206</td><td></td></tr>
 <tr name="207" id="207">
-<td>207</td><td></td></tr>
+<td>207</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="207">&lt;S2&gt;/Sum</a>' incorporates:</span></td></tr>
 <tr name="208" id="208">
-<td>208</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="208">&lt;S2&gt;/Filter Coefficient</a>' incorporates:</span></td></tr>
+<td>208</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="208">&lt;S2&gt;/Integrator</a>'</span></td></tr>
 <tr name="209" id="209">
-<td>209</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="209">&lt;S2&gt;/Filter</a>'</span></td></tr>
+<td>209</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="209">&lt;S2&gt;/Proportional Gain</a>'</span></td></tr>
 <tr name="210" id="210">
-<td>210</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="210">&lt;S2&gt;/Derivative Gain</a>'</span></td></tr>
+<td>210</td><td><span class="ct">   */</span></td></tr>
 <tr name="211" id="211">
-<td>211</td><td><span class="ct">   *  Sum: '<a class="ct blk" blk_line="211">&lt;S2&gt;/SumD</a>'</span></td></tr>
+<td>211</td><td>  <a id="211c3" class="tk">rtb_SignDeltaU</a> = (<a id="211c21" class="tk">x_PID_P</a> * <a id="211c31" class="tk">rtb_IntegralGain</a> + <a id="211c50" class="tk">rtDW</a>.<a id="211c55" class="tk">Integrator_DSTATE</a>) +</td></tr>
 <tr name="212" id="212">
-<td>212</td><td><span class="ct">   */</span></td></tr>
+<td>212</td><td>    <a id="212c5" class="tk">rtb_FilterCoefficient</a>;</td></tr>
 <tr name="213" id="213">
-<td>213</td><td>  <a id="213c3" class="tk">rtb_FilterCoefficient</a> = (<a id="213c28" class="tk">x_PID_D</a> * <a id="213c38" class="tk">rtb_IntegralGain</a> - <a id="213c57" class="tk">rtDW</a>.<a id="213c62" class="tk">Filter_DSTATE</a>) *</td></tr>
+<td>213</td><td></td></tr>
 <tr name="214" id="214">
-<td>214</td><td>    <a id="214c5" class="tk">rtP</a>.<a id="214c9" class="tk">PID2_N</a>;</td></tr>
+<td>214</td><td>  <span class="ct">/* Saturate: '<a class="ct blk" blk_line="214">&lt;S2&gt;/Saturate</a>' */</span></td></tr>
 <tr name="215" id="215">
-<td>215</td><td></td></tr>
+<td>215</td><td>  <span class="kw">if</span> (<a id="215c7" class="tk">rtb_SignDeltaU</a> &gt; <a id="215c24" class="tk">x_PID_HLIM</a>) <span class="br">{</span></td></tr>
 <tr name="216" id="216">
-<td>216</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="216">&lt;S2&gt;/Sum</a>' incorporates:</span></td></tr>
+<td>216</td><td>    <a id="216c5" class="tk">rtb_ZeroGain</a> = <a id="216c20" class="tk">x_PID_HLIM</a>;</td></tr>
 <tr name="217" id="217">
-<td>217</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="217">&lt;S2&gt;/Integrator</a>'</span></td></tr>
+<td>217</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="217c14" class="tk">rtb_SignDeltaU</a> &lt; <a id="217c31" class="tk">x_PID_LLIM</a>) <span class="br">{</span></td></tr>
 <tr name="218" id="218">
-<td>218</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="218">&lt;S2&gt;/Proportional Gain</a>'</span></td></tr>
+<td>218</td><td>    <a id="218c5" class="tk">rtb_ZeroGain</a> = <a id="218c20" class="tk">x_PID_LLIM</a>;</td></tr>
 <tr name="219" id="219">
-<td>219</td><td><span class="ct">   */</span></td></tr>
+<td>219</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="220" id="220">
-<td>220</td><td>  <a id="220c3" class="tk">rtb_SignDeltaU</a> = (<a id="220c21" class="tk">x_PID_P</a> * <a id="220c31" class="tk">rtb_IntegralGain</a> + <a id="220c50" class="tk">rtDW</a>.<a id="220c55" class="tk">Integrator_DSTATE</a>) +</td></tr>
+<td>220</td><td>    <a id="220c5" class="tk">rtb_ZeroGain</a> = <a id="220c20" class="tk">rtb_SignDeltaU</a>;</td></tr>
 <tr name="221" id="221">
-<td>221</td><td>    <a id="221c5" class="tk">rtb_FilterCoefficient</a>;</td></tr>
+<td>221</td><td>  <span class="br">}</span></td></tr>
 <tr name="222" id="222">
 <td>222</td><td></td></tr>
 <tr name="223" id="223">
-<td>223</td><td>  <span class="ct">/* Saturate: '<a class="ct blk" blk_line="223">&lt;S2&gt;/Saturate</a>' */</span></td></tr>
+<td>223</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="223">&lt;Root&gt;/Sub1</a>' incorporates:</span></td></tr>
 <tr name="224" id="224">
-<td>224</td><td>  <span class="kw">if</span> (<a id="224c7" class="tk">rtb_SignDeltaU</a> &gt; <a id="224c24" class="tk">x_PID_HLIM</a>) <span class="br">{</span></td></tr>
+<td>224</td><td><span class="ct">   *  Inport: '<a class="ct blk" blk_line="224">&lt;Root&gt;/In1</a>'</span></td></tr>
 <tr name="225" id="225">
-<td>225</td><td>    <a id="225c5" class="tk">rtb_ZeroGain</a> = <a id="225c20" class="tk">x_PID_HLIM</a>;</td></tr>
+<td>225</td><td><span class="ct">   *  Saturate: '<a class="ct blk" blk_line="225">&lt;S2&gt;/Saturate</a>'</span></td></tr>
 <tr name="226" id="226">
-<td>226</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="226c14" class="tk">rtb_SignDeltaU</a> &lt; <a id="226c31" class="tk">x_PID_LLIM</a>) <span class="br">{</span></td></tr>
+<td>226</td><td><span class="ct">   */</span></td></tr>
 <tr name="227" id="227">
-<td>227</td><td>    <a id="227c5" class="tk">rtb_ZeroGain</a> = <a id="227c20" class="tk">x_PID_LLIM</a>;</td></tr>
+<td>227</td><td>  <a id="227c3" class="tk">rtb_IntegralGain_a</a> = <a id="227c24" class="tk">rtb_ZeroGain</a> - <a id="227c39" class="tk">arg_In1</a>;</td></tr>
 <tr name="228" id="228">
-<td>228</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>228</td><td></td></tr>
 <tr name="229" id="229">
-<td>229</td><td>    <a id="229c5" class="tk">rtb_ZeroGain</a> = <a id="229c20" class="tk">rtb_SignDeltaU</a>;</td></tr>
+<td>229</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="229">&lt;S1&gt;/Filter Coefficient</a>' incorporates:</span></td></tr>
 <tr name="230" id="230">
-<td>230</td><td>  <span class="br">}</span></td></tr>
+<td>230</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="230">&lt;S1&gt;/Filter</a>'</span></td></tr>
 <tr name="231" id="231">
-<td>231</td><td></td></tr>
+<td>231</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="231">&lt;S1&gt;/Derivative Gain</a>'</span></td></tr>
 <tr name="232" id="232">
-<td>232</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="232">&lt;Root&gt;/Sub1</a>' incorporates:</span></td></tr>
+<td>232</td><td><span class="ct">   *  Sum: '<a class="ct blk" blk_line="232">&lt;S1&gt;/SumD</a>'</span></td></tr>
 <tr name="233" id="233">
-<td>233</td><td><span class="ct">   *  Inport: '<a class="ct blk" blk_line="233">&lt;Root&gt;/In1</a>'</span></td></tr>
+<td>233</td><td><span class="ct">   */</span></td></tr>
 <tr name="234" id="234">
-<td>234</td><td><span class="ct">   *  Saturate: '<a class="ct blk" blk_line="234">&lt;S2&gt;/Saturate</a>'</span></td></tr>
+<td>234</td><td>  <a id="234c3" class="tk">rtb_FilterCoefficient_n</a> = (<a id="234c30" class="tk">Phi_PID_D</a> * <a id="234c42" class="tk">rtb_IntegralGain_a</a> -</td></tr>
 <tr name="235" id="235">
-<td>235</td><td><span class="ct">   */</span></td></tr>
+<td>235</td><td>    <a id="235c5" class="tk">rtDW</a>.<a id="235c10" class="tk">Filter_DSTATE_m</a>) * <a id="235c29" class="tk">rtP</a>.<a id="235c33" class="tk">PID1_N</a>;</td></tr>
 <tr name="236" id="236">
-<td>236</td><td>  <a id="236c3" class="tk">rtb_IntegralGain_a</a> = <a id="236c24" class="tk">rtb_ZeroGain</a> - <a id="236c39" class="tk">arg_In1</a>;</td></tr>
+<td>236</td><td></td></tr>
 <tr name="237" id="237">
-<td>237</td><td></td></tr>
+<td>237</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="237">&lt;S1&gt;/Sum</a>' incorporates:</span></td></tr>
 <tr name="238" id="238">
-<td>238</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="238">&lt;S1&gt;/Filter Coefficient</a>' incorporates:</span></td></tr>
+<td>238</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="238">&lt;S1&gt;/Integrator</a>'</span></td></tr>
 <tr name="239" id="239">
-<td>239</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="239">&lt;S1&gt;/Filter</a>'</span></td></tr>
+<td>239</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="239">&lt;S1&gt;/Proportional Gain</a>'</span></td></tr>
 <tr name="240" id="240">
-<td>240</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="240">&lt;S1&gt;/Derivative Gain</a>'</span></td></tr>
+<td>240</td><td><span class="ct">   */</span></td></tr>
 <tr name="241" id="241">
-<td>241</td><td><span class="ct">   *  Sum: '<a class="ct blk" blk_line="241">&lt;S1&gt;/SumD</a>'</span></td></tr>
+<td>241</td><td>  <a id="241c3" class="tk">rtb_SignDeltaU_o</a> = (<a id="241c23" class="tk">Phi_PID_P</a> * <a id="241c35" class="tk">rtb_IntegralGain_a</a> + <a id="241c56" class="tk">rtDW</a>.<a id="241c61" class="tk">Integrator_DSTATE_l</a>)</td></tr>
 <tr name="242" id="242">
-<td>242</td><td><span class="ct">   */</span></td></tr>
+<td>242</td><td>    + <a id="242c7" class="tk">rtb_FilterCoefficient_n</a>;</td></tr>
 <tr name="243" id="243">
-<td>243</td><td>  <a id="243c3" class="tk">rtb_FilterCoefficient_n</a> = (<a id="243c30" class="tk">Phi_PID_D</a> * <a id="243c42" class="tk">rtb_IntegralGain_a</a> -</td></tr>
+<td>243</td><td></td></tr>
 <tr name="244" id="244">
-<td>244</td><td>    <a id="244c5" class="tk">rtDW</a>.<a id="244c10" class="tk">Filter_DSTATE_m</a>) * <a id="244c29" class="tk">rtP</a>.<a id="244c33" class="tk">PID1_N</a>;</td></tr>
+<td>244</td><td>  <span class="ct">/* Saturate: '<a class="ct blk" blk_line="244">&lt;S1&gt;/Saturate</a>' */</span></td></tr>
 <tr name="245" id="245">
-<td>245</td><td></td></tr>
+<td>245</td><td>  <span class="kw">if</span> (<a id="245c7" class="tk">rtb_SignDeltaU_o</a> &gt; <a id="245c26" class="tk">rtP</a>.<a id="245c30" class="tk">PID1_UpperSaturationLimit</a>) <span class="br">{</span></td></tr>
 <tr name="246" id="246">
-<td>246</td><td>  <span class="ct">/* Sum: '<a class="ct blk" blk_line="246">&lt;S1&gt;/Sum</a>' incorporates:</span></td></tr>
+<td>246</td><td>    <span class="ct">/* Outport: '<a class="ct blk" blk_line="246">&lt;Root&gt;/Out1</a>' */</span></td></tr>
 <tr name="247" id="247">
-<td>247</td><td><span class="ct">   *  DiscreteIntegrator: '<a class="ct blk" blk_line="247">&lt;S1&gt;/Integrator</a>'</span></td></tr>
+<td>247</td><td>    *<a id="247c6" class="tk">arg_Out1</a> = <a id="247c17" class="tk">rtP</a>.<a id="247c21" class="tk">PID1_UpperSaturationLimit</a>;</td></tr>
 <tr name="248" id="248">
-<td>248</td><td><span class="ct">   *  Gain: '<a class="ct blk" blk_line="248">&lt;S1&gt;/Proportional Gain</a>'</span></td></tr>
+<td>248</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="248c14" class="tk">rtb_SignDeltaU_o</a> &lt; <a id="248c33" class="tk">rtP</a>.<a id="248c37" class="tk">PID1_LowerSaturationLimit</a>) <span class="br">{</span></td></tr>
 <tr name="249" id="249">
-<td>249</td><td><span class="ct">   */</span></td></tr>
+<td>249</td><td>    <span class="ct">/* Outport: '<a class="ct blk" blk_line="249">&lt;Root&gt;/Out1</a>' */</span></td></tr>
 <tr name="250" id="250">
-<td>250</td><td>  <a id="250c3" class="tk">rtb_SignDeltaU_o</a> = (<a id="250c23" class="tk">Phi_PID_P</a> * <a id="250c35" class="tk">rtb_IntegralGain_a</a> + <a id="250c56" class="tk">rtDW</a>.<a id="250c61" class="tk">Integrator_DSTATE_l</a>)</td></tr>
+<td>250</td><td>    *<a id="250c6" class="tk">arg_Out1</a> = <a id="250c17" class="tk">rtP</a>.<a id="250c21" class="tk">PID1_LowerSaturationLimit</a>;</td></tr>
 <tr name="251" id="251">
-<td>251</td><td>    + <a id="251c7" class="tk">rtb_FilterCoefficient_n</a>;</td></tr>
+<td>251</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="252" id="252">
-<td>252</td><td></td></tr>
+<td>252</td><td>    <span class="ct">/* Outport: '<a class="ct blk" blk_line="252">&lt;Root&gt;/Out1</a>' */</span></td></tr>
 <tr name="253" id="253">
-<td>253</td><td>  <span class="ct">/* Saturate: '<a class="ct blk" blk_line="253">&lt;S1&gt;/Saturate</a>' */</span></td></tr>
+<td>253</td><td>    *<a id="253c6" class="tk">arg_Out1</a> = <a id="253c17" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
 <tr name="254" id="254">
-<td>254</td><td>  <span class="kw">if</span> (<a id="254c7" class="tk">rtb_SignDeltaU_o</a> &gt; <a id="254c26" class="tk">rtP</a>.<a id="254c30" class="tk">PID1_UpperSaturationLimit</a>) <span class="br">{</span></td></tr>
+<td>254</td><td>  <span class="br">}</span></td></tr>
 <tr name="255" id="255">
-<td>255</td><td>    <span class="ct">/* Outport: '<a class="ct blk" blk_line="255">&lt;Root&gt;/Out1</a>' */</span></td></tr>
+<td>255</td><td></td></tr>
 <tr name="256" id="256">
-<td>256</td><td>    *<a id="256c6" class="tk">arg_Out1</a> = <a id="256c17" class="tk">rtP</a>.<a id="256c21" class="tk">PID1_UpperSaturationLimit</a>;</td></tr>
+<td>256</td><td>  <span class="ct">/* End of Saturate: '<a class="ct blk" blk_line="256">&lt;S1&gt;/Saturate</a>' */</span></td></tr>
 <tr name="257" id="257">
-<td>257</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="257c14" class="tk">rtb_SignDeltaU_o</a> &lt; <a id="257c33" class="tk">rtP</a>.<a id="257c37" class="tk">PID1_LowerSaturationLimit</a>) <span class="br">{</span></td></tr>
+<td>257</td><td></td></tr>
 <tr name="258" id="258">
-<td>258</td><td>    <span class="ct">/* Outport: '<a class="ct blk" blk_line="258">&lt;Root&gt;/Out1</a>' */</span></td></tr>
+<td>258</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="258">&lt;S3&gt;/ZeroGain</a>' */</span></td></tr>
 <tr name="259" id="259">
-<td>259</td><td>    *<a id="259c6" class="tk">arg_Out1</a> = <a id="259c17" class="tk">rtP</a>.<a id="259c21" class="tk">PID1_LowerSaturationLimit</a>;</td></tr>
+<td>259</td><td>  <a id="259c3" class="tk">rtb_ZeroGain</a> = <a id="259c18" class="tk">rtP</a>.<a id="259c22" class="tk">ZeroGain_Gain</a> * <a id="259c38" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
 <tr name="260" id="260">
-<td>260</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>260</td><td></td></tr>
 <tr name="261" id="261">
-<td>261</td><td>    <span class="ct">/* Outport: '<a class="ct blk" blk_line="261">&lt;Root&gt;/Out1</a>' */</span></td></tr>
+<td>261</td><td>  <span class="ct">/* DeadZone: '<a class="ct blk" blk_line="261">&lt;S3&gt;/DeadZone</a>' */</span></td></tr>
 <tr name="262" id="262">
-<td>262</td><td>    *<a id="262c6" class="tk">arg_Out1</a> = <a id="262c17" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
+<td>262</td><td>  <span class="kw">if</span> (<a id="262c7" class="tk">rtb_SignDeltaU_o</a> &gt; <a id="262c26" class="tk">rtP</a>.<a id="262c30" class="tk">PID1_UpperSaturationLimit</a>) <span class="br">{</span></td></tr>
 <tr name="263" id="263">
-<td>263</td><td>  <span class="br">}</span></td></tr>
+<td>263</td><td>    <a id="263c5" class="tk">rtb_SignDeltaU_o</a> -= <a id="263c25" class="tk">rtP</a>.<a id="263c29" class="tk">PID1_UpperSaturationLimit</a>;</td></tr>
 <tr name="264" id="264">
-<td>264</td><td></td></tr>
+<td>264</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="264c14" class="tk">rtb_SignDeltaU_o</a> &gt;= <a id="264c34" class="tk">rtP</a>.<a id="264c38" class="tk">PID1_LowerSaturationLimit</a>) <span class="br">{</span></td></tr>
 <tr name="265" id="265">
-<td>265</td><td>  <span class="ct">/* End of Saturate: '<a class="ct blk" blk_line="265">&lt;S1&gt;/Saturate</a>' */</span></td></tr>
+<td>265</td><td>    <a id="265c5" class="tk">rtb_SignDeltaU_o</a> = 0.0;</td></tr>
 <tr name="266" id="266">
-<td>266</td><td></td></tr>
+<td>266</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="267" id="267">
-<td>267</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="267">&lt;S3&gt;/ZeroGain</a>' */</span></td></tr>
+<td>267</td><td>    <a id="267c5" class="tk">rtb_SignDeltaU_o</a> -= <a id="267c25" class="tk">rtP</a>.<a id="267c29" class="tk">PID1_LowerSaturationLimit</a>;</td></tr>
 <tr name="268" id="268">
-<td>268</td><td>  <a id="268c3" class="tk">rtb_ZeroGain</a> = <a id="268c18" class="tk">rtP</a>.<a id="268c22" class="tk">ZeroGain_Gain</a> * <a id="268c38" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
+<td>268</td><td>  <span class="br">}</span></td></tr>
 <tr name="269" id="269">
 <td>269</td><td></td></tr>
 <tr name="270" id="270">
-<td>270</td><td>  <span class="ct">/* DeadZone: '<a class="ct blk" blk_line="270">&lt;S3&gt;/DeadZone</a>' */</span></td></tr>
+<td>270</td><td>  <span class="ct">/* End of DeadZone: '<a class="ct blk" blk_line="270">&lt;S3&gt;/DeadZone</a>' */</span></td></tr>
 <tr name="271" id="271">
-<td>271</td><td>  <span class="kw">if</span> (<a id="271c7" class="tk">rtb_SignDeltaU_o</a> &gt; <a id="271c26" class="tk">rtP</a>.<a id="271c30" class="tk">PID1_UpperSaturationLimit</a>) <span class="br">{</span></td></tr>
+<td>271</td><td></td></tr>
 <tr name="272" id="272">
-<td>272</td><td>    <a id="272c5" class="tk">rtb_SignDeltaU_o</a> -= <a id="272c25" class="tk">rtP</a>.<a id="272c29" class="tk">PID1_UpperSaturationLimit</a>;</td></tr>
+<td>272</td><td>  <span class="ct">/* RelationalOperator: '<a class="ct blk" blk_line="272">&lt;S3&gt;/NotEqual</a>' */</span></td></tr>
 <tr name="273" id="273">
-<td>273</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="273c14" class="tk">rtb_SignDeltaU_o</a> &gt;= <a id="273c34" class="tk">rtP</a>.<a id="273c38" class="tk">PID1_LowerSaturationLimit</a>) <span class="br">{</span></td></tr>
+<td>273</td><td>  <a id="273c3" class="tk">rtb_NotEqual</a> = (<a id="273c19" class="tk">rtb_ZeroGain</a> != <a id="273c35" class="tk">rtb_SignDeltaU_o</a>);</td></tr>
 <tr name="274" id="274">
-<td>274</td><td>    <a id="274c5" class="tk">rtb_SignDeltaU_o</a> = 0.0;</td></tr>
+<td>274</td><td></td></tr>
 <tr name="275" id="275">
-<td>275</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>275</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="275">&lt;S3&gt;/SignDeltaU</a>' */</span></td></tr>
 <tr name="276" id="276">
-<td>276</td><td>    <a id="276c5" class="tk">rtb_SignDeltaU_o</a> -= <a id="276c25" class="tk">rtP</a>.<a id="276c29" class="tk">PID1_LowerSaturationLimit</a>;</td></tr>
+<td>276</td><td>  <span class="kw">if</span> (<a id="276c7" class="tk">rtb_SignDeltaU_o</a> &lt; 0.0) <span class="br">{</span></td></tr>
 <tr name="277" id="277">
-<td>277</td><td>  <span class="br">}</span></td></tr>
+<td>277</td><td>    <a id="277c5" class="tk">rtb_SignDeltaU_o</a> = -1.0;</td></tr>
 <tr name="278" id="278">
-<td>278</td><td></td></tr>
+<td>278</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="279" id="279">
-<td>279</td><td>  <span class="ct">/* End of DeadZone: '<a class="ct blk" blk_line="279">&lt;S3&gt;/DeadZone</a>' */</span></td></tr>
+<td>279</td><td>    <span class="kw">if</span> (<a id="279c9" class="tk">rtb_SignDeltaU_o</a> &gt; 0.0) <span class="br">{</span></td></tr>
 <tr name="280" id="280">
-<td>280</td><td></td></tr>
+<td>280</td><td>      <a id="280c7" class="tk">rtb_SignDeltaU_o</a> = 1.0;</td></tr>
 <tr name="281" id="281">
-<td>281</td><td>  <span class="ct">/* RelationalOperator: '<a class="ct blk" blk_line="281">&lt;S3&gt;/NotEqual</a>' */</span></td></tr>
+<td>281</td><td>    <span class="br">}</span></td></tr>
 <tr name="282" id="282">
-<td>282</td><td>  <a id="282c3" class="tk">rtb_NotEqual</a> = (<a id="282c19" class="tk">rtb_ZeroGain</a> != <a id="282c35" class="tk">rtb_SignDeltaU_o</a>);</td></tr>
+<td>282</td><td>  <span class="br">}</span></td></tr>
 <tr name="283" id="283">
 <td>283</td><td></td></tr>
 <tr name="284" id="284">
-<td>284</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="284">&lt;S3&gt;/SignDeltaU</a>' */</span></td></tr>
+<td>284</td><td>  <span class="ct">/* End of Signum: '<a class="ct blk" blk_line="284">&lt;S3&gt;/SignDeltaU</a>' */</span></td></tr>
 <tr name="285" id="285">
-<td>285</td><td>  <span class="kw">if</span> (<a id="285c7" class="tk">rtb_SignDeltaU_o</a> &lt; 0.0) <span class="br">{</span></td></tr>
+<td>285</td><td></td></tr>
 <tr name="286" id="286">
-<td>286</td><td>    <a id="286c5" class="tk">rtb_SignDeltaU_o</a> = -1.0;</td></tr>
+<td>286</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="286">&lt;S1&gt;/Integral Gain</a>' */</span></td></tr>
 <tr name="287" id="287">
-<td>287</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>287</td><td>  <a id="287c3" class="tk">rtb_IntegralGain_a</a> *= <a id="287c25" class="tk">Phi_PID_I</a>;</td></tr>
 <tr name="288" id="288">
-<td>288</td><td>    <span class="kw">if</span> (<a id="288c9" class="tk">rtb_SignDeltaU_o</a> &gt; 0.0) <span class="br">{</span></td></tr>
+<td>288</td><td></td></tr>
 <tr name="289" id="289">
-<td>289</td><td>      <a id="289c7" class="tk">rtb_SignDeltaU_o</a> = 1.0;</td></tr>
+<td>289</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="289">&lt;S4&gt;/ZeroGain</a>' */</span></td></tr>
 <tr name="290" id="290">
-<td>290</td><td>    <span class="br">}</span></td></tr>
+<td>290</td><td>  <a id="290c3" class="tk">rtb_ZeroGain</a> = <a id="290c18" class="tk">rtP</a>.<a id="290c22" class="tk">ZeroGain_Gain_c</a> * <a id="290c40" class="tk">rtb_SignDeltaU</a>;</td></tr>
 <tr name="291" id="291">
-<td>291</td><td>  <span class="br">}</span></td></tr>
+<td>291</td><td></td></tr>
 <tr name="292" id="292">
-<td>292</td><td></td></tr>
+<td>292</td><td>  <span class="ct">/* DeadZone: '<a class="ct blk" blk_line="292">&lt;S4&gt;/DeadZone</a>' */</span></td></tr>
 <tr name="293" id="293">
-<td>293</td><td>  <span class="ct">/* End of Signum: '<a class="ct blk" blk_line="293">&lt;S3&gt;/SignDeltaU</a>' */</span></td></tr>
+<td>293</td><td>  <span class="kw">if</span> (<a id="293c7" class="tk">rtb_SignDeltaU</a> &gt; <a id="293c24" class="tk">x_PID_HLIM</a>) <span class="br">{</span></td></tr>
 <tr name="294" id="294">
-<td>294</td><td></td></tr>
+<td>294</td><td>    <a id="294c5" class="tk">rtb_SignDeltaU</a> -= <a id="294c23" class="tk">x_PID_HLIM</a>;</td></tr>
 <tr name="295" id="295">
-<td>295</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="295">&lt;S1&gt;/Integral Gain</a>' */</span></td></tr>
+<td>295</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="295c14" class="tk">rtb_SignDeltaU</a> &gt;= <a id="295c32" class="tk">x_PID_LLIM</a>) <span class="br">{</span></td></tr>
 <tr name="296" id="296">
-<td>296</td><td>  <a id="296c3" class="tk">rtb_IntegralGain_a</a> *= <a id="296c25" class="tk">Phi_PID_I</a>;</td></tr>
+<td>296</td><td>    <a id="296c5" class="tk">rtb_SignDeltaU</a> = 0.0;</td></tr>
 <tr name="297" id="297">
-<td>297</td><td></td></tr>
+<td>297</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="298" id="298">
-<td>298</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="298">&lt;S4&gt;/ZeroGain</a>' */</span></td></tr>
+<td>298</td><td>    <a id="298c5" class="tk">rtb_SignDeltaU</a> -= <a id="298c23" class="tk">x_PID_LLIM</a>;</td></tr>
 <tr name="299" id="299">
-<td>299</td><td>  <a id="299c3" class="tk">rtb_ZeroGain</a> = <a id="299c18" class="tk">rtP</a>.<a id="299c22" class="tk">ZeroGain_Gain_c</a> * <a id="299c40" class="tk">rtb_SignDeltaU</a>;</td></tr>
+<td>299</td><td>  <span class="br">}</span></td></tr>
 <tr name="300" id="300">
 <td>300</td><td></td></tr>
 <tr name="301" id="301">
-<td>301</td><td>  <span class="ct">/* DeadZone: '<a class="ct blk" blk_line="301">&lt;S4&gt;/DeadZone</a>' */</span></td></tr>
+<td>301</td><td>  <span class="ct">/* End of DeadZone: '<a class="ct blk" blk_line="301">&lt;S4&gt;/DeadZone</a>' */</span></td></tr>
 <tr name="302" id="302">
-<td>302</td><td>  <span class="kw">if</span> (<a id="302c7" class="tk">rtb_SignDeltaU</a> &gt; <a id="302c24" class="tk">x_PID_HLIM</a>) <span class="br">{</span></td></tr>
+<td>302</td><td></td></tr>
 <tr name="303" id="303">
-<td>303</td><td>    <a id="303c5" class="tk">rtb_SignDeltaU</a> -= <a id="303c23" class="tk">x_PID_HLIM</a>;</td></tr>
+<td>303</td><td>  <span class="ct">/* RelationalOperator: '<a class="ct blk" blk_line="303">&lt;S4&gt;/NotEqual</a>' */</span></td></tr>
 <tr name="304" id="304">
-<td>304</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="304c14" class="tk">rtb_SignDeltaU</a> &gt;= <a id="304c32" class="tk">x_PID_LLIM</a>) <span class="br">{</span></td></tr>
+<td>304</td><td>  <a id="304c3" class="tk">rtb_NotEqual_f</a> = (<a id="304c21" class="tk">rtb_ZeroGain</a> != <a id="304c37" class="tk">rtb_SignDeltaU</a>);</td></tr>
 <tr name="305" id="305">
-<td>305</td><td>    <a id="305c5" class="tk">rtb_SignDeltaU</a> = 0.0;</td></tr>
+<td>305</td><td></td></tr>
 <tr name="306" id="306">
-<td>306</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>306</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="306">&lt;S4&gt;/SignDeltaU</a>' */</span></td></tr>
 <tr name="307" id="307">
-<td>307</td><td>    <a id="307c5" class="tk">rtb_SignDeltaU</a> -= <a id="307c23" class="tk">x_PID_LLIM</a>;</td></tr>
+<td>307</td><td>  <span class="kw">if</span> (<a id="307c7" class="tk">rtb_SignDeltaU</a> &lt; 0.0) <span class="br">{</span></td></tr>
 <tr name="308" id="308">
-<td>308</td><td>  <span class="br">}</span></td></tr>
+<td>308</td><td>    <a id="308c5" class="tk">rtb_SignDeltaU</a> = -1.0;</td></tr>
 <tr name="309" id="309">
-<td>309</td><td></td></tr>
+<td>309</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="310" id="310">
-<td>310</td><td>  <span class="ct">/* End of DeadZone: '<a class="ct blk" blk_line="310">&lt;S4&gt;/DeadZone</a>' */</span></td></tr>
+<td>310</td><td>    <span class="kw">if</span> (<a id="310c9" class="tk">rtb_SignDeltaU</a> &gt; 0.0) <span class="br">{</span></td></tr>
 <tr name="311" id="311">
-<td>311</td><td></td></tr>
+<td>311</td><td>      <a id="311c7" class="tk">rtb_SignDeltaU</a> = 1.0;</td></tr>
 <tr name="312" id="312">
-<td>312</td><td>  <span class="ct">/* RelationalOperator: '<a class="ct blk" blk_line="312">&lt;S4&gt;/NotEqual</a>' */</span></td></tr>
+<td>312</td><td>    <span class="br">}</span></td></tr>
 <tr name="313" id="313">
-<td>313</td><td>  <a id="313c3" class="tk">rtb_NotEqual_f</a> = (<a id="313c21" class="tk">rtb_ZeroGain</a> != <a id="313c37" class="tk">rtb_SignDeltaU</a>);</td></tr>
+<td>313</td><td>  <span class="br">}</span></td></tr>
 <tr name="314" id="314">
 <td>314</td><td></td></tr>
 <tr name="315" id="315">
-<td>315</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="315">&lt;S4&gt;/SignDeltaU</a>' */</span></td></tr>
+<td>315</td><td>  <span class="ct">/* End of Signum: '<a class="ct blk" blk_line="315">&lt;S4&gt;/SignDeltaU</a>' */</span></td></tr>
 <tr name="316" id="316">
-<td>316</td><td>  <span class="kw">if</span> (<a id="316c7" class="tk">rtb_SignDeltaU</a> &lt; 0.0) <span class="br">{</span></td></tr>
+<td>316</td><td></td></tr>
 <tr name="317" id="317">
-<td>317</td><td>    <a id="317c5" class="tk">rtb_SignDeltaU</a> = -1.0;</td></tr>
+<td>317</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="317">&lt;S2&gt;/Integral Gain</a>' */</span></td></tr>
 <tr name="318" id="318">
-<td>318</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>318</td><td>  <a id="318c3" class="tk">rtb_IntegralGain</a> *= <a id="318c23" class="tk">x_PID_I</a>;</td></tr>
 <tr name="319" id="319">
-<td>319</td><td>    <span class="kw">if</span> (<a id="319c9" class="tk">rtb_SignDeltaU</a> &gt; 0.0) <span class="br">{</span></td></tr>
+<td>319</td><td></td></tr>
 <tr name="320" id="320">
-<td>320</td><td>      <a id="320c7" class="tk">rtb_SignDeltaU</a> = 1.0;</td></tr>
+<td>320</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="320">&lt;Root&gt;/Out2</a>' incorporates:</span></td></tr>
 <tr name="321" id="321">
-<td>321</td><td>    <span class="br">}</span></td></tr>
+<td>321</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="321">&lt;Root&gt;/Constant2</a>'</span></td></tr>
 <tr name="322" id="322">
-<td>322</td><td>  <span class="br">}</span></td></tr>
+<td>322</td><td><span class="ct">   */</span></td></tr>
 <tr name="323" id="323">
-<td>323</td><td></td></tr>
+<td>323</td><td>  *<a id="323c4" class="tk">arg_Out2</a> = <a id="323c15" class="tk">Strom</a>;</td></tr>
 <tr name="324" id="324">
-<td>324</td><td>  <span class="ct">/* End of Signum: '<a class="ct blk" blk_line="324">&lt;S4&gt;/SignDeltaU</a>' */</span></td></tr>
+<td>324</td><td></td></tr>
 <tr name="325" id="325">
-<td>325</td><td></td></tr>
+<td>325</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="325">&lt;Root&gt;/Out3</a>' */</span></td></tr>
 <tr name="326" id="326">
-<td>326</td><td>  <span class="ct">/* Gain: '<a class="ct blk" blk_line="326">&lt;S2&gt;/Integral Gain</a>' */</span></td></tr>
+<td>326</td><td>  *<a id="326c4" class="tk">arg_Out3</a> = 0.0;</td></tr>
 <tr name="327" id="327">
-<td>327</td><td>  <a id="327c3" class="tk">rtb_IntegralGain</a> *= <a id="327c23" class="tk">x_PID_I</a>;</td></tr>
+<td>327</td><td></td></tr>
 <tr name="328" id="328">
-<td>328</td><td></td></tr>
+<td>328</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="328">&lt;Root&gt;/Out4</a>' */</span></td></tr>
 <tr name="329" id="329">
-<td>329</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="329">&lt;Root&gt;/Out2</a>' incorporates:</span></td></tr>
+<td>329</td><td>  *<a id="329c4" class="tk">arg_Out4</a> = 0.0;</td></tr>
 <tr name="330" id="330">
-<td>330</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="330">&lt;Root&gt;/Constant2</a>'</span></td></tr>
+<td>330</td><td></td></tr>
 <tr name="331" id="331">
-<td>331</td><td><span class="ct">   */</span></td></tr>
+<td>331</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="331">&lt;Root&gt;/Out5</a>' */</span></td></tr>
 <tr name="332" id="332">
-<td>332</td><td>  *<a id="332c4" class="tk">arg_Out2</a> = <a id="332c15" class="tk">Strom</a>;</td></tr>
+<td>332</td><td>  *<a id="332c4" class="tk">arg_Out5</a> = 0.0;</td></tr>
 <tr name="333" id="333">
 <td>333</td><td></td></tr>
 <tr name="334" id="334">
-<td>334</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="334">&lt;Root&gt;/Out3</a>' incorporates:</span></td></tr>
+<td>334</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="334">&lt;Root&gt;/Out6</a>' incorporates:</span></td></tr>
 <tr name="335" id="335">
-<td>335</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="335">&lt;Root&gt;/Constant3</a>'</span></td></tr>
+<td>335</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="335">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="336" id="336">
 <td>336</td><td><span class="ct">   */</span></td></tr>
 <tr name="337" id="337">
-<td>337</td><td>  *<a id="337c4" class="tk">arg_Out3</a> = <a id="337c15" class="tk">On</a>;</td></tr>
+<td>337</td><td>  *<a id="337c4" class="tk">arg_Out6</a> = <a id="337c15" class="tk">rtP</a>.<a id="337c19" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="338" id="338">
 <td>338</td><td></td></tr>
 <tr name="339" id="339">
-<td>339</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="339">&lt;Root&gt;/Out4</a>' incorporates:</span></td></tr>
+<td>339</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="339">&lt;Root&gt;/Out7</a>' incorporates:</span></td></tr>
 <tr name="340" id="340">
-<td>340</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="340">&lt;Root&gt;/Constant4</a>'</span></td></tr>
+<td>340</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="340">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="341" id="341">
 <td>341</td><td><span class="ct">   */</span></td></tr>
 <tr name="342" id="342">
-<td>342</td><td>  *<a id="342c4" class="tk">arg_Out4</a> = <a id="342c15" class="tk">Halt</a>;</td></tr>
+<td>342</td><td>  *<a id="342c4" class="tk">arg_Out7</a> = <a id="342c15" class="tk">rtP</a>.<a id="342c19" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="343" id="343">
 <td>343</td><td></td></tr>
 <tr name="344" id="344">
-<td>344</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="344">&lt;Root&gt;/Out5</a>' incorporates:</span></td></tr>
+<td>344</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="344">&lt;Root&gt;/Out8</a>' incorporates:</span></td></tr>
 <tr name="345" id="345">
-<td>345</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="345">&lt;Root&gt;/Constant5</a>'</span></td></tr>
+<td>345</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="345">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="346" id="346">
 <td>346</td><td><span class="ct">   */</span></td></tr>
 <tr name="347" id="347">
-<td>347</td><td>  *<a id="347c4" class="tk">arg_Out5</a> = <a id="347c15" class="tk">Fault</a>;</td></tr>
+<td>347</td><td>  *<a id="347c4" class="tk">arg_Out8</a> = <a id="347c15" class="tk">rtP</a>.<a id="347c19" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="348" id="348">
 <td>348</td><td></td></tr>
 <tr name="349" id="349">
-<td>349</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="349">&lt;Root&gt;/Out6</a>' incorporates:</span></td></tr>
+<td>349</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="349">&lt;Root&gt;/Out9</a>' incorporates:</span></td></tr>
 <tr name="350" id="350">
 <td>350</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="350">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="351" id="351">
 <td>351</td><td><span class="ct">   */</span></td></tr>
 <tr name="352" id="352">
-<td>352</td><td>  *<a id="352c4" class="tk">arg_Out6</a> = <a id="352c15" class="tk">rtP</a>.<a id="352c19" class="tk">Constant_Value_c</a>;</td></tr>
+<td>352</td><td>  *<a id="352c4" class="tk">arg_Out9</a> = <a id="352c15" class="tk">rtP</a>.<a id="352c19" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="353" id="353">
 <td>353</td><td></td></tr>
 <tr name="354" id="354">
-<td>354</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="354">&lt;Root&gt;/Out7</a>' incorporates:</span></td></tr>
+<td>354</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="354">&lt;Root&gt;/Out10</a>' incorporates:</span></td></tr>
 <tr name="355" id="355">
 <td>355</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="355">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="356" id="356">
 <td>356</td><td><span class="ct">   */</span></td></tr>
 <tr name="357" id="357">
-<td>357</td><td>  *<a id="357c4" class="tk">arg_Out7</a> = <a id="357c15" class="tk">rtP</a>.<a id="357c19" class="tk">Constant_Value_c</a>;</td></tr>
+<td>357</td><td>  *<a id="357c4" class="tk">arg_Out10</a> = <a id="357c16" class="tk">rtP</a>.<a id="357c20" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="358" id="358">
 <td>358</td><td></td></tr>
 <tr name="359" id="359">
-<td>359</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="359">&lt;Root&gt;/Out8</a>' incorporates:</span></td></tr>
+<td>359</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="359">&lt;Root&gt;/Out11</a>' incorporates:</span></td></tr>
 <tr name="360" id="360">
 <td>360</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="360">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="361" id="361">
 <td>361</td><td><span class="ct">   */</span></td></tr>
 <tr name="362" id="362">
-<td>362</td><td>  *<a id="362c4" class="tk">arg_Out8</a> = <a id="362c15" class="tk">rtP</a>.<a id="362c19" class="tk">Constant_Value_c</a>;</td></tr>
+<td>362</td><td>  *<a id="362c4" class="tk">arg_Out11</a> = <a id="362c16" class="tk">rtP</a>.<a id="362c20" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="363" id="363">
 <td>363</td><td></td></tr>
 <tr name="364" id="364">
-<td>364</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="364">&lt;Root&gt;/Out9</a>' incorporates:</span></td></tr>
+<td>364</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="364">&lt;Root&gt;/Out12</a>' incorporates:</span></td></tr>
 <tr name="365" id="365">
 <td>365</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="365">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="366" id="366">
 <td>366</td><td><span class="ct">   */</span></td></tr>
 <tr name="367" id="367">
-<td>367</td><td>  *<a id="367c4" class="tk">arg_Out9</a> = <a id="367c15" class="tk">rtP</a>.<a id="367c19" class="tk">Constant_Value_c</a>;</td></tr>
+<td>367</td><td>  *<a id="367c4" class="tk">arg_Out12</a> = <a id="367c16" class="tk">rtP</a>.<a id="367c20" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="368" id="368">
 <td>368</td><td></td></tr>
 <tr name="369" id="369">
-<td>369</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="369">&lt;Root&gt;/Out10</a>' incorporates:</span></td></tr>
+<td>369</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="369">&lt;Root&gt;/Out13</a>' incorporates:</span></td></tr>
 <tr name="370" id="370">
 <td>370</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="370">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="371" id="371">
 <td>371</td><td><span class="ct">   */</span></td></tr>
 <tr name="372" id="372">
-<td>372</td><td>  *<a id="372c4" class="tk">arg_Out10</a> = <a id="372c16" class="tk">rtP</a>.<a id="372c20" class="tk">Constant_Value_c</a>;</td></tr>
+<td>372</td><td>  *<a id="372c4" class="tk">arg_Out13</a> = <a id="372c16" class="tk">rtP</a>.<a id="372c20" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="373" id="373">
 <td>373</td><td></td></tr>
 <tr name="374" id="374">
-<td>374</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="374">&lt;Root&gt;/Out11</a>' incorporates:</span></td></tr>
+<td>374</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="374">&lt;Root&gt;/Out14</a>' incorporates:</span></td></tr>
 <tr name="375" id="375">
 <td>375</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="375">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="376" id="376">
 <td>376</td><td><span class="ct">   */</span></td></tr>
 <tr name="377" id="377">
-<td>377</td><td>  *<a id="377c4" class="tk">arg_Out11</a> = <a id="377c16" class="tk">rtP</a>.<a id="377c20" class="tk">Constant_Value_c</a>;</td></tr>
+<td>377</td><td>  *<a id="377c4" class="tk">arg_Out14</a> = <a id="377c16" class="tk">rtP</a>.<a id="377c20" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="378" id="378">
 <td>378</td><td></td></tr>
 <tr name="379" id="379">
-<td>379</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="379">&lt;Root&gt;/Out12</a>' incorporates:</span></td></tr>
+<td>379</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="379">&lt;Root&gt;/Out15</a>' incorporates:</span></td></tr>
 <tr name="380" id="380">
 <td>380</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="380">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="381" id="381">
 <td>381</td><td><span class="ct">   */</span></td></tr>
 <tr name="382" id="382">
-<td>382</td><td>  *<a id="382c4" class="tk">arg_Out12</a> = <a id="382c16" class="tk">rtP</a>.<a id="382c20" class="tk">Constant_Value_c</a>;</td></tr>
+<td>382</td><td>  *<a id="382c4" class="tk">arg_Out15</a> = <a id="382c16" class="tk">rtP</a>.<a id="382c20" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="383" id="383">
 <td>383</td><td></td></tr>
 <tr name="384" id="384">
-<td>384</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="384">&lt;Root&gt;/Out13</a>' incorporates:</span></td></tr>
+<td>384</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="384">&lt;Root&gt;/Out16</a>' incorporates:</span></td></tr>
 <tr name="385" id="385">
 <td>385</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="385">&lt;Root&gt;/Constant</a>'</span></td></tr>
 <tr name="386" id="386">
 <td>386</td><td><span class="ct">   */</span></td></tr>
 <tr name="387" id="387">
-<td>387</td><td>  *<a id="387c4" class="tk">arg_Out13</a> = <a id="387c16" class="tk">rtP</a>.<a id="387c20" class="tk">Constant_Value_c</a>;</td></tr>
+<td>387</td><td>  *<a id="387c4" class="tk">arg_Out16</a> = <a id="387c16" class="tk">rtP</a>.<a id="387c20" class="tk">Constant_Value_c</a>;</td></tr>
 <tr name="388" id="388">
 <td>388</td><td></td></tr>
 <tr name="389" id="389">
-<td>389</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="389">&lt;Root&gt;/Out14</a>' incorporates:</span></td></tr>
+<td>389</td><td>  <span class="ct">/* DataTypeConversion: '<a class="ct blk" blk_line="389">&lt;S4&gt;/DataTypeConv1</a>' */</span></td></tr>
 <tr name="390" id="390">
-<td>390</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="390">&lt;Root&gt;/Constant</a>'</span></td></tr>
+<td>390</td><td>  <span class="kw">if</span> (<a id="390c7" class="tk">rtb_SignDeltaU</a> &lt; 128.0) <span class="br">{</span></td></tr>
 <tr name="391" id="391">
-<td>391</td><td><span class="ct">   */</span></td></tr>
+<td>391</td><td>    <a id="391c5" class="tk">rtb_SignDeltaU_1</a> = (<a id="391c25" class="tk">int8_T</a>)<a id="391c32" class="tk">rtb_SignDeltaU</a>;</td></tr>
 <tr name="392" id="392">
-<td>392</td><td>  *<a id="392c4" class="tk">arg_Out14</a> = <a id="392c16" class="tk">rtP</a>.<a id="392c20" class="tk">Constant_Value_c</a>;</td></tr>
+<td>392</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="393" id="393">
-<td>393</td><td></td></tr>
+<td>393</td><td>    <a id="393c5" class="tk">rtb_SignDeltaU_1</a> = <a id="393c24" class="tk">MAX_int8_T</a>;</td></tr>
 <tr name="394" id="394">
-<td>394</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="394">&lt;Root&gt;/Out15</a>' incorporates:</span></td></tr>
+<td>394</td><td>  <span class="br">}</span></td></tr>
 <tr name="395" id="395">
-<td>395</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="395">&lt;Root&gt;/Constant</a>'</span></td></tr>
+<td>395</td><td></td></tr>
 <tr name="396" id="396">
-<td>396</td><td><span class="ct">   */</span></td></tr>
+<td>396</td><td>  <span class="ct">/* End of DataTypeConversion: '<a class="ct blk" blk_line="396">&lt;S4&gt;/DataTypeConv1</a>' */</span></td></tr>
 <tr name="397" id="397">
-<td>397</td><td>  *<a id="397c4" class="tk">arg_Out15</a> = <a id="397c16" class="tk">rtP</a>.<a id="397c20" class="tk">Constant_Value_c</a>;</td></tr>
+<td>397</td><td></td></tr>
 <tr name="398" id="398">
-<td>398</td><td></td></tr>
+<td>398</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="398">&lt;S4&gt;/SignPreIntegrator</a>' */</span></td></tr>
 <tr name="399" id="399">
-<td>399</td><td>  <span class="ct">/* Outport: '<a class="ct blk" blk_line="399">&lt;Root&gt;/Out16</a>' incorporates:</span></td></tr>
+<td>399</td><td>  <span class="kw">if</span> (<a id="399c7" class="tk">rtb_IntegralGain</a> &lt; 0.0) <span class="br">{</span></td></tr>
 <tr name="400" id="400">
-<td>400</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="400">&lt;Root&gt;/Constant</a>'</span></td></tr>
+<td>400</td><td>    <a id="400c5" class="tk">rtb_ZeroGain</a> = -1.0;</td></tr>
 <tr name="401" id="401">
-<td>401</td><td><span class="ct">   */</span></td></tr>
+<td>401</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="401c14" class="tk">rtb_IntegralGain</a> &gt; 0.0) <span class="br">{</span></td></tr>
 <tr name="402" id="402">
-<td>402</td><td>  *<a id="402c4" class="tk">arg_Out16</a> = <a id="402c16" class="tk">rtP</a>.<a id="402c20" class="tk">Constant_Value_c</a>;</td></tr>
+<td>402</td><td>    <a id="402c5" class="tk">rtb_ZeroGain</a> = 1.0;</td></tr>
 <tr name="403" id="403">
-<td>403</td><td></td></tr>
+<td>403</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="404" id="404">
-<td>404</td><td>  <span class="ct">/* DataTypeConversion: '<a class="ct blk" blk_line="404">&lt;S4&gt;/DataTypeConv1</a>' */</span></td></tr>
+<td>404</td><td>    <a id="404c5" class="tk">rtb_ZeroGain</a> = <a id="404c20" class="tk">rtb_IntegralGain</a>;</td></tr>
 <tr name="405" id="405">
-<td>405</td><td>  <span class="kw">if</span> (<a id="405c7" class="tk">rtb_SignDeltaU</a> &lt; 128.0) <span class="br">{</span></td></tr>
+<td>405</td><td>  <span class="br">}</span></td></tr>
 <tr name="406" id="406">
-<td>406</td><td>    <a id="406c5" class="tk">rtb_SignDeltaU_1</a> = (<a id="406c25" class="tk">int8_T</a>)<a id="406c32" class="tk">rtb_SignDeltaU</a>;</td></tr>
+<td>406</td><td></td></tr>
 <tr name="407" id="407">
-<td>407</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>407</td><td>  <span class="ct">/* Switch: '<a class="ct blk" blk_line="407">&lt;S2&gt;/Switch</a>' incorporates:</span></td></tr>
 <tr name="408" id="408">
-<td>408</td><td>    <a id="408c5" class="tk">rtb_SignDeltaU_1</a> = <a id="408c24" class="tk">MAX_int8_T</a>;</td></tr>
+<td>408</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="408">&lt;S2&gt;/Constant</a>'</span></td></tr>
 <tr name="409" id="409">
-<td>409</td><td>  <span class="br">}</span></td></tr>
+<td>409</td><td><span class="ct">   *  DataTypeConversion: '<a class="ct blk" blk_line="409">&lt;S4&gt;/DataTypeConv2</a>'</span></td></tr>
 <tr name="410" id="410">
-<td>410</td><td></td></tr>
+<td>410</td><td><span class="ct">   *  Logic: '<a class="ct blk" blk_line="410">&lt;S4&gt;/AND</a>'</span></td></tr>
 <tr name="411" id="411">
-<td>411</td><td>  <span class="ct">/* End of DataTypeConversion: '<a class="ct blk" blk_line="411">&lt;S4&gt;/DataTypeConv1</a>' */</span></td></tr>
+<td>411</td><td><span class="ct">   *  RelationalOperator: '<a class="ct blk" blk_line="411">&lt;S4&gt;/Equal</a>'</span></td></tr>
 <tr name="412" id="412">
-<td>412</td><td></td></tr>
+<td>412</td><td><span class="ct">   *  Signum: '<a class="ct blk" blk_line="412">&lt;S4&gt;/SignPreIntegrator</a>'</span></td></tr>
 <tr name="413" id="413">
-<td>413</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="413">&lt;S4&gt;/SignPreIntegrator</a>' */</span></td></tr>
+<td>413</td><td><span class="ct">   */</span></td></tr>
 <tr name="414" id="414">
-<td>414</td><td>  <span class="kw">if</span> (<a id="414c7" class="tk">rtb_IntegralGain</a> &lt; 0.0) <span class="br">{</span></td></tr>
+<td>414</td><td>  <span class="kw">if</span> (<a id="414c7" class="tk">rtb_NotEqual_f</a> &amp;&amp; (<a id="414c26" class="tk">rtb_SignDeltaU_1</a> == (<a id="414c47" class="tk">int8_T</a>)<a id="414c54" class="tk">rtb_ZeroGain</a>)) <span class="br">{</span></td></tr>
 <tr name="415" id="415">
-<td>415</td><td>    <a id="415c5" class="tk">rtb_ZeroGain</a> = -1.0;</td></tr>
+<td>415</td><td>    <a id="415c5" class="tk">rtb_IntegralGain</a> = <a id="415c24" class="tk">rtP</a>.<a id="415c28" class="tk">Constant_Value_i</a>;</td></tr>
 <tr name="416" id="416">
-<td>416</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="416c14" class="tk">rtb_IntegralGain</a> &gt; 0.0) <span class="br">{</span></td></tr>
+<td>416</td><td>  <span class="br">}</span></td></tr>
 <tr name="417" id="417">
-<td>417</td><td>    <a id="417c5" class="tk">rtb_ZeroGain</a> = 1.0;</td></tr>
+<td>417</td><td></td></tr>
 <tr name="418" id="418">
-<td>418</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>418</td><td>  <span class="ct">/* End of Switch: '<a class="ct blk" blk_line="418">&lt;S2&gt;/Switch</a>' */</span></td></tr>
 <tr name="419" id="419">
-<td>419</td><td>    <a id="419c5" class="tk">rtb_ZeroGain</a> = <a id="419c20" class="tk">rtb_IntegralGain</a>;</td></tr>
+<td>419</td><td></td></tr>
 <tr name="420" id="420">
-<td>420</td><td>  <span class="br">}</span></td></tr>
+<td>420</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="420">&lt;S2&gt;/Integrator</a>' */</span></td></tr>
 <tr name="421" id="421">
-<td>421</td><td></td></tr>
+<td>421</td><td>  <a id="421c3" class="tk">rtDW</a>.<a id="421c8" class="tk">Integrator_DSTATE</a> += <a id="421c29" class="tk">rtP</a>.<a id="421c33" class="tk">Integrator_gainval</a> * <a id="421c54" class="tk">rtb_IntegralGain</a>;</td></tr>
 <tr name="422" id="422">
-<td>422</td><td>  <span class="ct">/* Switch: '<a class="ct blk" blk_line="422">&lt;S2&gt;/Switch</a>' incorporates:</span></td></tr>
+<td>422</td><td></td></tr>
 <tr name="423" id="423">
-<td>423</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="423">&lt;S2&gt;/Constant</a>'</span></td></tr>
+<td>423</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="423">&lt;S2&gt;/Filter</a>' */</span></td></tr>
 <tr name="424" id="424">
-<td>424</td><td><span class="ct">   *  DataTypeConversion: '<a class="ct blk" blk_line="424">&lt;S4&gt;/DataTypeConv2</a>'</span></td></tr>
+<td>424</td><td>  <a id="424c3" class="tk">rtDW</a>.<a id="424c8" class="tk">Filter_DSTATE</a> += <a id="424c25" class="tk">rtP</a>.<a id="424c29" class="tk">Filter_gainval</a> * <a id="424c46" class="tk">rtb_FilterCoefficient</a>;</td></tr>
 <tr name="425" id="425">
-<td>425</td><td><span class="ct">   *  Logic: '<a class="ct blk" blk_line="425">&lt;S4&gt;/AND</a>'</span></td></tr>
+<td>425</td><td></td></tr>
 <tr name="426" id="426">
-<td>426</td><td><span class="ct">   *  RelationalOperator: '<a class="ct blk" blk_line="426">&lt;S4&gt;/Equal</a>'</span></td></tr>
+<td>426</td><td>  <span class="ct">/* DataTypeConversion: '<a class="ct blk" blk_line="426">&lt;S3&gt;/DataTypeConv1</a>' */</span></td></tr>
 <tr name="427" id="427">
-<td>427</td><td><span class="ct">   *  Signum: '<a class="ct blk" blk_line="427">&lt;S4&gt;/SignPreIntegrator</a>'</span></td></tr>
+<td>427</td><td>  <span class="kw">if</span> (<a id="427c7" class="tk">rtb_SignDeltaU_o</a> &lt; 128.0) <span class="br">{</span></td></tr>
 <tr name="428" id="428">
-<td>428</td><td><span class="ct">   */</span></td></tr>
+<td>428</td><td>    <a id="428c5" class="tk">rtb_SignDeltaU_1</a> = (<a id="428c25" class="tk">int8_T</a>)<a id="428c32" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
 <tr name="429" id="429">
-<td>429</td><td>  <span class="kw">if</span> (<a id="429c7" class="tk">rtb_NotEqual_f</a> &amp;&amp; (<a id="429c26" class="tk">rtb_SignDeltaU_1</a> == (<a id="429c47" class="tk">int8_T</a>)<a id="429c54" class="tk">rtb_ZeroGain</a>)) <span class="br">{</span></td></tr>
+<td>429</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="430" id="430">
-<td>430</td><td>    <a id="430c5" class="tk">rtb_IntegralGain</a> = <a id="430c24" class="tk">rtP</a>.<a id="430c28" class="tk">Constant_Value_i</a>;</td></tr>
+<td>430</td><td>    <a id="430c5" class="tk">rtb_SignDeltaU_1</a> = <a id="430c24" class="tk">MAX_int8_T</a>;</td></tr>
 <tr name="431" id="431">
 <td>431</td><td>  <span class="br">}</span></td></tr>
 <tr name="432" id="432">
 <td>432</td><td></td></tr>
 <tr name="433" id="433">
-<td>433</td><td>  <span class="ct">/* End of Switch: '<a class="ct blk" blk_line="433">&lt;S2&gt;/Switch</a>' */</span></td></tr>
+<td>433</td><td>  <span class="ct">/* End of DataTypeConversion: '<a class="ct blk" blk_line="433">&lt;S3&gt;/DataTypeConv1</a>' */</span></td></tr>
 <tr name="434" id="434">
 <td>434</td><td></td></tr>
 <tr name="435" id="435">
-<td>435</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="435">&lt;S2&gt;/Integrator</a>' */</span></td></tr>
+<td>435</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="435">&lt;S3&gt;/SignPreIntegrator</a>' */</span></td></tr>
 <tr name="436" id="436">
-<td>436</td><td>  <a id="436c3" class="tk">rtDW</a>.<a id="436c8" class="tk">Integrator_DSTATE</a> += <a id="436c29" class="tk">rtP</a>.<a id="436c33" class="tk">Integrator_gainval</a> * <a id="436c54" class="tk">rtb_IntegralGain</a>;</td></tr>
+<td>436</td><td>  <span class="kw">if</span> (<a id="436c7" class="tk">rtb_IntegralGain_a</a> &lt; 0.0) <span class="br">{</span></td></tr>
 <tr name="437" id="437">
-<td>437</td><td></td></tr>
+<td>437</td><td>    <a id="437c5" class="tk">rtb_ZeroGain</a> = -1.0;</td></tr>
 <tr name="438" id="438">
-<td>438</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="438">&lt;S2&gt;/Filter</a>' */</span></td></tr>
+<td>438</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="438c14" class="tk">rtb_IntegralGain_a</a> &gt; 0.0) <span class="br">{</span></td></tr>
 <tr name="439" id="439">
-<td>439</td><td>  <a id="439c3" class="tk">rtDW</a>.<a id="439c8" class="tk">Filter_DSTATE</a> += <a id="439c25" class="tk">rtP</a>.<a id="439c29" class="tk">Filter_gainval</a> * <a id="439c46" class="tk">rtb_FilterCoefficient</a>;</td></tr>
+<td>439</td><td>    <a id="439c5" class="tk">rtb_ZeroGain</a> = 1.0;</td></tr>
 <tr name="440" id="440">
-<td>440</td><td></td></tr>
+<td>440</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
 <tr name="441" id="441">
-<td>441</td><td>  <span class="ct">/* DataTypeConversion: '<a class="ct blk" blk_line="441">&lt;S3&gt;/DataTypeConv1</a>' */</span></td></tr>
+<td>441</td><td>    <a id="441c5" class="tk">rtb_ZeroGain</a> = <a id="441c20" class="tk">rtb_IntegralGain_a</a>;</td></tr>
 <tr name="442" id="442">
-<td>442</td><td>  <span class="kw">if</span> (<a id="442c7" class="tk">rtb_SignDeltaU_o</a> &lt; 128.0) <span class="br">{</span></td></tr>
+<td>442</td><td>  <span class="br">}</span></td></tr>
 <tr name="443" id="443">
-<td>443</td><td>    <a id="443c5" class="tk">rtb_SignDeltaU_1</a> = (<a id="443c25" class="tk">int8_T</a>)<a id="443c32" class="tk">rtb_SignDeltaU_o</a>;</td></tr>
+<td>443</td><td></td></tr>
 <tr name="444" id="444">
-<td>444</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>444</td><td>  <span class="ct">/* Switch: '<a class="ct blk" blk_line="444">&lt;S1&gt;/Switch</a>' incorporates:</span></td></tr>
 <tr name="445" id="445">
-<td>445</td><td>    <a id="445c5" class="tk">rtb_SignDeltaU_1</a> = <a id="445c24" class="tk">MAX_int8_T</a>;</td></tr>
+<td>445</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="445">&lt;S1&gt;/Constant</a>'</span></td></tr>
 <tr name="446" id="446">
-<td>446</td><td>  <span class="br">}</span></td></tr>
+<td>446</td><td><span class="ct">   *  DataTypeConversion: '<a class="ct blk" blk_line="446">&lt;S3&gt;/DataTypeConv2</a>'</span></td></tr>
 <tr name="447" id="447">
-<td>447</td><td></td></tr>
+<td>447</td><td><span class="ct">   *  Logic: '<a class="ct blk" blk_line="447">&lt;S3&gt;/AND</a>'</span></td></tr>
 <tr name="448" id="448">
-<td>448</td><td>  <span class="ct">/* End of DataTypeConversion: '<a class="ct blk" blk_line="448">&lt;S3&gt;/DataTypeConv1</a>' */</span></td></tr>
+<td>448</td><td><span class="ct">   *  RelationalOperator: '<a class="ct blk" blk_line="448">&lt;S3&gt;/Equal</a>'</span></td></tr>
 <tr name="449" id="449">
-<td>449</td><td></td></tr>
+<td>449</td><td><span class="ct">   *  Signum: '<a class="ct blk" blk_line="449">&lt;S3&gt;/SignPreIntegrator</a>'</span></td></tr>
 <tr name="450" id="450">
-<td>450</td><td>  <span class="ct">/* Signum: '<a class="ct blk" blk_line="450">&lt;S3&gt;/SignPreIntegrator</a>' */</span></td></tr>
+<td>450</td><td><span class="ct">   */</span></td></tr>
 <tr name="451" id="451">
-<td>451</td><td>  <span class="kw">if</span> (<a id="451c7" class="tk">rtb_IntegralGain_a</a> &lt; 0.0) <span class="br">{</span></td></tr>
+<td>451</td><td>  <span class="kw">if</span> (<a id="451c7" class="tk">rtb_NotEqual</a> &amp;&amp; (<a id="451c24" class="tk">rtb_SignDeltaU_1</a> == (<a id="451c45" class="tk">int8_T</a>)<a id="451c52" class="tk">rtb_ZeroGain</a>)) <span class="br">{</span></td></tr>
 <tr name="452" id="452">
-<td>452</td><td>    <a id="452c5" class="tk">rtb_ZeroGain</a> = -1.0;</td></tr>
+<td>452</td><td>    <a id="452c5" class="tk">rtb_IntegralGain_a</a> = <a id="452c26" class="tk">rtP</a>.<a id="452c30" class="tk">Constant_Value</a>;</td></tr>
 <tr name="453" id="453">
-<td>453</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="453c14" class="tk">rtb_IntegralGain_a</a> &gt; 0.0) <span class="br">{</span></td></tr>
+<td>453</td><td>  <span class="br">}</span></td></tr>
 <tr name="454" id="454">
-<td>454</td><td>    <a id="454c5" class="tk">rtb_ZeroGain</a> = 1.0;</td></tr>
+<td>454</td><td></td></tr>
 <tr name="455" id="455">
-<td>455</td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="br">{</span></td></tr>
+<td>455</td><td>  <span class="ct">/* End of Switch: '<a class="ct blk" blk_line="455">&lt;S1&gt;/Switch</a>' */</span></td></tr>
 <tr name="456" id="456">
-<td>456</td><td>    <a id="456c5" class="tk">rtb_ZeroGain</a> = <a id="456c20" class="tk">rtb_IntegralGain_a</a>;</td></tr>
+<td>456</td><td></td></tr>
 <tr name="457" id="457">
-<td>457</td><td>  <span class="br">}</span></td></tr>
+<td>457</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="457">&lt;S1&gt;/Integrator</a>' */</span></td></tr>
 <tr name="458" id="458">
-<td>458</td><td></td></tr>
+<td>458</td><td>  <a id="458c3" class="tk">rtDW</a>.<a id="458c8" class="tk">Integrator_DSTATE_l</a> += <a id="458c31" class="tk">rtP</a>.<a id="458c35" class="tk">Integrator_gainval_b</a> * <a id="458c58" class="tk">rtb_IntegralGain_a</a>;</td></tr>
 <tr name="459" id="459">
-<td>459</td><td>  <span class="ct">/* Switch: '<a class="ct blk" blk_line="459">&lt;S1&gt;/Switch</a>' incorporates:</span></td></tr>
+<td>459</td><td></td></tr>
 <tr name="460" id="460">
-<td>460</td><td><span class="ct">   *  Constant: '<a class="ct blk" blk_line="460">&lt;S1&gt;/Constant</a>'</span></td></tr>
+<td>460</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="460">&lt;S1&gt;/Filter</a>' */</span></td></tr>
 <tr name="461" id="461">
-<td>461</td><td><span class="ct">   *  DataTypeConversion: '<a class="ct blk" blk_line="461">&lt;S3&gt;/DataTypeConv2</a>'</span></td></tr>
+<td>461</td><td>  <a id="461c3" class="tk">rtDW</a>.<a id="461c8" class="tk">Filter_DSTATE_m</a> += <a id="461c27" class="tk">rtP</a>.<a id="461c31" class="tk">Filter_gainval_i</a> * <a id="461c50" class="tk">rtb_FilterCoefficient_n</a>;</td></tr>
 <tr name="462" id="462">
-<td>462</td><td><span class="ct">   *  Logic: '<a class="ct blk" blk_line="462">&lt;S3&gt;/AND</a>'</span></td></tr>
+<td>462</td><td><span class="br">}</span></td></tr>
 <tr name="463" id="463">
-<td>463</td><td><span class="ct">   *  RelationalOperator: '<a class="ct blk" blk_line="463">&lt;S3&gt;/Equal</a>'</span></td></tr>
+<td>463</td><td></td></tr>
 <tr name="464" id="464">
-<td>464</td><td><span class="ct">   *  Signum: '<a class="ct blk" blk_line="464">&lt;S3&gt;/SignPreIntegrator</a>'</span></td></tr>
+<td>464</td><td><span class="ct">/* Model initialize function */</span></td></tr>
 <tr name="465" id="465">
-<td>465</td><td><span class="ct">   */</span></td></tr>
+<td>465</td><td><span class="kw">void</span> <a id="465c6" class="tk">UniControlSystem_Init</a>(<span class="kw">void</span>)</td></tr>
 <tr name="466" id="466">
-<td>466</td><td>  <span class="kw">if</span> (<a id="466c7" class="tk">rtb_NotEqual</a> &amp;&amp; (<a id="466c24" class="tk">rtb_SignDeltaU_1</a> == (<a id="466c45" class="tk">int8_T</a>)<a id="466c52" class="tk">rtb_ZeroGain</a>)) <span class="br">{</span></td></tr>
+<td>466</td><td><span class="br">{</span></td></tr>
 <tr name="467" id="467">
-<td>467</td><td>    <a id="467c5" class="tk">rtb_IntegralGain_a</a> = <a id="467c26" class="tk">rtP</a>.<a id="467c30" class="tk">Constant_Value</a>;</td></tr>
+<td>467</td><td>  <span class="ct">/* Registration code */</span></td></tr>
 <tr name="468" id="468">
-<td>468</td><td>  <span class="br">}</span></td></tr>
+<td>468</td><td></td></tr>
 <tr name="469" id="469">
-<td>469</td><td></td></tr>
+<td>469</td><td>  <span class="ct">/* initialize error status */</span></td></tr>
 <tr name="470" id="470">
-<td>470</td><td>  <span class="ct">/* End of Switch: '<a class="ct blk" blk_line="470">&lt;S1&gt;/Switch</a>' */</span></td></tr>
+<td>470</td><td>  <a id="470c3" class="tk">rtmSetErrorStatus</a>(<a id="470c21" class="tk">rtM</a>, (<a id="470c27" class="tk">NULL</a>));</td></tr>
 <tr name="471" id="471">
 <td>471</td><td></td></tr>
 <tr name="472" id="472">
-<td>472</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="472">&lt;S1&gt;/Integrator</a>' */</span></td></tr>
+<td>472</td><td>  <span class="ct">/* states (dwork) */</span></td></tr>
 <tr name="473" id="473">
-<td>473</td><td>  <a id="473c3" class="tk">rtDW</a>.<a id="473c8" class="tk">Integrator_DSTATE_l</a> += <a id="473c31" class="tk">rtP</a>.<a id="473c35" class="tk">Integrator_gainval_b</a> * <a id="473c58" class="tk">rtb_IntegralGain_a</a>;</td></tr>
+<td>473</td><td>  (<span class="kw">void</span>) <a id="473c10" class="tk">memset</a>((<span class="kw">void</span> *)&amp;<a id="473c26" class="tk">rtDW</a>, 0,</td></tr>
 <tr name="474" id="474">
-<td>474</td><td></td></tr>
+<td>474</td><td>                <span class="kw">sizeof</span>(<a id="474c24" class="tk">DW</a>));</td></tr>
 <tr name="475" id="475">
-<td>475</td><td>  <span class="ct">/* Update for DiscreteIntegrator: '<a class="ct blk" blk_line="475">&lt;S1&gt;/Filter</a>' */</span></td></tr>
+<td>475</td><td></td></tr>
 <tr name="476" id="476">
-<td>476</td><td>  <a id="476c3" class="tk">rtDW</a>.<a id="476c8" class="tk">Filter_DSTATE_m</a> += <a id="476c27" class="tk">rtP</a>.<a id="476c31" class="tk">Filter_gainval_i</a> * <a id="476c50" class="tk">rtb_FilterCoefficient_n</a>;</td></tr>
+<td>476</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="476">&lt;S2&gt;/Integrator</a>' */</span></td></tr>
 <tr name="477" id="477">
-<td>477</td><td><span class="br">}</span></td></tr>
+<td>477</td><td>  <a id="477c3" class="tk">rtDW</a>.<a id="477c8" class="tk">Integrator_DSTATE</a> = <a id="477c28" class="tk">rtP</a>.<a id="477c32" class="tk">Integrator_IC</a>;</td></tr>
 <tr name="478" id="478">
 <td>478</td><td></td></tr>
 <tr name="479" id="479">
-<td>479</td><td><span class="ct">/* Model initialize function */</span></td></tr>
+<td>479</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="479">&lt;S2&gt;/Filter</a>' */</span></td></tr>
 <tr name="480" id="480">
-<td>480</td><td><span class="kw">void</span> <a id="480c6" class="tk">UniControlSystem_Init</a>(<span class="kw">void</span>)</td></tr>
+<td>480</td><td>  <a id="480c3" class="tk">rtDW</a>.<a id="480c8" class="tk">Filter_DSTATE</a> = <a id="480c24" class="tk">rtP</a>.<a id="480c28" class="tk">Filter_IC</a>;</td></tr>
 <tr name="481" id="481">
-<td>481</td><td><span class="br">{</span></td></tr>
+<td>481</td><td></td></tr>
 <tr name="482" id="482">
-<td>482</td><td>  <span class="ct">/* Registration code */</span></td></tr>
+<td>482</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="482">&lt;S1&gt;/Integrator</a>' */</span></td></tr>
 <tr name="483" id="483">
-<td>483</td><td></td></tr>
+<td>483</td><td>  <a id="483c3" class="tk">rtDW</a>.<a id="483c8" class="tk">Integrator_DSTATE_l</a> = <a id="483c30" class="tk">rtP</a>.<a id="483c34" class="tk">Integrator_IC_m</a>;</td></tr>
 <tr name="484" id="484">
-<td>484</td><td>  <span class="ct">/* initialize error status */</span></td></tr>
+<td>484</td><td></td></tr>
 <tr name="485" id="485">
-<td>485</td><td>  <a id="485c3" class="tk">rtmSetErrorStatus</a>(<a id="485c21" class="tk">rtM</a>, (<a id="485c27" class="tk">NULL</a>));</td></tr>
+<td>485</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="485">&lt;S1&gt;/Filter</a>' */</span></td></tr>
 <tr name="486" id="486">
-<td>486</td><td></td></tr>
+<td>486</td><td>  <a id="486c3" class="tk">rtDW</a>.<a id="486c8" class="tk">Filter_DSTATE_m</a> = <a id="486c26" class="tk">rtP</a>.<a id="486c30" class="tk">Filter_IC_k</a>;</td></tr>
 <tr name="487" id="487">
-<td>487</td><td>  <span class="ct">/* states (dwork) */</span></td></tr>
+<td>487</td><td><span class="br">}</span></td></tr>
 <tr name="488" id="488">
-<td>488</td><td>  (<span class="kw">void</span>) <a id="488c10" class="tk">memset</a>((<span class="kw">void</span> *)&amp;<a id="488c26" class="tk">rtDW</a>, 0,</td></tr>
+<td>488</td><td></td></tr>
 <tr name="489" id="489">
-<td>489</td><td>                <span class="kw">sizeof</span>(<a id="489c24" class="tk">DW</a>));</td></tr>
+<td>489</td><td><span class="ct">/*</span></td></tr>
 <tr name="490" id="490">
-<td>490</td><td></td></tr>
+<td>490</td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
 <tr name="491" id="491">
-<td>491</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="491">&lt;S2&gt;/Integrator</a>' */</span></td></tr>
+<td>491</td><td><span class="ct"> *</span></td></tr>
 <tr name="492" id="492">
-<td>492</td><td>  <a id="492c3" class="tk">rtDW</a>.<a id="492c8" class="tk">Integrator_DSTATE</a> = <a id="492c28" class="tk">rtP</a>.<a id="492c32" class="tk">Integrator_IC</a>;</td></tr>
+<td>492</td><td><span class="ct"> * [EOF]</span></td></tr>
 <tr name="493" id="493">
-<td>493</td><td></td></tr>
+<td>493</td><td><span class="ct"> */</span></td></tr>
 <tr name="494" id="494">
-<td>494</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="494">&lt;S2&gt;/Filter</a>' */</span></td></tr>
-<tr name="495" id="495">
-<td>495</td><td>  <a id="495c3" class="tk">rtDW</a>.<a id="495c8" class="tk">Filter_DSTATE</a> = <a id="495c24" class="tk">rtP</a>.<a id="495c28" class="tk">Filter_IC</a>;</td></tr>
-<tr name="496" id="496">
-<td>496</td><td></td></tr>
-<tr name="497" id="497">
-<td>497</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="497">&lt;S1&gt;/Integrator</a>' */</span></td></tr>
-<tr name="498" id="498">
-<td>498</td><td>  <a id="498c3" class="tk">rtDW</a>.<a id="498c8" class="tk">Integrator_DSTATE_l</a> = <a id="498c30" class="tk">rtP</a>.<a id="498c34" class="tk">Integrator_IC_m</a>;</td></tr>
-<tr name="499" id="499">
-<td>499</td><td></td></tr>
-<tr name="500" id="500">
-<td>500</td><td>  <span class="ct">/* InitializeConditions for DiscreteIntegrator: '<a class="ct blk" blk_line="500">&lt;S1&gt;/Filter</a>' */</span></td></tr>
-<tr name="501" id="501">
-<td>501</td><td>  <a id="501c3" class="tk">rtDW</a>.<a id="501c8" class="tk">Filter_DSTATE_m</a> = <a id="501c26" class="tk">rtP</a>.<a id="501c30" class="tk">Filter_IC_k</a>;</td></tr>
-<tr name="502" id="502">
-<td>502</td><td><span class="br">}</span></td></tr>
-<tr name="503" id="503">
-<td>503</td><td></td></tr>
-<tr name="504" id="504">
-<td>504</td><td><span class="ct">/*</span></td></tr>
-<tr name="505" id="505">
-<td>505</td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
-<tr name="506" id="506">
-<td>506</td><td><span class="ct"> *</span></td></tr>
-<tr name="507" id="507">
-<td>507</td><td><span class="ct"> * [EOF]</span></td></tr>
-<tr name="508" id="508">
-<td>508</td><td><span class="ct"> */</span></td></tr>
-<tr name="509" id="509">
-<td>509</td><td></td></tr>
+<td>494</td><td></td></tr>
 </table>
 </pre>
 </body>

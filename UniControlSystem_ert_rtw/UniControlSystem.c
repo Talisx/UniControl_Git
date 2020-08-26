@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.56
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Wed Aug 26 11:51:28 2020
+ * C/C++ source code generated on : Wed Aug 26 13:41:54 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -16,15 +16,6 @@
 #include "UniControlSystem.h"
 
 /* Exported block parameters */
-real_T Fault = 0.0;                    /* Variable: Fault
-                                        * Referenced by: '<Root>/Constant5'
-                                        */
-real_T Halt = 0.0;                     /* Variable: Halt
-                                        * Referenced by: '<Root>/Constant4'
-                                        */
-real_T On = 0.0;                       /* Variable: On
-                                        * Referenced by: '<Root>/Constant3'
-                                        */
 real_T Phi_PID_D = 0.0;                /* Variable: Phi_PID_D
                                         * Referenced by: '<S1>/Derivative Gain'
                                         */
@@ -331,20 +322,14 @@ void UniControlSystem_Step(real_T arg_In1, real_T arg_In2, real_T arg_In3,
    */
   *arg_Out2 = Strom;
 
-  /* Outport: '<Root>/Out3' incorporates:
-   *  Constant: '<Root>/Constant3'
-   */
-  *arg_Out3 = On;
+  /* Outport: '<Root>/Out3' */
+  *arg_Out3 = 0.0;
 
-  /* Outport: '<Root>/Out4' incorporates:
-   *  Constant: '<Root>/Constant4'
-   */
-  *arg_Out4 = Halt;
+  /* Outport: '<Root>/Out4' */
+  *arg_Out4 = 0.0;
 
-  /* Outport: '<Root>/Out5' incorporates:
-   *  Constant: '<Root>/Constant5'
-   */
-  *arg_Out5 = Fault;
+  /* Outport: '<Root>/Out5' */
+  *arg_Out5 = 0.0;
 
   /* Outport: '<Root>/Out6' incorporates:
    *  Constant: '<Root>/Constant'
