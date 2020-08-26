@@ -53,6 +53,8 @@ int Nachrichten_prüfer1 = 0;
 //Torstens Variablen(Kimmer Teil)
 int32_t vorherigerStrom = 0;
 int32_t aktuellerStrom = 0;
+int start_Motor = 0;
+int16_t CurrentModeSettingValue = 500;
 
 
 /* Global variables */
@@ -120,8 +122,6 @@ void TaskIdle(void)
 
 
 	//Teil von Kimmer!!!
-
-	int16_t CurrentModeSettingValue = 500;
 	//User State to enable EPOS
 
 	switch(cUser_State)
