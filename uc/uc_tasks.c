@@ -50,6 +50,9 @@ bool Data_ValidWinkel = true;
 int Nachricht_prüfer = 0;
 int Nachrichten_prüfer1 = 0;
 
+int32_t vorherigerStrom = 0;
+int32_t aktuellerStrom = 0;
+
 
 /* Global variables */
 static char cUser_State = 0; //User state machine
@@ -119,6 +122,7 @@ void TaskIdle(void)
 
 	int16_t CurrentModeSettingValue = 500;
 	//User State to enable EPOS
+
 	switch(cUser_State)
 	    {
 	    // EPOS disables
@@ -136,7 +140,9 @@ void TaskIdle(void)
 	            char ch[2];
 	            printf("EPOS disabled\nPress 1 to enable\n");
 	           // fgets(&cUser_State, 2, stdin);
-	            fgets(&ch, 2, stdin);
+	            //muss rein, der obere teil jedoch nicht
+	           // fgets(&ch, 2, stdin);
+	            ch[0] = '1';
 	            cUser_State = ch[0];
 	            //console input state machine
 	            break;
@@ -152,7 +158,7 @@ void TaskIdle(void)
 	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	            printf("EPOS enabled\n");
 	            cUser_State++;
-	        break;
+	            break;
 	        case 3:
 	            //Current Mode
 	            pack(WRITING_SEND, MODES_OF_OPERATION, 0,DIGITAL_CURRENT);
@@ -165,7 +171,7 @@ void TaskIdle(void)
 	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	            printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
 	            cUser_State++;
-	        break;
+	            break;
 	    }
 
 	// Check if CAN message object 2 has new data.
@@ -883,6 +889,28 @@ void Task10ms(void)
 							&ModelOutput[8],  &ModelOutput[9],  &ModelOutput[10], &ModelOutput[11],
 							&ModelOutput[12], &ModelOutput[13], &ModelOutput[14], &ModelOutput[15]);
 
+
+	aktuellerStrom = (int32_t)Strom;
+	/*
+	if (aktuellerStrom == vorherigerStrom)
+	{
+	    // nix ändern
+	}
+	else
+	{
+	    if(aktuellerStrom < 0)
+	    {
+	        aktuellerStrom = 0;
+	    }
+	    elseif(aktuellerStrom > 1000)
+	    {
+	        aktuellerStrom = 1000;
+	    }
+	    // wert neu senden
+	    vorherigerStrom = aktuellerStrom;
+	    //printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
+	}
+    */
 	/* Copy values from model output vector to DAC values using the respective dynamic range */
 
 	/* Raus weil keine Ausgänge benötigt
@@ -978,7 +1006,7 @@ void Task100ms(void)
 	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
 	                break;
 	                */
-	        /*
+	/*
 	        case 0: pack(READING_SEND, NUMBER_OF_ERRORS,ERROR_HISTORY_1, 0);
 	                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                ui8State++;
@@ -1103,7 +1131,7 @@ void Task100ms(void)
 	                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx,MSG_OBJ_TYPE_TX);
 	                 ui8State=0;
 	                 break;
-	                 */
+	                        */
 	    }
 	return;
 }

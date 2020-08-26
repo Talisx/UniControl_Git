@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'UniControlSystem'.
  *
- * Model version                  : 1.55
+ * Model version                  : 1.56
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Thu Aug 06 11:54:25 2020
+ * C/C++ source code generated on : Wed Aug 26 11:51:28 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -16,6 +16,15 @@
 #include "UniControlSystem.h"
 
 /* Exported block parameters */
+real_T Fault = 0.0;                    /* Variable: Fault
+                                        * Referenced by: '<Root>/Constant5'
+                                        */
+real_T Halt = 0.0;                     /* Variable: Halt
+                                        * Referenced by: '<Root>/Constant4'
+                                        */
+real_T On = 0.0;                       /* Variable: On
+                                        * Referenced by: '<Root>/Constant3'
+                                        */
 real_T Phi_PID_D = 0.0;                /* Variable: Phi_PID_D
                                         * Referenced by: '<S1>/Derivative Gain'
                                         */
@@ -27,6 +36,9 @@ real_T Phi_PID_P = 0.0;                /* Variable: Phi_PID_P
                                         */
 real_T Position = 0.0;                 /* Variable: Position
                                         * Referenced by: '<Root>/Constant1'
+                                        */
+real_T Strom = 5.0;                    /* Variable: Strom
+                                        * Referenced by: '<Root>/Constant2'
                                         */
 real_T x_PID_D = 0.0;                  /* Variable: x_PID_D
                                         * Referenced by: '<S2>/Derivative Gain'
@@ -315,24 +327,24 @@ void UniControlSystem_Step(real_T arg_In1, real_T arg_In2, real_T arg_In3,
   rtb_IntegralGain *= x_PID_I;
 
   /* Outport: '<Root>/Out2' incorporates:
-   *  Constant: '<Root>/Constant'
+   *  Constant: '<Root>/Constant2'
    */
-  *arg_Out2 = rtP.Constant_Value_c;
+  *arg_Out2 = Strom;
 
   /* Outport: '<Root>/Out3' incorporates:
-   *  Constant: '<Root>/Constant'
+   *  Constant: '<Root>/Constant3'
    */
-  *arg_Out3 = rtP.Constant_Value_c;
+  *arg_Out3 = On;
 
   /* Outport: '<Root>/Out4' incorporates:
-   *  Constant: '<Root>/Constant'
+   *  Constant: '<Root>/Constant4'
    */
-  *arg_Out4 = rtP.Constant_Value_c;
+  *arg_Out4 = Halt;
 
   /* Outport: '<Root>/Out5' incorporates:
-   *  Constant: '<Root>/Constant'
+   *  Constant: '<Root>/Constant5'
    */
-  *arg_Out5 = rtP.Constant_Value_c;
+  *arg_Out5 = Fault;
 
   /* Outport: '<Root>/Out6' incorporates:
    *  Constant: '<Root>/Constant'

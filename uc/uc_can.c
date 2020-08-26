@@ -186,6 +186,12 @@ void CAN0IntHandler(void)
 		            Data_ValidEnco = true;
 		            break;
 
+		case 6:     CANIntClear(CAN0_BASE, 6);
+                    // Set the RX flag register.
+		            //um die Auswertung extern zu machen
+		            ui32CanRxFlags = (ui32CanRxFlags | 0b10);
+		            break;
+
 		/*pending status error */
 		case 32768: CANIntClear(CAN0_BASE, CAN_INT_INTID_STATUS);
 		          //  printf("Status Error \n");

@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'UniControlSystem'.
  *
- * Model version                  : 1.55
+ * Model version                  : 1.56
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Thu Aug 06 11:54:25 2020
+ * C/C++ source code generated on : Wed Aug 26 11:51:28 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -132,6 +132,15 @@ extern DW rtDW;
  * these parameters and exports their symbols.
  *
  */
+extern real_T Fault;                   /* Variable: Fault
+                                        * Referenced by: '<Root>/Constant5'
+                                        */
+extern real_T Halt;                    /* Variable: Halt
+                                        * Referenced by: '<Root>/Constant4'
+                                        */
+extern real_T On;                      /* Variable: On
+                                        * Referenced by: '<Root>/Constant3'
+                                        */
 extern real_T Phi_PID_D;               /* Variable: Phi_PID_D
                                         * Referenced by: '<S1>/Derivative Gain'
                                         */
@@ -143,6 +152,9 @@ extern real_T Phi_PID_P;               /* Variable: Phi_PID_P
                                         */
 extern real_T Position;                /* Variable: Position
                                         * Referenced by: '<Root>/Constant1'
+                                        */
+extern real_T Strom;                   /* Variable: Strom
+                                        * Referenced by: '<Root>/Constant2'
                                         */
 extern real_T x_PID_D;                 /* Variable: x_PID_D
                                         * Referenced by: '<S2>/Derivative Gain'

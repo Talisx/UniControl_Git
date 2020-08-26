@@ -8,8 +8,9 @@
 #ifndef UC_UC_CAN_H_
 #define UC_UC_CAN_H_
 
+//250000
 //hier stand vorher 1000000
-#define CAN0_BAUDRATE	250000
+#define CAN0_BAUDRATE	1000000
 
 //Can data buffers for RX and TX
 uint8_t				pui8TxBuffer[8];
