@@ -120,60 +120,49 @@ void TaskIdle(void)
 
 	DSXCP_background();
 
-
 	//Teil von Kimmer!!!
 	//User State to enable EPOS
+	/* if(Var == 1 && Var1 == 0)
+	 {
+	     code zum initialisieren des Motors
+	     Var1 = 1;
 
-	switch(cUser_State)
-	    {
-	    // EPOS disables
-	        case 0:
-	            //Fault reset
-	            pack(WRITING_SEND, CONTROL_WORD, 0,FAULT_RESET);
-	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-	            cUser_State = 1;
-	            break;
-	        case 1:
-	            //Shut down
-	            pack(WRITING_SEND, CONTROL_WORD, 0,SHUTDOWN);
-	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-	            //damit es keinen Pointer Fehler gibt
-	            char ch[2];
-	            printf("EPOS disabled\nPress 1 to enable\n");
-	           // fgets(&cUser_State, 2, stdin);
-	            //muss rein, der obere teil jedoch nicht
-	           // fgets(&ch, 2, stdin);
-	            ch[0] = '1';
-	            cUser_State = ch[0];
-	            //console input state machine
-	            break;
-	        case '1':
-	            //Switch on
-	            pack(WRITING_SEND, CONTROL_WORD, 0,SWITCH_ON);
-	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-	            cUser_State = 2;
-	            break;
-	        case 2:
-	            //Enable operation
-	            pack(WRITING_SEND, CONTROL_WORD, 0,ENABLE_OPERATION);
-	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-	            printf("EPOS enabled\n");
-	            cUser_State++;
-	            break;
-	        case 3:
-	            //Current Mode
-	            pack(WRITING_SEND, MODES_OF_OPERATION, 0,DIGITAL_CURRENT);
-	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-	            cUser_State++;
-	            break;
-	        case 4:
-	            //Send CurrentModeSettingValue
-	            pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,CurrentModeSettingValue);
-	            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-	            printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
-	            cUser_State++;
-	            break;
-	    }
+	     //Fault reset
+         pack(WRITING_SEND, CONTROL_WORD, 0,FAULT_RESET);
+         CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+
+         //Shut down
+         pack(WRITING_SEND, CONTROL_WORD, 0,SHUTDOWN);
+         CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+         //damit es keinen Pointer Fehler gibt
+         char ch[2];
+         printf("Epos enable\n");
+
+         //Switch on
+         pack(WRITING_SEND, CONTROL_WORD, 0,SWITCH_ON);
+         CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+
+         //Enable operation
+         pack(WRITING_SEND, CONTROL_WORD, 0,ENABLE_OPERATION);
+         CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+         printf("EPOS enabled\n");
+
+         //Current Mode
+         pack(WRITING_SEND, MODES_OF_OPERATION, 0,DIGITAL_CURRENT);
+         CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+
+         //Send CurrentModeSettingValue
+         pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,CurrentModeSettingValue);
+         CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+         printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
+	 }
+	 elseif(Var == 0)
+	 {
+	     Var1 = 0;
+	 }
+	 else
+	 {}
+	 * */
 
 	// Check if CAN message object 2 has new data.
 	/*
@@ -890,30 +879,11 @@ void Task10ms(void)
 							&ModelOutput[8],  &ModelOutput[9],  &ModelOutput[10], &ModelOutput[11],
 							&ModelOutput[12], &ModelOutput[13], &ModelOutput[14], &ModelOutput[15]);
 
-
+	/*Teil für die Funktion bei Task 100ms */
 	aktuellerStrom = (int32_t)Strom;
-	/*
-	if (aktuellerStrom == vorherigerStrom)
-	{
-	    // nix ändern
-	}
-	else
-	{
-	    if(aktuellerStrom < 0)
-	    {
-	        aktuellerStrom = 0;
-	    }
-	    elseif(aktuellerStrom > 1000)
-	    {
-	        aktuellerStrom = 1000;
-	    }
-	    // wert neu senden
-	    vorherigerStrom = aktuellerStrom;
-	    //printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
-	}
-    */
-	/* Copy values from model output vector to DAC values using the respective dynamic range */
 
+
+	/* Copy values from model output vector to DAC values using the respective dynamic range */
 	/* Raus weil keine Ausgänge benötigt
 	for(i=0; i<4; i++)
 	{
@@ -976,8 +946,28 @@ void Task100ms(void)
 
         }
     }
+    /*Hier der Teil, verschickt eine Can Nachricht, sobald der Strom in ControlDesk geändert wird*/
+    if (aktuellerStrom == vorherigerStrom)
+    {
+        // nix ändern
+    }
+    else
+    {
+        if(aktuellerStrom < 0)
+        {
+            aktuellerStrom = 0;
+        }
+        else if(aktuellerStrom > 1000)
+        {
+            aktuellerStrom = 1000;
+        }
+        // wert neu senden
+        pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,500);
+        CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+        vorherigerStrom = aktuellerStrom;
+        //printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
+    }
     //--------------------------------------------------------------------------------------------------------------------------
-
 
 	if(i == 7)
 	{

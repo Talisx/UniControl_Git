@@ -40,6 +40,9 @@ int main(void)
 	/* Initialize the dSPACE CAN driver and message objects */
 	DSXCP_can_init(0);
 
+	/*Initialie Motor */
+	initMotor();
+
     /* Start BIOS */
     BIOS_start();
 
