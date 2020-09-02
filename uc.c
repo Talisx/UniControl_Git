@@ -41,7 +41,7 @@ int main(void)
 	DSXCP_can_init(0);
 
 	/*Initialie Motor */
-	initMotor();
+	//initMotor();
 
     /* Start BIOS */
     BIOS_start();

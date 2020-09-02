@@ -54,7 +54,15 @@ int Nachrichten_prüfer1 = 0;
 int32_t vorherigerStrom = 0;
 int32_t aktuellerStrom = 0;
 int start_Motor = 0;
-int16_t CurrentModeSettingValue = 500;
+//int16_t CurrentModeSettingValue = 500;
+//enum state{ FAULTRESET, OUT, ON, ENABLEOP, CURRENTMODE, SETTINGCURRENT};
+//enum muss hier in C immer noch dazu.
+bool initComplete;
+bool testCD1;
+bool testCD2;
+// for use in Init_Motor
+enum state{ FAULTRESET, OUT, ON, ENABLEOP, CURRENTMODE, SETTINGCURRENT};
+enum state machineState;
 
 
 /* Global variables */
@@ -914,59 +922,74 @@ void Task100ms(void)
 
 	//--------------------------------------------------------------------------------------------------------------------------
 	/*Request for all Data*/
-	//Hier wird geprüft ob die Verbindung überhaupt noch besteht
-    if(Data_ValidEnco == true && Data_ValidWinkel == true)
-    {
-        Data_ValidEnco = false;
-        Data_ValidWinkel = false;
-        pui8TxBuffer[0] = 200;
-        CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx0, MSG_OBJ_TYPE_TX);
-        Nachrichten_prüfer1++;
-        //alle 50 Nachrichten, kann mal eine Fehlerhafte message ignoriert werden
-        if(Nachrichten_prüfer1 == 50)
+	/*Hier wird erstmal der Motor initialisiert, bevor etwas anderes gemacht wird*/
+	if(initComplete == true && testCD1 == true)
+	{
+	    initMotor();
+	}
+	else if(initComplete == false && testCD1 == true)
+	{
+	    //Hier wird geprüft ob die Verbindung überhaupt noch besteht zur Quintus Platine
+        if(Data_ValidEnco == true && Data_ValidWinkel == true)
         {
-            Nachricht_prüfer = 0;
-            Nachrichten_prüfer1 = 0;
+            Data_ValidEnco = false;
+            Data_ValidWinkel = false;
+            pui8TxBuffer[0] = 200;
+            CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx0, MSG_OBJ_TYPE_TX);
+            Nachrichten_prüfer1++;
+            //alle 50 Nachrichten, kann mal eine Fehlerhafte message ignoriert werden
+            if(Nachrichten_prüfer1 == 50)
+            {
+                Nachricht_prüfer = 0;
+                Nachrichten_prüfer1 = 0;
+            }
         }
-    }
-    else
-    {
-        // man könnte eine if schleife hoch zählen, die ab bestimmten wert dann einfach alles ab schaltet
-        // zum vermeiden, das alles abkratzt wenn mal eine Nachricht zwischen drin falsch ist
-        if(Nachricht_prüfer == 0)
-        {
-            Data_ValidEnco = true;
-            Data_ValidWinkel = true;
-            Nachricht_prüfer++;
-        }
-        //Nachricht hier einfügen, das Fehler entstanden ist
-        // kamen mehr als 2 Nachrichten nicht richtig an
         else
         {
-
+            // man könnte eine if schleife hoch zählen, die ab bestimmten wert dann einfach alles ab schaltet
+            // zum vermeiden, das alles abkratzt wenn mal eine Nachricht zwischen drin falsch ist
+            if(Nachricht_prüfer == 0)
+            {
+                Data_ValidEnco = true;
+                Data_ValidWinkel = true;
+                Nachricht_prüfer++;
+            }
+            else
+            {
+                //Nachricht hier einfügen, das Fehler entstanden ist
+                // kamen mehr als 2 Nachrichten nicht richtig an
+            }
         }
-    }
-    /*Hier der Teil, verschickt eine Can Nachricht, sobald der Strom in ControlDesk geändert wird*/
-    if (aktuellerStrom == vorherigerStrom)
-    {
-        // nix ändern
-    }
-    else
-    {
-        if(aktuellerStrom < 0)
+        /*Hier der Teil, verschickt eine Can Nachricht, sobald der Strom in ControlDesk geändert wird*/
+        if (aktuellerStrom == vorherigerStrom)
         {
-            aktuellerStrom = 0;
+            // nix ändern
         }
-        else if(aktuellerStrom > 1000)
+        else
         {
-            aktuellerStrom = 1000;
+            if(aktuellerStrom < 0)
+            {
+                aktuellerStrom = 0;
+            }
+            else if(aktuellerStrom > 1000)
+            {
+                aktuellerStrom = 1000;
+            }
+            // neg Value left, pos Value right rotation
+            pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,500);
+            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+            vorherigerStrom = aktuellerStrom;
+            //printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
         }
-        // wert neu senden
-        pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,500);
-        CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-        vorherigerStrom = aktuellerStrom;
-        //printf("Current Mode activated\nCurrent value (mA): %d\n", CurrentModeSettingValue);
-    }
+	}
+	else if(initComplete == false && testCD1 == false)
+	{
+	    initComplete = true;
+	}
+	else
+	{
+	    // tue nichts, da ausgeschaltet und nichts initialisiert.
+	}
     //--------------------------------------------------------------------------------------------------------------------------
 
 	if(i == 7)

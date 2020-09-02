@@ -9,6 +9,10 @@
 #define UC_INIT_MOTOR_H_
 
 extern void initMotor(void);
+extern bool initComplete;
+extern enum state{ FAULTRESET, OUT, ON, ENABLEOP, CURRENTMODE, SETTINGCURRENT};
+extern enum state machineState;
+
 
 
 #endif /* UC_INIT_MOTOR_H_ */
