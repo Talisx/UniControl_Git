@@ -17,13 +17,17 @@
 #include "driverlib/interrupt.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/sysctl.h"
+#include <xdc/runtime/System.h>
 
 
 #include "inc/hw_qei.h" // Macros for usage with the quadrature
 #include "driverlib/sysctl.h" // Prototypes for the SysCtl driver.
 #include "driverlib/qei.h" // Macros for usage with the quadrature
-
 #include "uc_can.h"
+#include "canopenMsgHandler.h"
+#include "uc/EPOS_command_send.h"
+
+bool connectionCheck = true;
 
 //*****************************************************************************
 //
@@ -100,23 +104,40 @@ void InitCAN0MsgObjects(void)
     sMsgObjectDataTx0.pui8MsgData    = pui8TxBuffer;
     CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx0, MSG_OBJ_TYPE_TX);
 
+    sMsgObjectDataTx1.ui32MsgID  = 0x0018;
+    sMsgObjectDataTx1.ui32Flags  = MSG_OBJ_TX_INT_ENABLE;
+    sMsgObjectDataTx1.ui32MsgIDMask = 0x0000;
+    sMsgObjectDataTx1.ui32MsgLen     = 8;
+    sMsgObjectDataTx1.pui8MsgData    = pui8TxBuffer;
+    CANMessageSet(CAN0_BASE, 8, &sMsgObjectDataTx1, MSG_OBJ_TYPE_TX);
+
+    //message Object for data encoder
 	sMsgObjectDataRx0.ui32MsgID = 0x0012;
 	sMsgObjectDataRx0.ui32MsgIDMask = 0xFFFF;
 	sMsgObjectDataRx0.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
 	sMsgObjectDataRx0.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 2, &sMsgObjectDataRx0 ,MSG_OBJ_TYPE_RX );
 
+	//Message Object for Data Winkel Encoder
 	sMsgObjectDataRx1.ui32MsgID = 0x0013;
 	sMsgObjectDataRx1.ui32MsgIDMask = 0xFFFF;
 	sMsgObjectDataRx1.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
 	sMsgObjectDataRx1.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 3, &sMsgObjectDataRx1 ,MSG_OBJ_TYPE_RX );
 
+	//test message Object
 	sMsgObjectDataRx2.ui32MsgID = 0x0020;
 	sMsgObjectDataRx2.ui32MsgIDMask = 0xFFFF;
 	sMsgObjectDataRx2.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
 	sMsgObjectDataRx2.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 4, &sMsgObjectDataRx2 ,MSG_OBJ_TYPE_RX );
+
+	// to stop the motor if Position is reached
+	sMsgObjectDataRx3.ui32MsgID = 0x0008;
+	sMsgObjectDataRx3.ui32MsgIDMask = 0xFFFF;
+	sMsgObjectDataRx3.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
+	sMsgObjectDataRx3.ui32MsgLen = 8;
+	CANMessageSet ( CAN0_BASE , 7, &sMsgObjectDataRx3 ,MSG_OBJ_TYPE_RX );
 
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//Message objects für Steuergerät
@@ -171,25 +192,82 @@ void CAN0IntHandler(void)
 		case 1:		CANIntClear(CAN0_BASE, 1);
 		            break;
 
+		// interrupt handler for data encoder
 		case 2:     CANIntClear(CAN0_BASE, 2);
-		            // ui32CanRxFlags = (ui32CanRxFlags | 0b10);    //Kimmer Zeug
+		            // ui32CanRxFlags = (ui32CanRxFlags | 0b10);
 		            sMsgObjectDataRx0.pui8MsgData = pui8RxBuffer;
 		            CANMessageGet(CAN0_BASE, 2, &sMsgObjectDataRx0, 0);
+		            //Data_WinkelEncoder = pui8RxBuffer[0];
+		            //Data_ValidWinkel = true;
+		            Data_Encoder = pui8RxBuffer[0];
+		            Data_ValidEnco = true;
+		            /*
+		             * int tmpReglerCD = 800;
+		             //aufpassen, Data_Encoder muss ja im Feld vorgegeben werden weil ja nicht jede einzelne Streifen Posi vorgegeben wird, klappt mit größer kleiner Operator
+		             * if(Data_Encoder <= (tmpReglerCD +50) && Data_Encoder >= (tmpReglerCD -50))
+		             * {
+		             *
+		             *
+		             *      anhalten
+		             *      pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,0);
+                            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+                            sich hier noch etwas überlegen, damit nur einmal sendet !!!!!!!!!!!!
+		             * }
+		             *
+		             */
+		            break;
+		// interrupt for winkel encoder
+		case 3:     CANIntClear(CAN0_BASE, 3);
+		            sMsgObjectDataRx1.pui8MsgData = pui8RxBuffer;
+		            CANMessageGet(CAN0_BASE, 3, &sMsgObjectDataRx1, 0);
+		            //Data_Encoder = pui8RxBuffer[0];
+		            //Data_ValidEnco = true;
 		            Data_WinkelEncoder = pui8RxBuffer[0];
 		            Data_ValidWinkel = true;
 		            break;
 
-		case 3:     CANIntClear(CAN0_BASE, 3);
-		            sMsgObjectDataRx1.pui8MsgData = pui8RxBuffer;
-		            CANMessageGet(CAN0_BASE, 3, &sMsgObjectDataRx1, 0);
-		            Data_Encoder = pui8RxBuffer[0];
-		            Data_ValidEnco = true;
+		// test message object
+		case 4:     CANIntClear(CAN0_BASE, 4);
 		            break;
 
+		// Fehlercode Prüfung von Steuergerät
 		case 6:     CANIntClear(CAN0_BASE, 6);
-                    // Set the RX flag register.
-		            //um die Auswertung extern zu machen
-		            ui32CanRxFlags = (ui32CanRxFlags | 0b10);
+		            connectionCheck = true;
+		//Teil Optional für Techniker um Fehlercode auszulesen
+		/*
+                    // Set a pointer to the message object's data storage buffer.
+                    sMsgObjectDataRx.pui8MsgData = pui8RxBuffer;
+                    // Get the data content of message object 6.
+                    CANMessageGet(CAN0_BASE, 6, &sMsgObjectDataRx, 0);
+                    display=unpack(&SDO_Byte, &index, &sub_index, &value);
+                    //Error history 1
+                    if(display == 0x43100301){
+                        System_printf("Fehler Code 1: %X", value );
+                    }
+                    //Error history 2
+                    if(display == 0x43100302){
+                       System_printf("Fehler Code 2: %X", value);
+                    }
+                    //Error history 3
+                    if(display == 0x43100303){
+                       System_printf("Fehler Code 3: %X", value);
+                    }
+                    //Error history 4
+                    if(display == 0x43100304){
+                       System_printf("Fehler Code 4: %X", value);
+                    }
+                    //Error history 5
+                    if(display == 0x43100305){
+                        System_printf("Fehler Code 4: %X", value);
+                    }
+         */
+		            break;
+
+		// to stop the motor if Position is reached, high priority
+		case 7:     CANIntClear(CAN0_BASE, 6);
+		            //anhalten
+		            pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,0);
+		            CANMessageSet(CAN0_BASE, 7, &sMsgObjectDataTx1, MSG_OBJ_TYPE_TX);            //!!!!!! Aufpassen, das hier muss hoch prior sein, da es den Motor anhalten soll
 		            break;
 
 		/*pending status error */

@@ -8,10 +8,13 @@
 #ifndef UC_INIT_MOTOR_H_
 #define UC_INIT_MOTOR_H_
 
+#include <stdbool.h>
+
 extern void initMotor(void);
 extern bool initComplete;
-extern enum state{ FAULTRESET, OUT, ON, ENABLEOP, CURRENTMODE, SETTINGCURRENT};
-extern enum state machineState;
+extern bool connectionCheck;
+//extern enum state{ FAULTRESET, OUT, ON, ENABLEOP, CURRENTMODE, SETTINGCURRENT};
+//extern enum state machineState;
 
 
 
