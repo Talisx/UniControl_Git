@@ -5,7 +5,7 @@
  *
  * Model version                  : 1.56
  * Simulink Coder version         : 8.8 (R2015a) 09-Feb-2015
- * C/C++ source code generated on : Wed Aug 26 13:41:54 2020
+ * C/C++ source code generated on : Fri Sep 11 12:03:53 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -322,14 +322,20 @@ void UniControlSystem_Step(real_T arg_In1, real_T arg_In2, real_T arg_In3,
    */
   *arg_Out2 = Strom;
 
-  /* Outport: '<Root>/Out3' */
-  *arg_Out3 = 0.0;
+  /* Outport: '<Root>/Out3' incorporates:
+   *  Constant: '<Root>/Constant'
+   */
+  *arg_Out3 = rtP.Constant_Value_c;
 
-  /* Outport: '<Root>/Out4' */
-  *arg_Out4 = 0.0;
+  /* Outport: '<Root>/Out4' incorporates:
+   *  Constant: '<Root>/Constant'
+   */
+  *arg_Out4 = rtP.Constant_Value_c;
 
-  /* Outport: '<Root>/Out5' */
-  *arg_Out5 = 0.0;
+  /* Outport: '<Root>/Out5' incorporates:
+   *  Constant: '<Root>/Constant'
+   */
+  *arg_Out5 = rtP.Constant_Value_c;
 
   /* Outport: '<Root>/Out6' incorporates:
    *  Constant: '<Root>/Constant'

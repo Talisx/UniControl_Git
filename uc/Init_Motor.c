@@ -9,7 +9,6 @@
 #include "canopenMsgHandler.h"
 #include <stdbool.h>
 #include <stdint.h>
-#include "Init_Motor.h"
 #include "uc/EPOS_command_send.h"
 #include "driverlib/can.h"
 #include "uc/uc_can.h"
@@ -57,6 +56,7 @@ void initMotor(void)
                 //Current Mode
                 pack(WRITING_SEND, MODES_OF_OPERATION, 0,DIGITAL_CURRENT);
                 CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+                machineState = SETTINGCURRENT;
                 initComplete = false;
                 /*
                  *

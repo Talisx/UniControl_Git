@@ -78,25 +78,6 @@ void InitCAN0(void)
 
 void InitCAN0MsgObjects(void)
 {
-	/* Initialize data request message object (TX direction), der Teil ist für Kimmer Platine */
-    /*
-	sMsgObjectDataTx.ui32MsgID 	= 0x0600 + 0b00000001;
-	sMsgObjectDataTx.ui32Flags 	= MSG_OBJ_TX_INT_ENABLE;
-	sMsgObjectDataTx.ui32MsgIDMask = 0x0000;
-	sMsgObjectDataTx.ui32MsgLen 	= 8;
-	sMsgObjectDataTx.pui8MsgData 	= pui8TxBuffer;
-	CANMessageSet(CAN0_BASE, 1, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-	*/
-
-	/* Initialize data receive message objects (RX direction ), der Teil ist für Kimmer Platine */
-	/*
-	sMsgObjectDataRx.ui32MsgID = 0x0580+0b00000001;
-	sMsgObjectDataRx.ui32MsgIDMask = 0xFFFF;
-	sMsgObjectDataRx.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
-	sMsgObjectDataRx.ui32MsgLen = 8;
-	CANMessageSet ( CAN0_BASE , 2, &sMsgObjectDataRx ,MSG_OBJ_TYPE_RX );
-	*/
-
     sMsgObjectDataTx0.ui32MsgID  = 0x0011;
     sMsgObjectDataTx0.ui32Flags  = MSG_OBJ_TX_INT_ENABLE;
     sMsgObjectDataTx0.ui32MsgIDMask = 0x0000;
@@ -131,14 +112,6 @@ void InitCAN0MsgObjects(void)
 	sMsgObjectDataRx2.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
 	sMsgObjectDataRx2.ui32MsgLen = 8;
 	CANMessageSet ( CAN0_BASE , 4, &sMsgObjectDataRx2 ,MSG_OBJ_TYPE_RX );
-
-	// to stop the motor if Position is reached
-	sMsgObjectDataRx3.ui32MsgID = 0x0008;
-	sMsgObjectDataRx3.ui32MsgIDMask = 0xFFFF;
-	sMsgObjectDataRx3.ui32Flags = (MSG_OBJ_RX_INT_ENABLE | MSG_OBJ_USE_ID_FILTER);
-	sMsgObjectDataRx3.ui32MsgLen = 8;
-	CANMessageSet ( CAN0_BASE , 7, &sMsgObjectDataRx3 ,MSG_OBJ_TYPE_RX );
-
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//Message objects für Steuergerät
 	sMsgObjectDataTx.ui32MsgID = 0x0600+0b00000001;
@@ -201,20 +174,6 @@ void CAN0IntHandler(void)
 		            //Data_ValidWinkel = true;
 		            Data_Encoder = pui8RxBuffer[0];
 		            Data_ValidEnco = true;
-		            /*
-		             * int tmpReglerCD = 800;
-		             //aufpassen, Data_Encoder muss ja im Feld vorgegeben werden weil ja nicht jede einzelne Streifen Posi vorgegeben wird, klappt mit größer kleiner Operator
-		             * if(Data_Encoder <= (tmpReglerCD +50) && Data_Encoder >= (tmpReglerCD -50))
-		             * {
-		             *
-		             *
-		             *      anhalten
-		             *      pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,0);
-                            CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
-                            sich hier noch etwas überlegen, damit nur einmal sendet !!!!!!!!!!!!
-		             * }
-		             *
-		             */
 		            break;
 		// interrupt for winkel encoder
 		case 3:     CANIntClear(CAN0_BASE, 3);
@@ -263,16 +222,9 @@ void CAN0IntHandler(void)
          */
 		            break;
 
-		// to stop the motor if Position is reached, high priority
-		case 7:     CANIntClear(CAN0_BASE, 6);
-		            //anhalten
-		            pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,0);
-		            CANMessageSet(CAN0_BASE, 7, &sMsgObjectDataTx1, MSG_OBJ_TYPE_TX);            //!!!!!! Aufpassen, das hier muss hoch prior sein, da es den Motor anhalten soll
-		            break;
-
 		/*pending status error */
 		case 32768: CANIntClear(CAN0_BASE, CAN_INT_INTID_STATUS);
-		          //  printf("Status Error \n");
+		          //printf("Status Error \n");
 		            break;
 
 		/* Unused message objects: These should never trigger */

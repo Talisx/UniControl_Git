@@ -15,6 +15,7 @@
 
 /* Simulink Coder header files */
 #include "UniControlSystem_ert_rtw/UniControlSystem.h"
+//#include "uc_periph.h"
 
 
 int main(void)

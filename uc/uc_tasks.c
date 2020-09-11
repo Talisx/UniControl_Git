@@ -189,6 +189,9 @@ void Task100ms(void)
 	if(initComplete == true && testCD1 == true)
 	{
 	    initMotor();
+	    //Damit bei reconnect, wieder versucht wird die Verbindung zur Quintus Platine zu checken
+	    Data_ValidEnco = true;
+	    Data_ValidWinkel = true;
 	}
 	else if(initComplete == false && testCD1 == true)
 	{
@@ -217,12 +220,12 @@ void Task100ms(void)
                 Data_ValidWinkel = true;
                 Nachricht_prüfer++;
             }
+            //wenn 2 Nachrichten nicht richtig an kamen schalte Motor aus.
             else
             {
-                //Nachricht hier einfügen, das Fehler entstanden ist
-                // kamen mehr als 2 Nachrichten nicht richtig an
-                //Motor an halten und prüfen ob alles okay ist
-                // Dafür can Nachricht raus und Motor komplettt abstellen.
+                pack(WRITING_SEND, CURRENT_MODE_SETTING_VALUE,0,0);
+                CANMessageSet(CAN0_BASE, 5, &sMsgObjectDataTx, MSG_OBJ_TYPE_TX);
+                initComplete = true;
             }
         }
         /*Hier der Teil, verschickt eine Can Nachricht, sobald der Strom in ControlDesk geändert wird*/
@@ -333,9 +336,3 @@ void Task100ms(void)
 
 	return;
 }
-
-
-
-
-
-
